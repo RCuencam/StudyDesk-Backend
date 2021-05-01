@@ -43,10 +43,12 @@ namespace StudyDesck.API
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IInstituteRepository, InstituteRepository>();
             services.AddScoped<ICareerRepository, CareerRepository>();
+            services.AddScoped<IStudentRepository, StudentRepository>();
 
             // services:
             services.AddScoped<IInstituteService, InstituteService>();
             services.AddScoped<ICareerService, CareerService>();
+            services.AddScoped<IStudentService, StudentService>();
 
 
 
