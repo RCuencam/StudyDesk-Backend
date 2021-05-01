@@ -19,9 +19,9 @@ namespace StudyDesck.API.Controllers
         private readonly ICareerService _careerService;
         private readonly IMapper _mapper;
 
-        public CareerController(ICareerService instituteService, IMapper mapper)
+        public CareerController(ICareerService careerService, IMapper mapper)
         {
-            _careerService = instituteService;
+            _careerService = careerService;
             _mapper = mapper;
         }
 

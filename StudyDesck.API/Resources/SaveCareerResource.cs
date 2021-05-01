@@ -13,7 +13,6 @@ namespace StudyDesck.API.Resources
         public string Name { get; set; }
 
         [Required]
-        [MaxLength(40)]
         public InstituteResource Institute { get; set; }
     }
 }
