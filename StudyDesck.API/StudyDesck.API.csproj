@@ -5,6 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="5.0.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="5.0.5" />
@@ -16,7 +18,6 @@
     <Folder Include="Controllers\" />
     <Folder Include="Domain\Models\" />
     <Folder Include="Domain\Services\Comunications\" />
-    <Folder Include="Mapping\" />
     <Folder Include="Services\" />
     <Folder Include="Resources\" />
   </ItemGroup>
