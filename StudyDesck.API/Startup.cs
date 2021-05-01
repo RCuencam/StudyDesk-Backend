@@ -1,11 +1,13 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using StudyDesck.API.Domain.Persistence.Contexts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +29,21 @@ namespace StudyDesck.API
         {
 
             services.AddControllers();
+            /*services.AddDbContext<AppDbContext>(opciones =>
+            {
+                opciones.UseMySQL(Configuration.GetConnectionString("DefaultConnection"));
+            });*/
+
+            // repositories:
+            //services.AddScoped<ICategoryRepository, CategoryRepository>();
+
+            // services:
+            //services.AddScoped<ICategoryService, CategoryService>();
+            // ...
+
+            services.AddRouting(options => options.LowercaseUrls = true); 
+
+            services.AddAutoMapper(typeof(Startup));
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "StudyDesck.API", Version = "v1" });

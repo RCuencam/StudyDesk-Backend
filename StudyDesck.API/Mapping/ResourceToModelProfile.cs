@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using StudyDesck.API.Domain.Models;
+using StudyDesck.API.Resources;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,9 +12,7 @@ namespace StudyDesck.API.Mapping
     {
         public ResourceToModelProfile()
         {
-            // rules for mapper
-
-
+            CreateMap<SaveInstituteResource, Institute>();
         }
     }
 }

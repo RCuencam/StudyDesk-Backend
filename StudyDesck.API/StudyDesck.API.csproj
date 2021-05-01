@@ -11,16 +11,9 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="5.0.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="5.0.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Relational.Design" Version="1.1.6" />
+    <PackageReference Include="MySql.EntityFrameworkCore" Version="5.0.3" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
     <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.1.4" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-    <Folder Include="Domain\Models\" />
-    <Folder Include="Domain\Services\Comunications\" />
-    <Folder Include="Services\" />
-    <Folder Include="Resources\" />
   </ItemGroup>
 
 </Project>
