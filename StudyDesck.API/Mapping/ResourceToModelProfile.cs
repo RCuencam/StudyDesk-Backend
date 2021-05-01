@@ -14,6 +14,7 @@ namespace StudyDesck.API.Mapping
         {
             CreateMap<SaveInstituteResource, Institute>();
             CreateMap<SaveCareerResource, Career>();
+            CreateMap<StudentResource, Student>();
         }
     }
 }

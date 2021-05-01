@@ -26,6 +26,8 @@ namespace StudyDesck.API.Resources
         public string Password { get; set; }
 
         [Required]
-        public Career Career { get; set; }
+        public SaveCareerResource Career { get; set; }
+
+
     }
 }
