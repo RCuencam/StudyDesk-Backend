@@ -10,7 +10,7 @@ namespace StudyDesck.API.Mapping
     {
         public ModelToResourceProfile()
         {
-            // rules for mapper:
+            // rules for mapper: sakjdaksjl
 
         }
 
