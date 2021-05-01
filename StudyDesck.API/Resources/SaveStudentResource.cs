@@ -27,5 +27,7 @@ namespace StudyDesck.API.Resources
 
         [Required]
         public Career Career { get; set; }
+
+
     }
 }

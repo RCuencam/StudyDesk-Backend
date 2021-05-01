@@ -16,12 +16,11 @@ namespace StudyDesck.API
         public static void Main(string[] args)
         {
             var host=CreateHostBuilder(args).Build();
-            /*using (var scope = host.Services.CreateScope())
+            using (var scope = host.Services.CreateScope())
             using (var context = scope.ServiceProvider.GetService<AppDbContext>())
             {
-                // esto se asegura que la base de datos exista. (si no existe se crea la base de datos) "ejecuta OnModelCreated"
                 context.Database.EnsureCreated();
-            }*/
+            }
             host.Run();
 
         }
