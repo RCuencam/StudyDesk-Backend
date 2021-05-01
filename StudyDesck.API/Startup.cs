@@ -1,11 +1,17 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using StudyDesck.API.Domain.Persistence.Contexts;
+using StudyDesck.API.Domain.Persistence.Repositories;
+using StudyDesck.API.Domain.Services;
+using StudyDesck.API.Persistence.Repositories;
+using StudyDesck.API.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +33,22 @@ namespace StudyDesck.API
         {
 
             services.AddControllers();
+
+            services.AddDbContext<AppDbContext>(options =>
+            {
+                options.UseMySQL(Configuration.GetConnectionString("DefaultConnection"));
+            });
+
+            // repositories:
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IInstituteRepository, InstituteRepository>();
+
+            // services:
+            services.AddScoped<IInstituteService, InstituteService>();
+
+
+            services.AddRouting(options => options.LowercaseUrls = true); 
+            services.AddAutoMapper(typeof(Startup));
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "StudyDesck.API", Version = "v1" });
@@ -43,6 +65,7 @@ namespace StudyDesck.API
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "StudyDesck.API v1"));
             }
 
+            //app.UseHttpsRedirection(); // temp
             app.UseRouting();
 
             app.UseAuthorization();
