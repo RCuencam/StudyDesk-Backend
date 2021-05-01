@@ -45,10 +45,21 @@ namespace StudyDesck.API.Domain.Persistence.Contexts
             builder.Entity<Career>().HasKey(p => p.Id);
             builder.Entity<Career>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<Career>().Property(p => p.Name).IsRequired().HasMaxLength(40);
-            //Relationships Career
-                
-                
 
+
+            //Student
+            builder.Entity<Student>().ToTable("Students");
+            builder.Entity<Student>().HasKey(p => p.Id);
+            builder.Entity<Student>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+            builder.Entity<Student>().Property(p => p.Name).IsRequired().HasMaxLength(40);
+            builder.Entity<Student>().Property(p => p.LastName).IsRequired().HasMaxLength(40);
+            builder.Entity<Student>().Property(p => p.Logo).IsRequired();
+            builder.Entity<Student>().Property(p => p.Email).IsRequired().HasMaxLength(40);
+            builder.Entity<Student>().Property(p => p.Password).IsRequired().HasMaxLength(40);
+            builder.Entity<Student>()
+                .HasOne(p => p.Career)
+                .WithMany(p => p.Students)
+                .HasForeignKey(p => p.CareerId);
 
             // end region
             builder.ApplySnakeCaseNamingConvetion();
