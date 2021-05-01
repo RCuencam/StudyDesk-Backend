@@ -42,9 +42,12 @@ namespace StudyDesck.API
             // repositories:
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IInstituteRepository, InstituteRepository>();
+            services.AddScoped<ICareerRepository, CareerRepository>();
 
             // services:
             services.AddScoped<IInstituteService, InstituteService>();
+            services.AddScoped<ICareerService, CareerService>();
+
 
 
             services.AddRouting(options => options.LowercaseUrls = true); 
