@@ -13,7 +13,7 @@ namespace StudyDesck.API.Controllers
 {
     [ApiController]
     [Route("/api/[controller]")]
-    [Produces("aplication/json")]
+    [Produces("application/json")]
     public class StudentsController : ControllerBase
     {
         private readonly IStudentService _studentService;
@@ -44,9 +44,9 @@ namespace StudyDesck.API.Controllers
             if (!result.Success)
                 return BadRequest(result.Message);
 
-            var StudentResource = _mapper.Map<Student, StudentResource>(result.Resource);
+            var studentResource = _mapper.Map<Student, StudentResource>(result.Resource);
 
-            return Ok(StudentResource);
+            return Ok(studentResource);
         }
 
 
@@ -60,14 +60,14 @@ namespace StudyDesck.API.Controllers
                 return BadRequest(ModelState.GetErrorMessages());
             }
 
-            var category = _mapper.Map<SaveStudentResource, Student>(resource);
-            var result = await _studentService.SaveAsync(category);
+            var student = _mapper.Map<SaveStudentResource, Student>(resource);
+            var result = await _studentService.SaveAsync(student);
 
             if (!result.Success)
                 return BadRequest(result.Message);
 
-            var StudentResource = _mapper.Map<Student, StudentResource>(result.Resource);
-            return Ok(StudentResource);
+            var studentResource = _mapper.Map<Student, StudentResource>(result.Resource);
+            return Ok(studentResource);
         }
 
         [HttpPut("{id}")]
@@ -86,8 +86,8 @@ namespace StudyDesck.API.Controllers
             if (!result.Success)
                 return BadRequest(result.Message);
 
-            var StudentResource = _mapper.Map<Student, StudentResource>(result.Resource);
-            return Ok(StudentResource);
+            var studentResource = _mapper.Map<Student, StudentResource>(result.Resource);
+            return Ok(studentResource);
         }
 
         [HttpDelete("{id}")]
@@ -99,8 +99,8 @@ namespace StudyDesck.API.Controllers
             if (!result.Success)
                 return BadRequest(result.Message);
 
-            var StudentResource = _mapper.Map<Student, StudentResource>(result.Resource);
-            return Ok(StudentResource);
+            var studentResource = _mapper.Map<Student, StudentResource>(result.Resource);
+            return Ok(studentResource);
         }
     }
 }

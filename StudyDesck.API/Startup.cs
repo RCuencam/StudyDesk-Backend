@@ -39,19 +39,24 @@ namespace StudyDesck.API
                 options.UseMySQL(Configuration.GetConnectionString("DefaultConnection"));
             });
 
-            // repositories:
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            // repositories:
             services.AddScoped<IInstituteRepository, InstituteRepository>();
             services.AddScoped<ICareerRepository, CareerRepository>();
             services.AddScoped<IStudentRepository, StudentRepository>();
+            services.AddScoped<ICourseRepository, CourseRepository>();
+            services.AddScoped<ITopicRepository, TopicRepository>();
 
             // services:
             services.AddScoped<IInstituteService, InstituteService>();
             services.AddScoped<ICareerService, CareerService>();
             services.AddScoped<IStudentService, StudentService>();
+            services.AddScoped<ICourseService, CourseService>();
+            services.AddScoped<ITopicService, TopicService>();
 
 
-
+            // end region
             services.AddRouting(options => options.LowercaseUrls = true); 
             services.AddAutoMapper(typeof(Startup));
             services.AddSwaggerGen(c =>

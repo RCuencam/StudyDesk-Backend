@@ -68,7 +68,7 @@ namespace StudyDesck.API.Services
         {
             var existingCareer = await _careerRepository.FindById(id);
             if (existingCareer == null)
-                return new CareerResponse("category no encontrada");
+                return new CareerResponse("category not found");
 
             existingCareer.Name = career.Name;
             try

@@ -13,13 +13,13 @@ namespace StudyDesck.API.Controllers
 {
     [ApiController]
     [Route("/api/[controller]")]
-    [Produces("aplication/json")]
-    public class CareerController : ControllerBase
+    [Produces("application/json")]
+    public class CareersController : ControllerBase
     {
         private readonly ICareerService _careerService;
         private readonly IMapper _mapper;
 
-        public CareerController(ICareerService careerService, IMapper mapper)
+        public CareersController(ICareerService careerService, IMapper mapper)
         {
             _careerService = careerService;
             _mapper = mapper;
@@ -44,9 +44,9 @@ namespace StudyDesck.API.Controllers
             if (!result.Success)
                 return BadRequest(result.Message);
 
-            var CareerResource = _mapper.Map<Career, CareerResource>(result.Resource);
+            var careerResource = _mapper.Map<Career, CareerResource>(result.Resource);
 
-            return Ok(CareerResource);
+            return Ok(careerResource);
         }
 
 
@@ -66,8 +66,8 @@ namespace StudyDesck.API.Controllers
             if (!result.Success)
                 return BadRequest(result.Message);
 
-            var CareerResource = _mapper.Map<Career, CareerResource>(result.Resource);
-            return Ok(CareerResource);
+            var careerResource = _mapper.Map<Career, CareerResource>(result.Resource);
+            return Ok(careerResource);
         }
 
         [HttpPut("{id}")]
@@ -86,8 +86,8 @@ namespace StudyDesck.API.Controllers
             if (!result.Success)
                 return BadRequest(result.Message);
 
-            var CareerResource = _mapper.Map<Career, CareerResource>(result.Resource);
-            return Ok(CareerResource);
+            var careerResource = _mapper.Map<Career, CareerResource>(result.Resource);
+            return Ok(careerResource);
         }
 
         [HttpDelete("{id}")]
@@ -99,8 +99,8 @@ namespace StudyDesck.API.Controllers
             if (!result.Success)
                 return BadRequest(result.Message);
 
-            var CareerResource = _mapper.Map<Career, CareerResource>(result.Resource);
-            return Ok(CareerResource);
+            var careerResource = _mapper.Map<Career, CareerResource>(result.Resource);
+            return Ok(careerResource);
         }
     }
 }

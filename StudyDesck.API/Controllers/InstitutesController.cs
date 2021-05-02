@@ -13,7 +13,7 @@ namespace StudyDesck.API.Controllers
 {
     [ApiController]
     [Route("/api/[controller]")]
-    [Produces("aplication/json")]
+    [Produces("application/json")]
     public class InstitutesController : ControllerBase
     {
         private readonly IInstituteService _instituteService;
@@ -44,9 +44,9 @@ namespace StudyDesck.API.Controllers
             if (!result.Success)
                 return BadRequest(result.Message);
 
-            var InstituteResource = _mapper.Map<Institute, InstituteResource>(result.Resource);
+            var instituteResource = _mapper.Map<Institute, InstituteResource>(result.Resource);
 
-            return Ok(InstituteResource);
+            return Ok(instituteResource);
         }
 
 
@@ -60,14 +60,14 @@ namespace StudyDesck.API.Controllers
                 return BadRequest(ModelState.GetErrorMessages());
             }
 
-            var category = _mapper.Map<SaveInstituteResource, Institute>(resource);
-            var result = await _instituteService.SaveAsync(category);
+            var institute = _mapper.Map<SaveInstituteResource, Institute>(resource);
+            var result = await _instituteService.SaveAsync(institute);
 
             if (!result.Success)
                 return BadRequest(result.Message);
 
-            var InstituteResource = _mapper.Map<Institute, InstituteResource>(result.Resource);
-            return Ok(InstituteResource);
+            var instituteResource = _mapper.Map<Institute, InstituteResource>(result.Resource);
+            return Ok(instituteResource);
         }
 
         [HttpPut("{id}")]
@@ -86,8 +86,8 @@ namespace StudyDesck.API.Controllers
             if (!result.Success)
                 return BadRequest(result.Message);
 
-            var InstituteResource = _mapper.Map<Institute, InstituteResource>(result.Resource);
-            return Ok(InstituteResource);
+            var instituteResource = _mapper.Map<Institute, InstituteResource>(result.Resource);
+            return Ok(instituteResource);
         }
 
         [HttpDelete("{id}")]
@@ -99,8 +99,8 @@ namespace StudyDesck.API.Controllers
             if (!result.Success)
                 return BadRequest(result.Message);
 
-            var InstituteResource = _mapper.Map<Institute, InstituteResource>(result.Resource);
-            return Ok(InstituteResource);
+            var instituteResource = _mapper.Map<Institute, InstituteResource>(result.Resource);
+            return Ok(instituteResource);
         }
     }
 }

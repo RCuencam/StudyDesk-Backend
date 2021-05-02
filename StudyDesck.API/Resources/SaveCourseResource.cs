@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace StudyDesck.API.Resources
 {
-    public class SaveCareerResource
+    public class SaveCourseResource
     {
         [Required]
         [MaxLength(40)]
         public string Name { get; set; }
-
+        
         [Required]
-        public SaveInstituteResource Institute { get; set; }
+        public SaveCareerResource Career { get; set; }
     }
 }
