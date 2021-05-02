@@ -6387,23 +6387,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\LENOVO\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\germa\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\LENOVO\\Documents\\StudyDesk-Backend\\StudyDesck.API.Test\\StudyDesck.API.Test.csproj",
+      "projectUniqueName": "E:\\Proyectos Programacion\\C#\\Universidad\\Github\\StudyDesck.API.Test\\StudyDesck.API.Test.csproj",
       "projectName": "StudyDesck.API.Test",
-      "projectPath": "C:\\Users\\LENOVO\\Documents\\StudyDesk-Backend\\StudyDesck.API.Test\\StudyDesck.API.Test.csproj",
-      "packagesPath": "C:\\Users\\LENOVO\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\LENOVO\\Documents\\StudyDesk-Backend\\StudyDesck.API.Test\\obj\\",
+      "projectPath": "E:\\Proyectos Programacion\\C#\\Universidad\\Github\\StudyDesck.API.Test\\StudyDesck.API.Test.csproj",
+      "packagesPath": "C:\\Users\\germa\\.nuget\\packages\\",
+      "outputPath": "E:\\Proyectos Programacion\\C#\\Universidad\\Github\\StudyDesck.API.Test\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\LENOVO\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\germa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6417,8 +6418,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\LENOVO\\Documents\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj": {
-              "projectPath": "C:\\Users\\LENOVO\\Documents\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj"
+            "E:\\Proyectos Programacion\\C#\\Universidad\\Github\\StudyDesck.API\\StudyDesck.API.csproj": {
+              "projectPath": "E:\\Proyectos Programacion\\C#\\Universidad\\Github\\StudyDesck.API\\StudyDesck.API.csproj"
             }
           }
         }
@@ -6461,7 +6462,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }
