@@ -47,6 +47,9 @@ namespace StudyDesck.API
             services.AddScoped<IStudentRepository, StudentRepository>();
             services.AddScoped<ICourseRepository, CourseRepository>();
             services.AddScoped<ITopicRepository, TopicRepository>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<ISessionRepository, SessionRepository>();
+            services.AddScoped<IPlatformRepository, PlatformRepository>();
 
             // services:
             services.AddScoped<IInstituteService, InstituteService>();
@@ -54,6 +57,9 @@ namespace StudyDesck.API
             services.AddScoped<IStudentService, StudentService>();
             services.AddScoped<ICourseService, CourseService>();
             services.AddScoped<ITopicService, TopicService>();
+            services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<ISessionService, SessionService>();
+            services.AddScoped<IPlatformService, PlatformService>();
 
 
             // end region

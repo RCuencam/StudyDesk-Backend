@@ -16,6 +16,9 @@ namespace StudyDesck.API.Domain.Persistence.Contexts
         public DbSet<Student> Students { get; set; }
         public DbSet<Course> Courses { get; set; }
         public DbSet<Topic> Topics { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Session> Sessions { get; set; }
+        public DbSet<Platform> Platforms { get; set; }
 
         // contructor for options:
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
@@ -63,6 +66,48 @@ namespace StudyDesck.API.Domain.Persistence.Contexts
             builder.Entity<Student>().Property(p => p.Logo).IsRequired();
             builder.Entity<Student>().Property(p => p.Email).IsRequired().HasMaxLength(40);
             builder.Entity<Student>().Property(p => p.Password).IsRequired().HasMaxLength(40);
+
+
+            //Category
+            builder.Entity<Category>().ToTable("Categories");
+            builder.Entity<Category>().HasKey(p => p.Id);
+            builder.Entity<Category>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+            builder.Entity<Category>().Property(p => p.Name).IsRequired().HasMaxLength(15);
+            builder.Entity<Category>().
+                HasMany(p => p.Sessions).
+                WithOne(p => p.Category).
+                HasForeignKey(p => p.CategoryID);
+
+            //Platform
+            builder.Entity<Platform>().ToTable("Platforms");
+            builder.Entity<Platform>().HasKey(p => p.Id);
+            builder.Entity<Platform>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+            builder.Entity<Platform>().Property(p => p.Name).IsRequired().HasMaxLength(15);
+            builder.Entity<Platform>().Property(p => p.UrlReunion).IsRequired();
+
+            //Session
+            builder.Entity<Session>().ToTable("Sessions");
+            builder.Entity<Session>().HasKey(p => p.Id);
+            builder.Entity<Session>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+            builder.Entity<Session>().Property(p => p.Title).IsRequired().HasMaxLength(15);
+            builder.Entity<Session>().Property(p => p.Logo).IsRequired().HasMaxLength(30);
+            builder.Entity<Session>().Property(p => p.Description).IsRequired();
+            builder.Entity<Session>().Property(p => p.StartDate).IsRequired();
+            builder.Entity<Session>().Property(p => p.EndDate).IsRequired();
+
+            builder.Entity<Session>().Property(p => p.Price).IsRequired();
+            builder.Entity<Session>().Property(p => p.QuantityMembers).IsRequired();
+            //Relacion de 1 a 1 con tutor
+            /*builder.Entity<Session>()
+                .HasOne(a=>a.Tutor)
+                .WithOne(b=>b.Session)
+                .HasForeignKey<Tutor>(b => b.SessionId);*/
+
+            //Relacion de 1 a muchos con Topics
+            /*builder.Entity<Session>().
+                HasMany(p => p.Topics).
+                WithOne(p => p.Session).
+                HasForeignKey(p => p.SessionId);*/
 
             //Course
             builder.Entity<Course>().ToTable("Courses");

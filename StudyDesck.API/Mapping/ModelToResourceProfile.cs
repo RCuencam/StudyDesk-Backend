@@ -17,6 +17,9 @@ namespace StudyDesck.API.Mapping
             CreateMap<Student, StudentResource>();
             CreateMap<Course, CourseResource>();
             CreateMap<Topic, TopicResource>();
+            CreateMap<Category, CategoryResource>();
+            CreateMap<Session, SessionResource>();
+            CreateMap<Platform, PlatformResource>();
         }
 
     }
