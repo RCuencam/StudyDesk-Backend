@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\blazi\\OneDrive\\Documentos\\GitHub\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj": {}
+    "C:\\Users\\ADRIAN\\Desktop\\5to Ciclo\\Web\\Trabajo\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\blazi\\OneDrive\\Documentos\\GitHub\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj": {
+    "C:\\Users\\ADRIAN\\Desktop\\5to Ciclo\\Web\\Trabajo\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\blazi\\OneDrive\\Documentos\\GitHub\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj",
+        "projectUniqueName": "C:\\Users\\ADRIAN\\Desktop\\5to Ciclo\\Web\\Trabajo\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj",
         "projectName": "StudyDesck.API",
-        "projectPath": "C:\\Users\\blazi\\OneDrive\\Documentos\\GitHub\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj",
-        "packagesPath": "C:\\Users\\blazi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\blazi\\OneDrive\\Documentos\\GitHub\\StudyDesk-Backend\\StudyDesck.API\\obj\\",
+        "projectPath": "C:\\Users\\ADRIAN\\Desktop\\5to Ciclo\\Web\\Trabajo\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj",
+        "packagesPath": "C:\\Users\\ADRIAN\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ADRIAN\\Desktop\\5to Ciclo\\Web\\Trabajo\\StudyDesk-Backend\\StudyDesck.API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\blazi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ADRIAN\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -95,7 +95,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }

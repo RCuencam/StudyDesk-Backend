@@ -19,6 +19,9 @@ namespace StudyDesck.API.Domain.Persistence.Contexts
         public DbSet<Category> Categories { get; set; }
         public DbSet<Session> Sessions { get; set; }
         public DbSet<Platform> Platforms { get; set; }
+        public DbSet<Tutor> Tutors { get; set; }
+        public DbSet<ExpertTopic> ExpertTopics { get; set; }
+        public DbSet<Shedule> Shedules { get; set; }
 
         // contructor for options:
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
@@ -120,6 +123,45 @@ namespace StudyDesck.API.Domain.Persistence.Contexts
                 .WithOne(p => p.Course)
                 .HasForeignKey(p => p.CourseId);
 
+            // Shedule Entity
+            builder.Entity<Shedule>().ToTable("Shedules");
+            // Constraints
+            builder.Entity<Shedule>().HasKey(p => p.Id);
+            builder.Entity<Shedule>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+            builder.Entity<Shedule>().Property(p => p.StarDate).IsRequired().HasMaxLength(30);
+            builder.Entity<Shedule>().Property(p => p.EndDate).IsRequired().HasMaxLength(30);
+            builder.Entity<Shedule>().Property(p => p.Date).IsRequired().HasMaxLength(30);
+            // Relationships 
+
+            // Tutor Entity
+            builder.Entity<Tutor>().ToTable("Tutors");
+            // Constraints
+            builder.Entity<Tutor>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+            builder.Entity<Tutor>().Property(p => p.Name).IsRequired().HasMaxLength(30);
+            builder.Entity<Tutor>().Property(p => p.LastName).IsRequired().HasMaxLength(30);
+            builder.Entity<Tutor>().Property(p => p.Email).IsRequired().HasMaxLength(30);
+            builder.Entity<Tutor>().Property(p => p.Password).IsRequired().HasMaxLength(30);
+            builder.Entity<Tutor>().Property(p => p.InstituteName).IsRequired().HasMaxLength(30);
+            // Relationships
+            builder.Entity<Tutor>()
+                .HasMany(p => p.Shedules)
+                .WithOne(p => p.Tutor)
+                .HasForeignKey(p => p.TutorId);
+
+            // ExpertTopic Entity
+            builder.Entity<ExpertTopic>().ToTable("ExpertTopics");
+            // Constraints
+            builder.Entity<ExpertTopic>().HasKey(p => new { p.TutorId, p.TopicId });
+            // Relationships
+            builder.Entity<ExpertTopic>()
+                .HasOne(et => et.Tutor)
+                .WithMany(t => t.ExpertTopics)
+                .HasForeignKey(et => et.TutorId);
+
+            //builder.Entity<ExpertTopic>()
+            //    .HasOne(et => et.Topic)
+            //    .WithMany(to => to.ExpertTopcics)
+            //    .HasForeignKey(et => et.TopicId);
 
 
             // end region
