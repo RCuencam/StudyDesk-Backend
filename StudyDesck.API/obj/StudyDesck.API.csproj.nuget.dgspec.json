@@ -1,23 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\LENOVO\\Documents\\Backend\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj": {}
+    "E:\\Proyectos Programacion\\C#\\Universidad\\Github - API\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\LENOVO\\Documents\\Backend\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj": {
+    "E:\\Proyectos Programacion\\C#\\Universidad\\Github - API\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\LENOVO\\Documents\\Backend\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj",
+        "projectUniqueName": "E:\\Proyectos Programacion\\C#\\Universidad\\Github - API\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj",
         "projectName": "StudyDesck.API",
-        "projectPath": "C:\\Users\\LENOVO\\Documents\\Backend\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj",
-        "packagesPath": "C:\\Users\\LENOVO\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\LENOVO\\Documents\\Backend\\StudyDesk-Backend\\StudyDesck.API\\obj\\",
+        "projectPath": "E:\\Proyectos Programacion\\C#\\Universidad\\Github - API\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj",
+        "packagesPath": "C:\\Users\\germa\\.nuget\\packages\\",
+        "outputPath": "E:\\Proyectos Programacion\\C#\\Universidad\\Github - API\\StudyDesk-Backend\\StudyDesck.API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\LENOVO\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\germa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -106,7 +107,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }
