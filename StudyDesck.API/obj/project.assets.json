@@ -6902,24 +6902,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\germa\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\blazi\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Proyectos Programacion\\C#\\Universidad\\Github - API\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj",
+      "projectUniqueName": "C:\\Users\\blazi\\OneDrive\\Documentos\\GitHub\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj",
       "projectName": "StudyDesck.API",
-      "projectPath": "E:\\Proyectos Programacion\\C#\\Universidad\\Github - API\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj",
-      "packagesPath": "C:\\Users\\germa\\.nuget\\packages\\",
-      "outputPath": "E:\\Proyectos Programacion\\C#\\Universidad\\Github - API\\StudyDesk-Backend\\StudyDesck.API\\obj\\",
+      "projectPath": "C:\\Users\\blazi\\OneDrive\\Documentos\\GitHub\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj",
+      "packagesPath": "C:\\Users\\blazi\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\blazi\\OneDrive\\Documentos\\GitHub\\StudyDesk-Backend\\StudyDesck.API\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\germa\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\blazi\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -7008,7 +7003,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }

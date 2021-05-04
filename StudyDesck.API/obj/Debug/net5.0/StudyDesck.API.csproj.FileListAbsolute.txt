@@ -339,3 +339,6 @@ E:\Proyectos Programacion\C#\Universidad\Github - API\StudyDesk-Backend\StudyDes
 E:\Proyectos Programacion\C#\Universidad\Github - API\StudyDesk-Backend\StudyDesck.API\obj\Debug\net5.0\ref\StudyDesck.API.dll
 E:\Proyectos Programacion\C#\Universidad\Github - API\StudyDesk-Backend\StudyDesck.API\obj\Debug\net5.0\StudyDesck.API.pdb
 E:\Proyectos Programacion\C#\Universidad\Github - API\StudyDesk-Backend\StudyDesck.API\obj\Debug\net5.0\StudyDesck.API.genruntimeconfig.cache
+C:\Users\blazi\OneDrive\Documentos\GitHub\StudyDesk-Backend\StudyDesck.API\bin\Debug\net5.0\Castle.Core.dll
+C:\Users\blazi\OneDrive\Documentos\GitHub\StudyDesk-Backend\StudyDesck.API\bin\Debug\net5.0\FluentAssertions.dll
+C:\Users\blazi\OneDrive\Documentos\GitHub\StudyDesk-Backend\StudyDesck.API\bin\Debug\net5.0\Moq.dll
