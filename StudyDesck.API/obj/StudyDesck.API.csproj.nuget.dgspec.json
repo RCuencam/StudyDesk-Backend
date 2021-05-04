@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ADRIAN\\Desktop\\5to Ciclo\\Web\\Trabajo\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj": {}
+    "C:\\Users\\LENOVO\\Documents\\Backend\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ADRIAN\\Desktop\\5to Ciclo\\Web\\Trabajo\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj": {
+    "C:\\Users\\LENOVO\\Documents\\Backend\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ADRIAN\\Desktop\\5to Ciclo\\Web\\Trabajo\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj",
+        "projectUniqueName": "C:\\Users\\LENOVO\\Documents\\Backend\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj",
         "projectName": "StudyDesck.API",
-        "projectPath": "C:\\Users\\ADRIAN\\Desktop\\5to Ciclo\\Web\\Trabajo\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj",
-        "packagesPath": "C:\\Users\\ADRIAN\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ADRIAN\\Desktop\\5to Ciclo\\Web\\Trabajo\\StudyDesk-Backend\\StudyDesck.API\\obj\\",
+        "projectPath": "C:\\Users\\LENOVO\\Documents\\Backend\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj",
+        "packagesPath": "C:\\Users\\LENOVO\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\LENOVO\\Documents\\Backend\\StudyDesk-Backend\\StudyDesck.API\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\ADRIAN\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\LENOVO\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -48,6 +51,10 @@
               "target": "Package",
               "version": "[8.1.1, )"
             },
+            "FluentAssertions": {
+              "target": "Package",
+              "version": "[5.10.3, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[5.0.5, )"
@@ -63,6 +70,10 @@
             "Microsoft.EntityFrameworkCore.Relational.Design": {
               "target": "Package",
               "version": "[1.1.6, )"
+            },
+            "Moq": {
+              "target": "Package",
+              "version": "[4.16.1, )"
             },
             "MySql.EntityFrameworkCore": {
               "target": "Package",
@@ -95,7 +106,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }
