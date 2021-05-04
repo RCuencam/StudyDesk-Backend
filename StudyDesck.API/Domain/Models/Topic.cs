@@ -12,5 +12,9 @@ namespace StudyDesck.API.Domain.Models
 
         public int CourseId { get; set; }
         public Course Course { get; set; }
+        public int SessionId { get; set; }
+        public Session Session { get; set; }
+
+        public IList<ExpertTopic> ExpertTopics { get; set; } = new List<ExpertTopic>();
     }
 }

@@ -18,10 +18,10 @@ namespace StudyDesck.API.Domain.Models
 
         ///Relaciones
         public int TutorID { get; set; }
-        public Object Tutor { get; set; } //Reemplazar
-        public int CategoryID { get; set; }
+        public Tutor Tutor { get; set; } //Reemplazar
+        public int CategoryID { get; set; } 
         public Category Category { get; set; }
-        public IList<Object> Topics { get; set; } = new List<Object>();
+        public IList<Topic> Topics { get; set; } = new List<Topic>();
 
     }
 }

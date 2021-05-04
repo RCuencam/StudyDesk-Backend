@@ -32,13 +32,11 @@ namespace StudyDesck.API.Resources
         [Required]
         public int TutorID { get; set; }
         [Required]
-        public Object Tutor { get; set; } //Reemplazar
+        public TutorResource Tutor { get; set; } //Reemplazar
 
 
         public int CategoryID { get; set; }
         public SaveCategoryResource Category { get; set; }
 
-        [Required]
-        public IList<Object> Topics { get; set; } = new List<Object>();
     }
 }

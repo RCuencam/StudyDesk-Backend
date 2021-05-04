@@ -100,17 +100,11 @@ namespace StudyDesck.API.Domain.Persistence.Contexts
 
             builder.Entity<Session>().Property(p => p.Price).IsRequired();
             builder.Entity<Session>().Property(p => p.QuantityMembers).IsRequired();
-            //Relacion de 1 a 1 con tutor
-            /*builder.Entity<Session>()
-                .HasOne(a=>a.Tutor)
-                .WithOne(b=>b.Session)
-                .HasForeignKey<Tutor>(b => b.SessionId);*/
-
             //Relacion de 1 a muchos con Topics
-            /*builder.Entity<Session>().
+            builder.Entity<Session>().
                 HasMany(p => p.Topics).
                 WithOne(p => p.Session).
-                HasForeignKey(p => p.SessionId);*/
+                HasForeignKey(p => p.SessionId);
 
             //Course
             builder.Entity<Course>().ToTable("Courses");
@@ -147,21 +141,23 @@ namespace StudyDesck.API.Domain.Persistence.Contexts
                 .HasMany(p => p.Shedules)
                 .WithOne(p => p.Tutor)
                 .HasForeignKey(p => p.TutorId);
+            builder.Entity<Tutor>()
+                .HasMany(p => p.Sessions)
+                .WithOne(p => p.Tutor)
+                .HasForeignKey(p => p.TutorID);
 
             // ExpertTopic Entity
             builder.Entity<ExpertTopic>().ToTable("ExpertTopics");
-            // Constraints
             builder.Entity<ExpertTopic>().HasKey(p => new { p.TutorId, p.TopicId });
             // Relationships
             builder.Entity<ExpertTopic>()
                 .HasOne(et => et.Tutor)
                 .WithMany(t => t.ExpertTopics)
                 .HasForeignKey(et => et.TutorId);
-
-            //builder.Entity<ExpertTopic>()
-            //    .HasOne(et => et.Topic)
-            //    .WithMany(to => to.ExpertTopcics)
-            //    .HasForeignKey(et => et.TopicId);
+            builder.Entity<ExpertTopic>()
+                .HasOne(et => et.Topic)
+                .WithMany(to => to.ExpertTopics)
+                .HasForeignKey(et => et.TopicId);
 
 
             // end region

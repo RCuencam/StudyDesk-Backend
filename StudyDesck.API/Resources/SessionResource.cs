@@ -19,9 +19,8 @@ namespace StudyDesck.API.Resources
 
         ///Relaciones
         public int TutorID { get; set; }
-        public Object Tutor { get; set; } //Reemplazar
+        public TutorResource Tutor { get; set; } //Reemplazar
         public int CategoryID { get; set; }
         public CategoryResource Category { get; set; }
-        public IList<Object> Topics { get; set; } = new List<Object>();
     }
 }
