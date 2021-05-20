@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Proyectos Programacion\\C#\\Universidad\\Github - API - Studydesk\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj": {}
+    "C:\\Users\\ADRIAN\\Desktop\\5to Ciclo\\Web\\TrabajoFinal\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj": {}
   },
   "projects": {
-    "E:\\Proyectos Programacion\\C#\\Universidad\\Github - API - Studydesk\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj": {
+    "C:\\Users\\ADRIAN\\Desktop\\5to Ciclo\\Web\\TrabajoFinal\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Proyectos Programacion\\C#\\Universidad\\Github - API - Studydesk\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj",
+        "projectUniqueName": "C:\\Users\\ADRIAN\\Desktop\\5to Ciclo\\Web\\TrabajoFinal\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj",
         "projectName": "StudyDesck.API",
-        "projectPath": "E:\\Proyectos Programacion\\C#\\Universidad\\Github - API - Studydesk\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj",
-        "packagesPath": "C:\\Users\\germa\\.nuget\\packages\\",
-        "outputPath": "E:\\Proyectos Programacion\\C#\\Universidad\\Github - API - Studydesk\\StudyDesk-Backend\\StudyDesck.API\\obj\\",
+        "projectPath": "C:\\Users\\ADRIAN\\Desktop\\5to Ciclo\\Web\\TrabajoFinal\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj",
+        "packagesPath": "C:\\Users\\ADRIAN\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ADRIAN\\Desktop\\5to Ciclo\\Web\\TrabajoFinal\\StudyDesk-Backend\\StudyDesck.API\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\germa\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\ADRIAN\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -107,7 +103,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }

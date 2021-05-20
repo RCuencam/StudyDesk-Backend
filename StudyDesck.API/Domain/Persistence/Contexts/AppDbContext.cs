@@ -22,6 +22,7 @@ namespace StudyDesck.API.Domain.Persistence.Contexts
         public DbSet<Tutor> Tutors { get; set; }
         public DbSet<ExpertTopic> ExpertTopics { get; set; }
         public DbSet<Shedule> Shedules { get; set; }
+        public DbSet<StudyMaterial> StudyMaterials { get; set; }
 
         // contructor for options:
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
@@ -159,7 +160,25 @@ namespace StudyDesck.API.Domain.Persistence.Contexts
                 .WithMany(to => to.ExpertTopics)
                 .HasForeignKey(et => et.TopicId);
 
-
+            //StudyMaterial Entity
+            builder.Entity<StudyMaterial>().ToTable("StudyMaterials");
+            // Constraints
+            builder.Entity<StudyMaterial>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+            builder.Entity<StudyMaterial>().Property(p => p.Title).IsRequired().HasMaxLength(30);
+            builder.Entity<StudyMaterial>().Property(p => p.Description).IsRequired().HasMaxLength(50);
+            // Relationships
+            //builder.Entity<StudyMaterial>()
+            //    .HasMany(sym => sym.StudentMaterials)
+            //    .WithOne(stm => stm.StudyMaterial)
+            //    .HasForeignKey(stm => stm.StudyMaterialId);
+            //builder.Entity<StudyMaterial>()
+            //    .HasMany(sym => sym.SesionMaterials)
+            //    .WithOne(sem => sem.StudyMaterial)
+            //    .HasForeignKey(sem => sem.StudyMaterialId);
+            //builder.Entity<StudyMaterial>()
+            //    .HasOne(sm => sm.Topic)
+            //    .WithMany(to => to.StudyMaterials)
+            //    .HasForeignKey(sm => sm.TopicId);
             // end region
             builder.ApplySnakeCaseNamingConvetion();
 
