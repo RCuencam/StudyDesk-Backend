@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "4jFAOOCuuGNDLuWgdpN2w3DnUXQ40+s6qod+8/wqe0QsvNtfkxOWXr5vTsqCbQ/xDFfBZ1f5VezI2lGv7CS5kQ==",
+  "dgSpecHash": "2wHq6AjmZrVd4HLPW0NAIXAe6wdh3VZj4vQpKOxzEsZE+ZKiuIcHPMouGOhK3xOP/TAWJqtqWCBsp/Flu0MKQw==",
   "success": true,
-  "projectFilePath": "E:\\Proyectos Programacion\\C#\\Universidad\\Github - API - Studydesk\\StudyDesk-Backend\\StudyDesck.API.Test\\StudyDesck.API.Test.csproj",
+  "projectFilePath": "E:\\Proyectos Programacion\\C#\\Universidad\\API Studydesk\\StudyDesk-Backend\\StudyDesck.API.Test\\StudyDesck.API.Test.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\germa\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\germa\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",

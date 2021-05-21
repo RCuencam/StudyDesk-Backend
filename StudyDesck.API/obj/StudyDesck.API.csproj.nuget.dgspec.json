@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Proyectos Programacion\\C#\\Universidad\\Github - API - Studydesk\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj": {}
+    "E:\\Proyectos Programacion\\C#\\Universidad\\API Studydesk\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj": {}
   },
   "projects": {
-    "E:\\Proyectos Programacion\\C#\\Universidad\\Github - API - Studydesk\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj": {
+    "E:\\Proyectos Programacion\\C#\\Universidad\\API Studydesk\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Proyectos Programacion\\C#\\Universidad\\Github - API - Studydesk\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj",
+        "projectUniqueName": "E:\\Proyectos Programacion\\C#\\Universidad\\API Studydesk\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj",
         "projectName": "StudyDesck.API",
-        "projectPath": "E:\\Proyectos Programacion\\C#\\Universidad\\Github - API - Studydesk\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj",
+        "projectPath": "E:\\Proyectos Programacion\\C#\\Universidad\\API Studydesk\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj",
         "packagesPath": "C:\\Users\\germa\\.nuget\\packages\\",
-        "outputPath": "E:\\Proyectos Programacion\\C#\\Universidad\\Github - API - Studydesk\\StudyDesk-Backend\\StudyDesck.API\\obj\\",
+        "outputPath": "E:\\Proyectos Programacion\\C#\\Universidad\\API Studydesk\\StudyDesk-Backend\\StudyDesck.API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
