@@ -181,7 +181,6 @@ namespace StudyDesck.API.Domain.Persistence.Contexts
             //    .WithMany(to => to.StudyMaterials)
             //    .HasForeignKey(sm => sm.TopicId);
 
-
             // StudentMaterial Entity
             builder.Entity<StudentMaterial>().ToTable("StudentMaterials");
             builder.Entity<StudentMaterial>().HasKey(sm => new { sm.StudentId, sm.StudyMaterialId });
