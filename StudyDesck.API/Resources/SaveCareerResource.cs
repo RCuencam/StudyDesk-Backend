@@ -13,6 +13,7 @@ namespace StudyDesck.API.Resources
         public string Name { get; set; }
 
         [Required]
-        public SaveInstituteResource Institute { get; set; }
+        public int InstituteId { get; set; }
+        //public SaveInstituteResource Institute { get; set; }
     }
 }

@@ -30,6 +30,8 @@ namespace StudyDesck.API.Persistence.Repositories
             return await _context.Students.ToListAsync();
         }
 
+        
+
         public void Remove(Student student)
         {
             _context.Students.Remove(student);

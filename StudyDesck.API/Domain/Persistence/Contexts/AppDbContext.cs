@@ -22,6 +22,7 @@ namespace StudyDesck.API.Domain.Persistence.Contexts
         public DbSet<Tutor> Tutors { get; set; }
         public DbSet<ExpertTopic> ExpertTopics { get; set; }
         public DbSet<Shedule> Shedules { get; set; }
+        public DbSet<SessionReservation> SessionReservations { get; set; }
 
         // contructor for options:
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
@@ -159,6 +160,22 @@ namespace StudyDesck.API.Domain.Persistence.Contexts
                 .WithMany(to => to.ExpertTopics)
                 .HasForeignKey(et => et.TopicId);
 
+
+            //SessionReservation
+            builder.Entity<SessionReservation>().ToTable("SessionReservations");
+            builder.Entity<SessionReservation>().Property(sr => sr.Qualification);
+            builder.Entity<SessionReservation>().Property(sr => sr.Confirmed);
+            builder.Entity<SessionReservation>().HasKey(sr => new { sr.StudentId, sr.SessionId });
+            builder.Entity<SessionReservation>()
+                .HasOne(sr => sr.Session)
+                .WithMany(s => s.SessionReservations)
+                .HasForeignKey(sr => sr.SessionId);
+
+            builder.Entity<SessionReservation>()
+                .HasOne(sr => sr.Student)
+                .WithMany(s => s.SessionReservations)
+                .HasForeignKey(sr => sr.StudentId);
+            
 
             // end region
             builder.ApplySnakeCaseNamingConvetion();

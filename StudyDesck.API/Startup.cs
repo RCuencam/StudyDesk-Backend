@@ -50,6 +50,9 @@ namespace StudyDesck.API
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<ISessionRepository, SessionRepository>();
             services.AddScoped<IPlatformRepository, PlatformRepository>();
+            services.AddScoped<ISessionReservationRepository, SessionReservationRepository>();
+            services.AddScoped<ITutorRepository, TutorRepository>();
+            services.AddScoped<IExpertTopicRepository, ExpertTopicRepository>();
 
             // services:
             services.AddScoped<IInstituteService, InstituteService>();
@@ -60,6 +63,9 @@ namespace StudyDesck.API
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<ISessionService, SessionService>();
             services.AddScoped<IPlatformService, PlatformService>();
+            services.AddScoped<ISessionReservationService, SessionReservationService>();
+            services.AddScoped<ITutorService, TutorService>();
+            services.AddScoped<IExpertTopicService, ExpertTopicService>();
 
 
             // end region
@@ -67,7 +73,8 @@ namespace StudyDesck.API
             services.AddAutoMapper(typeof(Startup));
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "StudyDesck.API", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "StudyDesk.API", Version = "v1" });
+                c.EnableAnnotations();
             });
         }
 
@@ -78,7 +85,7 @@ namespace StudyDesck.API
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "StudyDesck.API v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "StudyDesk.API v1"));
             }
 
             //app.UseHttpsRedirection(); // temp

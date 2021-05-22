@@ -31,12 +31,12 @@ namespace StudyDesck.API.Resources
         ///Relaciones
         [Required]
         public int TutorID { get; set; }
-        [Required]
-        public TutorResource Tutor { get; set; } //Reemplazar
+        //[Required]
+        //public TutorResource Tutor { get; set; } //Reemplazar
 
 
         public int CategoryID { get; set; }
-        public SaveCategoryResource Category { get; set; }
+        //public CategoryResource Category { get; set; }
 
     }
 }
