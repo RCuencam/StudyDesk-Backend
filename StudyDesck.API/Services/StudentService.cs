@@ -16,7 +16,7 @@ namespace StudyDesck.API.Services
         private readonly ISessionReservationRepository _sessionReservationRepository;
         private readonly IUnitOfWork _unitOfWork;
 
-        public StudentService(IStudentRepository studentRepository, ICareerRepository careerRepository, ISessionReservationRepository sessionReservationRepository, IUnitOfWork unitOfWork)
+        public StudentService(IStudentRepository studentRepository, ISessionReservationRepository sessionReservationRepository, IUnitOfWork unitOfWork)
         {
             _studentRepository = studentRepository;
             //_careerRepository = careerRepository;

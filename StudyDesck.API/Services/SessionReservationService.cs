@@ -25,7 +25,7 @@ namespace StudyDesck.API.Services
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<SessionReservationResponse> FindByStudentIdAndSessionId(int studentId, int sessionId)
+        public async Task<SessionReservationResponse> GetByStudentIdAndSessionId(int studentId, int sessionId)
         {
             var existingSessionReserv = await _sessionResRepository.FindByStudentIdAndSessionId(studentId, sessionId);
             if (existingSessionReserv == null)

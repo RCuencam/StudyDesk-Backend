@@ -12,14 +12,14 @@ namespace StudyDesck.API.Services
     public class CareerService : ICareerService
     {
         private readonly ICareerRepository _careerRepository;
-        private readonly IInstituteRepository _instituteRepository;
+        //private readonly IInstituteRepository _instituteRepository;
         private readonly IUnitOfWork _unitOfWork;
 
        
-        public CareerService(ICareerRepository careerRepository, IInstituteRepository instituteRepository, IUnitOfWork unitOfWork)
+        public CareerService(ICareerRepository careerRepository, IUnitOfWork unitOfWork)
         {
             _careerRepository = careerRepository;
-            _instituteRepository = instituteRepository;
+            //_instituteRepository = instituteRepository;
             _unitOfWork = unitOfWork;
         }
 

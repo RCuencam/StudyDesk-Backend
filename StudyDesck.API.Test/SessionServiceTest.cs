@@ -30,7 +30,7 @@ namespace StudyDesck.API.Test
             var mockSessionRepository = GetDefaultSessionRepositoryInstance();
 
             mockSessionRepository.Setup(r => r.ListAsync()).ReturnsAsync(new List<Session>());
-            var service = new SessionService(mockSessionRepository.Object, mockUnitOfWork.Object);
+            var service = new SessionService(mockSessionRepository.Object, null,mockUnitOfWork.Object);
 
             // Act
             List<Session> result = (List<Session>)await service.ListAsync();
@@ -50,7 +50,7 @@ namespace StudyDesck.API.Test
             var SessionId = 1;
 
             mockSessionRepository.Setup(r => r.FindById(SessionId)).Returns(Task.FromResult<Session>(null));
-            var service = new SessionService(mockSessionRepository.Object, mockUnitOfWork.Object);
+            var service = new SessionService(mockSessionRepository.Object, null,mockUnitOfWork.Object);
 
             // Act
             SessionResponse result = await service.GetByIdAsync(SessionId);

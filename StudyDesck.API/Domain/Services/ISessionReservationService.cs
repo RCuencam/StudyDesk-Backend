@@ -10,7 +10,7 @@ namespace StudyDesck.API.Domain.Services
     public interface ISessionReservationService
     {
         Task<IEnumerable<SessionReservation>> ListAsync();
-        Task<SessionReservationResponse> FindByStudentIdAndSessionId(int studentId, int sessionId);
+        Task<SessionReservationResponse> GetByStudentIdAndSessionId(int studentId, int sessionId);
         Task<SessionReservationResponse> AssignSessionReservationAsync(int studentId, int sessionId, SessionReservation sessionReservation);
         Task<SessionReservationResponse> UnassignSessionReservationAsync(int studentId, int sessionId);
         Task<SessionReservationResponse> UpdateSessionReservationAsync(int studentId, int sessionId, SessionReservation sessionReservation);
