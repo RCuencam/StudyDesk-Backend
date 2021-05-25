@@ -2,20 +2,28 @@
   "format": 1,
   "restore": {
 <<<<<<< HEAD
+<<<<<<< HEAD
     "C:\\Users\\ADRIAN\\Desktop\\5to Ciclo\\Web\\TrabajoFinal\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj": {}
+=======
+    "E:\\Proyectos Programacion\\C#\\Universidad\\API Studydesk\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj": {}
+>>>>>>> feature/create_student-material
   },
   "projects": {
-    "C:\\Users\\ADRIAN\\Desktop\\5to Ciclo\\Web\\TrabajoFinal\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj": {
+    "E:\\Proyectos Programacion\\C#\\Universidad\\API Studydesk\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ADRIAN\\Desktop\\5to Ciclo\\Web\\TrabajoFinal\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj",
+        "projectUniqueName": "E:\\Proyectos Programacion\\C#\\Universidad\\API Studydesk\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj",
         "projectName": "StudyDesck.API",
-        "projectPath": "C:\\Users\\ADRIAN\\Desktop\\5to Ciclo\\Web\\TrabajoFinal\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj",
-        "packagesPath": "C:\\Users\\ADRIAN\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ADRIAN\\Desktop\\5to Ciclo\\Web\\TrabajoFinal\\StudyDesk-Backend\\StudyDesck.API\\obj\\",
+        "projectPath": "E:\\Proyectos Programacion\\C#\\Universidad\\API Studydesk\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj",
+        "packagesPath": "C:\\Users\\germa\\.nuget\\packages\\",
+        "outputPath": "E:\\Proyectos Programacion\\C#\\Universidad\\API Studydesk\\StudyDesk-Backend\\StudyDesck.API\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\ADRIAN\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\germa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
 =======
     "C:\\Users\\carlos\\Desktop\\AppsWEB Curso\\Proyecto StudyDesk\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj": {}
@@ -125,7 +133,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }

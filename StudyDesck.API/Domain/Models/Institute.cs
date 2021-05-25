@@ -11,5 +11,6 @@ namespace StudyDesck.API.Domain.Models
         public string Name { get; set; }
 
         public IList<Career> Careers { get; set; } = new List<Career>();
+        public IList<StudentMaterial> StudentMaterials { get; set; } = new List<StudentMaterial>();
     }
 }

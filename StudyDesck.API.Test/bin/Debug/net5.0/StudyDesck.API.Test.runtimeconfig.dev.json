@@ -2,6 +2,7 @@
   "runtimeOptions": {
     "additionalProbingPaths": [
 <<<<<<< HEAD
+<<<<<<< HEAD
       "C:\\Users\\ADRIAN\\.dotnet\\store\\|arch|\\|tfm|",
       "C:\\Users\\ADRIAN\\.nuget\\packages"
 =======
@@ -9,6 +10,11 @@
       "C:\\Users\\carlos\\.nuget\\packages",
       "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet"
 >>>>>>> feature/create_session-reservation
+=======
+      "C:\\Users\\germa\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\germa\\.nuget\\packages",
+      "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+>>>>>>> feature/create_student-material
     ]
   }
 }

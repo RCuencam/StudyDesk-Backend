@@ -24,9 +24,13 @@ namespace StudyDesck.API.Domain.Persistence.Contexts
         public DbSet<Shedule> Shedules { get; set; }
 <<<<<<< HEAD
         public DbSet<StudyMaterial> StudyMaterials { get; set; }
+<<<<<<< HEAD
 =======
         public DbSet<SessionReservation> SessionReservations { get; set; }
 >>>>>>> feature/create_session-reservation
+=======
+        public DbSet<StudentMaterial> studentMaterials { get; set; }
+>>>>>>> feature/create_student-material
 
         // contructor for options:
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
@@ -184,6 +188,7 @@ namespace StudyDesck.API.Domain.Persistence.Contexts
             //    .HasOne(sm => sm.Topic)
             //    .WithMany(to => to.StudyMaterials)
             //    .HasForeignKey(sm => sm.TopicId);
+<<<<<<< HEAD
 =======
 
             //SessionReservation
@@ -203,9 +208,33 @@ namespace StudyDesck.API.Domain.Persistence.Contexts
             
 
 >>>>>>> feature/create_session-reservation
+=======
+
+            // StudentMaterial Entity
+            builder.Entity<StudentMaterial>().ToTable("StudentMaterials");
+            builder.Entity<StudentMaterial>().HasKey(sm => new { sm.StudentId, sm.StudyMaterialId });
+            // relationship
+            builder.Entity<StudentMaterial>()
+                .HasOne(sms => sms.student)
+                .WithMany(s => s.StudentMaterials)
+                .HasForeignKey(sms => sms.StudentId);
+            builder.Entity<StudentMaterial>()
+                .HasOne(sms => sms.StudyMaterial)
+                .WithMany(sm => sm.StudentMaterials)
+                .HasForeignKey(sms => sms.StudyMaterialId);
+            builder.Entity<StudentMaterial>()
+                .HasOne(sms => sms.Category)
+                .WithMany(c => c.StudentMaterials)
+                .HasForeignKey(sms => sms.CategoryId);
+            builder.Entity<StudentMaterial>()
+                .HasOne(sms => sms.Institute)
+                .WithMany(i => i.StudentMaterials)
+                .HasForeignKey(sms => sms.InstituteId);
+
+
+>>>>>>> feature/create_student-material
             // end region
             builder.ApplySnakeCaseNamingConvetion();
-
         }
     }
 }

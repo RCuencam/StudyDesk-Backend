@@ -13,6 +13,6 @@ namespace StudyDesck.API.Domain.Models
         public long TopicId { get; set; }
         public Topic Topic { get; set; }
         //public IList<SesionMaterial> SesionMaterials { get; set; } = new List<SesionMaterial>();
-        //public IList<StudentMaterial> StudentMaterials { get; set; } = new List<StudentMaterial>();
+        public IList<StudentMaterial> StudentMaterials { get; set; } = new List<StudentMaterial>();
     }
 }
