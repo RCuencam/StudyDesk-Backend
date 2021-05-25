@@ -12,11 +12,13 @@ namespace StudyDesck.API.Services
     public class SessionService : ISessionService
     {
         private readonly ISessionRepository _sessionRepository;
+        private readonly ISessionReservationRepository _sessionReservationRepository;
         public readonly IUnitOfWork _unitOfWork;
 
-        public SessionService(ISessionRepository sessionRepository, IUnitOfWork unitOfWork)
+        public SessionService(ISessionRepository sessionRepository, ISessionReservationRepository sessionReservationRepository, IUnitOfWork unitOfWork)
         {
             _sessionRepository = sessionRepository;
+            _sessionReservationRepository = sessionReservationRepository;
             _unitOfWork = unitOfWork;
         }
 
@@ -45,9 +47,18 @@ namespace StudyDesck.API.Services
             return new SessionResponse(existingSession);
         }
 
+        
+
         public async Task<IEnumerable<Session>> ListAsync()
         {
             return await _sessionRepository.ListAsync();
+        }
+
+        public async Task<IEnumerable<Session>> ListByStudentIdAsync(int studentId)
+        {
+            var sessionReservations = await _sessionReservationRepository.ListByStudentIdAsync(studentId);
+            var sessions = sessionReservations.Select(sr => sr.Session).ToList();
+            return sessions;
         }
 
         public async Task<SessionResponse> SaveAsync(Session session)

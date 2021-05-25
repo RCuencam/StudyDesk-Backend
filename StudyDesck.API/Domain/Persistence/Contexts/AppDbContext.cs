@@ -22,7 +22,11 @@ namespace StudyDesck.API.Domain.Persistence.Contexts
         public DbSet<Tutor> Tutors { get; set; }
         public DbSet<ExpertTopic> ExpertTopics { get; set; }
         public DbSet<Shedule> Shedules { get; set; }
+<<<<<<< HEAD
         public DbSet<StudyMaterial> StudyMaterials { get; set; }
+=======
+        public DbSet<SessionReservation> SessionReservations { get; set; }
+>>>>>>> feature/create_session-reservation
 
         // contructor for options:
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
@@ -160,6 +164,7 @@ namespace StudyDesck.API.Domain.Persistence.Contexts
                 .WithMany(to => to.ExpertTopics)
                 .HasForeignKey(et => et.TopicId);
 
+<<<<<<< HEAD
             //StudyMaterial Entity
             builder.Entity<StudyMaterial>().ToTable("StudyMaterials");
             // Constraints
@@ -179,6 +184,25 @@ namespace StudyDesck.API.Domain.Persistence.Contexts
             //    .HasOne(sm => sm.Topic)
             //    .WithMany(to => to.StudyMaterials)
             //    .HasForeignKey(sm => sm.TopicId);
+=======
+
+            //SessionReservation
+            builder.Entity<SessionReservation>().ToTable("SessionReservations");
+            builder.Entity<SessionReservation>().Property(sr => sr.Qualification);
+            builder.Entity<SessionReservation>().Property(sr => sr.Confirmed);
+            builder.Entity<SessionReservation>().HasKey(sr => new { sr.StudentId, sr.SessionId });
+            builder.Entity<SessionReservation>()
+                .HasOne(sr => sr.Session)
+                .WithMany(s => s.SessionReservations)
+                .HasForeignKey(sr => sr.SessionId);
+
+            builder.Entity<SessionReservation>()
+                .HasOne(sr => sr.Student)
+                .WithMany(s => s.SessionReservations)
+                .HasForeignKey(sr => sr.StudentId);
+            
+
+>>>>>>> feature/create_session-reservation
             // end region
             builder.ApplySnakeCaseNamingConvetion();
 

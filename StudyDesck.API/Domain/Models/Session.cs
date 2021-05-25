@@ -22,6 +22,7 @@ namespace StudyDesck.API.Domain.Models
         public int CategoryID { get; set; } 
         public Category Category { get; set; }
         public IList<Topic> Topics { get; set; } = new List<Topic>();
+        public List<SessionReservation> SessionReservations { get; set; }
 
     }
 }

@@ -12,13 +12,17 @@ namespace StudyDesck.API.Services
     public class CareerService : ICareerService
     {
         private readonly ICareerRepository _careerRepository;
+        //private readonly IInstituteRepository _instituteRepository;
         private readonly IUnitOfWork _unitOfWork;
 
-        public CareerService(ICareerRepository repository, IUnitOfWork unitOfWork)
+       
+        public CareerService(ICareerRepository careerRepository, IUnitOfWork unitOfWork)
         {
-            _careerRepository = repository;
+            _careerRepository = careerRepository;
+            //_instituteRepository = instituteRepository;
             _unitOfWork = unitOfWork;
         }
+
         public async Task<CareerResponse> DeleteAsync(int id)
         {
             var existingCareer = await _careerRepository.FindById(id);
@@ -47,7 +51,14 @@ namespace StudyDesck.API.Services
 
         public async Task<IEnumerable<Career>> ListAsync()
         {
-            return await _careerRepository.ListAsync();
+            var list = await _careerRepository.ListAsync();
+            /*foreach (var item in list)
+            {
+                item.Institute = await _instituteRepository.FindById(item.InstituteId);
+            }*/
+            return list;
+
+            //return await _careerRepository.ListAsync();
         }
 
         public async Task<CareerResponse> SaveAsync(Career career)
@@ -71,6 +82,7 @@ namespace StudyDesck.API.Services
                 return new CareerResponse("category not found");
 
             existingCareer.Name = career.Name;
+            existingCareer.InstituteId = career.InstituteId;
             try
             {
                 _careerRepository.Update(existingCareer);

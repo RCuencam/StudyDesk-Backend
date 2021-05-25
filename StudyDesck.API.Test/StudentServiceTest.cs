@@ -29,7 +29,7 @@ namespace StudyDesck.API.Test
 
             mockStudentRepository.Setup(r => r.ListAsync()).ReturnsAsync(new List<Student>());
 
-            var service = new StudentService(mockStudentRepository.Object, mockUnitOfWork.Object);
+            var service = new StudentService(mockStudentRepository.Object, null,mockUnitOfWork.Object);
 
             //Act
             List<Student> result = (List<Student>)await service.ListAsync();
@@ -49,7 +49,7 @@ namespace StudyDesck.API.Test
             Student student = new Student();
             mockStudentRepository.Setup(r => r.FindById(studentId)).Returns(Task.FromResult<Student>(null));
 
-            var service = new StudentService(mockStudentRepository.Object, mockUnitOfWork.Object);
+            var service = new StudentService(mockStudentRepository.Object, null,mockUnitOfWork.Object);
             //Act
             StudentResponse result = await service.GetByIdAsync(studentId);
             var message = result.Message;

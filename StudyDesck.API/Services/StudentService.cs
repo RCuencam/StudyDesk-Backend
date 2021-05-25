@@ -12,13 +12,18 @@ namespace StudyDesck.API.Services
     public class StudentService : IStudentService
     {
         private readonly IStudentRepository _studentRepository;
+        //private readonly ICareerRepository _careerRepository;
+        private readonly ISessionReservationRepository _sessionReservationRepository;
         private readonly IUnitOfWork _unitOfWork;
 
-        public StudentService(IStudentRepository repository, IUnitOfWork unitOfWork)
+        public StudentService(IStudentRepository studentRepository, ISessionReservationRepository sessionReservationRepository, IUnitOfWork unitOfWork)
         {
-            _studentRepository = repository;
+            _studentRepository = studentRepository;
+            //_careerRepository = careerRepository;
+            _sessionReservationRepository = sessionReservationRepository;
             _unitOfWork = unitOfWork;
         }
+
         public async Task<StudentResponse> DeleteAsync(int id)
         {
             var existingStudent = await _studentRepository.FindById(id);
@@ -47,7 +52,19 @@ namespace StudyDesck.API.Services
 
         public async Task<IEnumerable<Student>> ListAsync()
         {
-            return await _studentRepository.ListAsync();
+            var list = await _studentRepository.ListAsync();
+            /*foreach (var item in list)
+            {
+                item.Career = await _careerRepository.FindById(item.CareerId);
+            }*/
+            return list;
+        }
+
+        public async Task<IEnumerable<Student>> ListBySessionIdAsync(int sessionId)
+        {
+            var sessionReservations = await _sessionReservationRepository.ListBySessionIdAsync(sessionId);
+            var students = sessionReservations.Select(sr => sr.Student).ToList();
+            return students;
         }
 
         public async Task<StudentResponse> SaveAsync(Student student)
