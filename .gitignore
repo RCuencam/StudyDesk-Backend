@@ -1,4 +1,4 @@
-/.vs
-/StudyDesck.API/obj
-/StudyDesck.API.Test/obj
-/TestResults
+/.vs/*
+/StudyDesck.API/obj/*
+/StudyDesck.API.Test/obj/*
+/TestResults/*
