@@ -2,6 +2,9 @@
 /StudyDesck.API/obj
 /StudyDesck.API.Test/obj
 /TestResults
+/StudyDesck.API/bin/Debug/net5.0
+/StudyDesck.API/bin/Debug/net5.0/
+/StudyDesck.API/bin/Debug/net5.0/*
 
 /.vs/
 /StudyDesck.API/obj/
