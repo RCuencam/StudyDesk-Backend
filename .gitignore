@@ -1,1 +1,4 @@
-StudyDesck.API/obj
+/.vs
+/StudyDesck.API/obj
+/StudyDesck.API.Test/obj
+/TestResults

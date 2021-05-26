@@ -50,14 +50,11 @@ namespace StudyDesck.API
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<ISessionRepository, SessionRepository>();
             services.AddScoped<IPlatformRepository, PlatformRepository>();
-<<<<<<< HEAD
             services.AddScoped<ISessionReservationRepository, SessionReservationRepository>();
             services.AddScoped<ITutorRepository, TutorRepository>();
             services.AddScoped<IExpertTopicRepository, ExpertTopicRepository>();
-=======
             services.AddScoped<IStudentMaterialRepository, StudentMaterialRepository>();
             services.AddScoped<IStudyMaterialRepository, StudyMaterialRepository>();
->>>>>>> feature/create_student-material
 
             // services:
             services.AddScoped<IInstituteService, InstituteService>();
@@ -68,17 +65,12 @@ namespace StudyDesck.API
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<ISessionService, SessionService>();
             services.AddScoped<IPlatformService, PlatformService>();
-<<<<<<< HEAD
             services.AddScoped<ISessionReservationService, SessionReservationService>();
             services.AddScoped<ITutorService, TutorService>();
             services.AddScoped<IExpertTopicService, ExpertTopicService>();
-
-=======
             services.AddScoped<IStudentMaterialService, StudentMaterialService>();
             services.AddScoped<IStudyMaterialService, StudyMaterialService>();
            
->>>>>>> feature/create_student-material
-
             // end region
             services.AddRouting(options => options.LowercaseUrls = true); 
             services.AddAutoMapper(typeof(Startup));

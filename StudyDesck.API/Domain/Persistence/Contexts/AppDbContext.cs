@@ -22,15 +22,9 @@ namespace StudyDesck.API.Domain.Persistence.Contexts
         public DbSet<Tutor> Tutors { get; set; }
         public DbSet<ExpertTopic> ExpertTopics { get; set; }
         public DbSet<Shedule> Shedules { get; set; }
-<<<<<<< HEAD
         public DbSet<StudyMaterial> StudyMaterials { get; set; }
-<<<<<<< HEAD
-=======
         public DbSet<SessionReservation> SessionReservations { get; set; }
->>>>>>> feature/create_session-reservation
-=======
         public DbSet<StudentMaterial> studentMaterials { get; set; }
->>>>>>> feature/create_student-material
 
         // contructor for options:
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
@@ -168,7 +162,6 @@ namespace StudyDesck.API.Domain.Persistence.Contexts
                 .WithMany(to => to.ExpertTopics)
                 .HasForeignKey(et => et.TopicId);
 
-<<<<<<< HEAD
             //StudyMaterial Entity
             builder.Entity<StudyMaterial>().ToTable("StudyMaterials");
             // Constraints
@@ -188,8 +181,6 @@ namespace StudyDesck.API.Domain.Persistence.Contexts
             //    .HasOne(sm => sm.Topic)
             //    .WithMany(to => to.StudyMaterials)
             //    .HasForeignKey(sm => sm.TopicId);
-<<<<<<< HEAD
-=======
 
             //SessionReservation
             builder.Entity<SessionReservation>().ToTable("SessionReservations");
@@ -206,10 +197,6 @@ namespace StudyDesck.API.Domain.Persistence.Contexts
                 .WithMany(s => s.SessionReservations)
                 .HasForeignKey(sr => sr.StudentId);
             
-
->>>>>>> feature/create_session-reservation
-=======
-
             // StudentMaterial Entity
             builder.Entity<StudentMaterial>().ToTable("StudentMaterials");
             builder.Entity<StudentMaterial>().HasKey(sm => new { sm.StudentId, sm.StudyMaterialId });
@@ -231,8 +218,6 @@ namespace StudyDesck.API.Domain.Persistence.Contexts
                 .WithMany(i => i.StudentMaterials)
                 .HasForeignKey(sms => sms.InstituteId);
 
-
->>>>>>> feature/create_student-material
             // end region
             builder.ApplySnakeCaseNamingConvetion();
         }

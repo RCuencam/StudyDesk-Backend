@@ -451,7 +451,6 @@ C:\Users\ADRIAN\Desktop\5to Ciclo\Web\TrabajoFinal\StudyDesk-Backend\StudyDesck.
 C:\Users\ADRIAN\Desktop\5to Ciclo\Web\TrabajoFinal\StudyDesk-Backend\StudyDesck.API\obj\Debug\net5.0\ref\StudyDesck.API.dll
 C:\Users\ADRIAN\Desktop\5to Ciclo\Web\TrabajoFinal\StudyDesk-Backend\StudyDesck.API\obj\Debug\net5.0\StudyDesck.API.pdb
 C:\Users\ADRIAN\Desktop\5to Ciclo\Web\TrabajoFinal\StudyDesk-Backend\StudyDesck.API\obj\Debug\net5.0\StudyDesck.API.genruntimeconfig.cache
-<<<<<<< HEAD
 =======
 C:\Users\carlos\Desktop\AppsWEB Curso\Proyecto StudyDesk\StudyDesk-Backend\StudyDesck.API\bin\Debug\net5.0\appsettings.Development.json
 C:\Users\carlos\Desktop\AppsWEB Curso\Proyecto StudyDesk\StudyDesk-Backend\StudyDesck.API\bin\Debug\net5.0\appsettings.json
@@ -508,7 +507,6 @@ C:\Users\carlos\Desktop\AppsWEB Curso\Proyecto StudyDesk\StudyDesk-Backend\Study
 C:\Users\carlos\Desktop\AppsWEB Curso\Proyecto StudyDesk\StudyDesk-Backend\StudyDesck.API\obj\Debug\net5.0\StudyDesck.API.pdb
 C:\Users\carlos\Desktop\AppsWEB Curso\Proyecto StudyDesk\StudyDesk-Backend\StudyDesck.API\obj\Debug\net5.0\StudyDesck.API.genruntimeconfig.cache
 >>>>>>> feature/create_session-reservation
-=======
 E:\Proyectos Programacion\C#\Universidad\API Studydesk\StudyDesk-Backend\StudyDesck.API\bin\Debug\net5.0\appsettings.Development.json
 E:\Proyectos Programacion\C#\Universidad\API Studydesk\StudyDesk-Backend\StudyDesck.API\bin\Debug\net5.0\appsettings.json
 E:\Proyectos Programacion\C#\Universidad\API Studydesk\StudyDesk-Backend\StudyDesck.API\bin\Debug\net5.0\StudyDesck.API.exe
