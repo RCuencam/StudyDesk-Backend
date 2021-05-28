@@ -13,6 +13,7 @@ namespace StudyDesck.API.Domain.Models
         public Institute Institute { get; set; }
 
         public IList<Student> Students { get; set; } = new List<Student>();
+        public IList<Tutor> Tutors { get; set; } = new List<Tutor>();
         public IList<Course> Courses { get; set; } = new List<Course>();
     }
 }

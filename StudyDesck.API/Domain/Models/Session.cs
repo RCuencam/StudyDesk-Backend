@@ -16,12 +16,20 @@ namespace StudyDesck.API.Domain.Models
         public int QuantityMembers { get; set; }
         public float Price { get; set; }
 
-        ///Relaciones
-        public int TutorID { get; set; }
-        public Tutor Tutor { get; set; } //Reemplazar
-        public int CategoryID { get; set; } 
+        // Relationships
+        public int TutorId { get; set; }
+        public Tutor Tutor { get; set; }
+        
+        public int PlataformId { get; set; }
+        public Platform Platform { get; set; }
+
+        public int TopicId { get; set; }
+        public Topic Topic { get; set; }
+
+        public int CategoryId { get; set; } 
         public Category Category { get; set; }
-        public IList<Topic> Topics { get; set; } = new List<Topic>();
+        
+        
         public List<SessionReservation> SessionReservations { get; set; }
 
     }

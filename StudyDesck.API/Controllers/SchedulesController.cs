@@ -14,12 +14,12 @@ namespace StudyDesck.API.Controllers
     [ApiController]
     [Route("/api/[controller]")]
     [Produces("application/json")]
-    public class ShedulesController: ControllerBase
+    public class SchedulesController: ControllerBase
     {
         private readonly ISheduleService _sheduleService;
         private readonly IMapper _mapper;
 
-        public ShedulesController(ISheduleService sheduleService, IMapper mapper)
+        public SchedulesController(ISheduleService sheduleService, IMapper mapper)
         {
             _sheduleService = sheduleService;
             _mapper = mapper;
@@ -30,7 +30,7 @@ namespace StudyDesck.API.Controllers
         public async Task<IEnumerable<SheduleResource>> GetAllAsync()
         {
             var shedules = await _sheduleService.ListAsync();
-            var resorces = _mapper.Map<IEnumerable<Shedule>, IEnumerable<SheduleResource>>(shedules);
+            var resorces = _mapper.Map<IEnumerable<Schedule>, IEnumerable<SheduleResource>>(shedules);
 
             return resorces;
         }
@@ -43,7 +43,7 @@ namespace StudyDesck.API.Controllers
             if (!result.Success)
                 return BadRequest(result.Message);
 
-            var instituteResource = _mapper.Map<Shedule, SheduleResource>(result.Resource);
+            var instituteResource = _mapper.Map<Schedule, SheduleResource>(result.Resource);
 
             return Ok(instituteResource);
         }
@@ -57,13 +57,13 @@ namespace StudyDesck.API.Controllers
                 return BadRequest(ModelState.GetErrorMessages());
             }
 
-            var shedule = _mapper.Map<SaveSheduleResource, Shedule>(resource);
+            var shedule = _mapper.Map<SaveSheduleResource, Schedule>(resource);
             var result = await _sheduleService.SaveAsync(shedule);
 
             if (!result.Success)
                 return BadRequest(result.Message);
 
-            var sheduleResource = _mapper.Map<Shedule, SheduleResource>(result.Resource);
+            var sheduleResource = _mapper.Map<Schedule, SheduleResource>(result.Resource);
             return Ok(sheduleResource);
         }
         [HttpPut("{id}")]
@@ -76,13 +76,13 @@ namespace StudyDesck.API.Controllers
                 return BadRequest(ModelState.GetErrorMessages());
             }
 
-            var shedule = _mapper.Map<SaveSheduleResource, Shedule>(resource);
+            var shedule = _mapper.Map<SaveSheduleResource, Schedule>(resource);
             var result = await _sheduleService.UpdateAsync(id, shedule);
 
             if (!result.Success)
                 return BadRequest(result.Message);
 
-            var sheduleResource = _mapper.Map<Shedule, SheduleResource>(result.Resource);
+            var sheduleResource = _mapper.Map<Schedule, SheduleResource>(result.Resource);
             return Ok(sheduleResource);
         }
 
@@ -95,7 +95,7 @@ namespace StudyDesck.API.Controllers
             if (!result.Success)
                 return BadRequest(result.Message);
 
-            var sheduleResource = _mapper.Map<Shedule, SheduleResource>(result.Resource);
+            var sheduleResource = _mapper.Map<Schedule, SheduleResource>(result.Resource);
             return Ok(sheduleResource);
         }
     }

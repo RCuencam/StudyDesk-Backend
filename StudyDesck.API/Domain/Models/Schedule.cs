@@ -5,12 +5,12 @@ using System.Threading.Tasks;
 
 namespace StudyDesck.API.Domain.Models
 {
-    public class Shedule
+    public class Schedule
     {
         public int Id { get; set; }
-        public string StarDate { get; set; }
-        public string EndDate { get; set; }
-        public string Date { get; set; }
+        public DateTime StarDate { get; set; }
+        public DateTime EndDate { get; set; }
+        public DateTime Date { get; set; }
         public int TutorId { get; set; }
         public Tutor Tutor { get; set; }
     }

@@ -87,7 +87,6 @@ namespace StudyDesck.API.Services
             existingTutor.LastName = tutor.LastName;
             existingTutor.Email = tutor.Email;
             existingTutor.Password = tutor.Password;
-            existingTutor.InstituteName = tutor.InstituteName;
 
             try
             {

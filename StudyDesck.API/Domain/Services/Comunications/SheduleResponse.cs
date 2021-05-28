@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace StudyDesck.API.Domain.Services.Comunications
 {
-    public class SheduleResponse : BaseResponse<Shedule>
+    public class SheduleResponse : BaseResponse<Schedule>
     {
-        public SheduleResponse(Shedule resource) : base(resource)
+        public SheduleResponse(Schedule resource) : base(resource)
         {
         }
 

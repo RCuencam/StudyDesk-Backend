@@ -21,19 +21,16 @@ namespace StudyDesck.API.Domain.Persistence.Contexts
         public DbSet<Platform> Platforms { get; set; }
         public DbSet<Tutor> Tutors { get; set; }
         public DbSet<ExpertTopic> ExpertTopics { get; set; }
-        public DbSet<Shedule> Shedules { get; set; }
+        public DbSet<Schedule> Schedules { get; set; }
         public DbSet<StudyMaterial> StudyMaterials { get; set; }
         public DbSet<SessionReservation> SessionReservations { get; set; }
-        public DbSet<StudentMaterial> studentMaterials { get; set; }
+        public DbSet<StudentMaterial> StudentMaterials { get; set; }
 
-        // contructor for options:
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
         }
 
-        // overrides
         protected override void OnModelCreating(ModelBuilder builder)
-
         {
             base.OnModelCreating(builder);
             // my code:
@@ -54,6 +51,7 @@ namespace StudyDesck.API.Domain.Persistence.Contexts
             builder.Entity<Career>().HasKey(p => p.Id);
             builder.Entity<Career>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<Career>().Property(p => p.Name).IsRequired().HasMaxLength(40);
+            // Relationships
             builder.Entity<Career>()
                 .HasMany(p => p.Students)
                 .WithOne(p => p.Career)
@@ -73,23 +71,23 @@ namespace StudyDesck.API.Domain.Persistence.Contexts
             builder.Entity<Student>().Property(p => p.Email).IsRequired().HasMaxLength(40);
             builder.Entity<Student>().Property(p => p.Password).IsRequired().HasMaxLength(40);
 
-
             //Category
             builder.Entity<Category>().ToTable("Categories");
             builder.Entity<Category>().HasKey(p => p.Id);
             builder.Entity<Category>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<Category>().Property(p => p.Name).IsRequired().HasMaxLength(15);
+            // Relationship
             builder.Entity<Category>().
                 HasMany(p => p.Sessions).
                 WithOne(p => p.Category).
-                HasForeignKey(p => p.CategoryID);
+                HasForeignKey(p => p.CategoryId);
 
             //Platform
             builder.Entity<Platform>().ToTable("Platforms");
             builder.Entity<Platform>().HasKey(p => p.Id);
             builder.Entity<Platform>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<Platform>().Property(p => p.Name).IsRequired().HasMaxLength(15);
-            builder.Entity<Platform>().Property(p => p.UrlReunion).IsRequired();
+            builder.Entity<Platform>().Property(p => p.PlatformUrl).IsRequired();
 
             //Session
             builder.Entity<Session>().ToTable("Sessions");
@@ -100,14 +98,17 @@ namespace StudyDesck.API.Domain.Persistence.Contexts
             builder.Entity<Session>().Property(p => p.Description).IsRequired();
             builder.Entity<Session>().Property(p => p.StartDate).IsRequired();
             builder.Entity<Session>().Property(p => p.EndDate).IsRequired();
-
             builder.Entity<Session>().Property(p => p.Price).IsRequired();
             builder.Entity<Session>().Property(p => p.QuantityMembers).IsRequired();
-            //Relacion de 1 a muchos con Topics
+            //Relationships
+            builder.Entity<Session>()
+                .HasOne(s => s.Platform)
+                .WithMany(p => p.Sessions)
+                .HasForeignKey(s => s.PlataformId);
             builder.Entity<Session>().
-                HasMany(p => p.Topics).
-                WithOne(p => p.Session).
-                HasForeignKey(p => p.SessionId);
+                HasOne(p => p.Topic).
+                WithMany(t => t.Sessions).
+                HasForeignKey(p => p.TopicId);
 
             //Course
             builder.Entity<Course>().ToTable("Courses");
@@ -120,26 +121,27 @@ namespace StudyDesck.API.Domain.Persistence.Contexts
                 .WithOne(p => p.Course)
                 .HasForeignKey(p => p.CourseId);
 
-            // Shedule Entity
-            builder.Entity<Shedule>().ToTable("Shedules");
-            // Constraints
-            builder.Entity<Shedule>().HasKey(p => p.Id);
-            builder.Entity<Shedule>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
-            builder.Entity<Shedule>().Property(p => p.StarDate).IsRequired().HasMaxLength(30);
-            builder.Entity<Shedule>().Property(p => p.EndDate).IsRequired().HasMaxLength(30);
-            builder.Entity<Shedule>().Property(p => p.Date).IsRequired().HasMaxLength(30);
-            // Relationships 
+            // Schedule Entity
+            builder.Entity<Schedule>().ToTable("Schedules");
+            builder.Entity<Schedule>().HasKey(p => p.Id);
+            builder.Entity<Schedule>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+            builder.Entity<Schedule>().Property(p => p.StarDate).IsRequired().HasMaxLength(30);
+            builder.Entity<Schedule>().Property(p => p.EndDate).IsRequired().HasMaxLength(30);
+            builder.Entity<Schedule>().Property(p => p.Date).IsRequired().HasMaxLength(30);
 
             // Tutor Entity
             builder.Entity<Tutor>().ToTable("Tutors");
-            // Constraints
+            builder.Entity<Tutor>().HasKey(p => p.Id);
             builder.Entity<Tutor>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<Tutor>().Property(p => p.Name).IsRequired().HasMaxLength(30);
             builder.Entity<Tutor>().Property(p => p.LastName).IsRequired().HasMaxLength(30);
             builder.Entity<Tutor>().Property(p => p.Email).IsRequired().HasMaxLength(30);
             builder.Entity<Tutor>().Property(p => p.Password).IsRequired().HasMaxLength(30);
-            builder.Entity<Tutor>().Property(p => p.InstituteName).IsRequired().HasMaxLength(30);
             // Relationships
+            builder.Entity<Tutor>()
+                .HasOne(t => t.Career)
+                .WithMany(c => c.Tutors)
+                .HasForeignKey(t => t.CareerId);
             builder.Entity<Tutor>()
                 .HasMany(p => p.Shedules)
                 .WithOne(p => p.Tutor)
@@ -147,7 +149,7 @@ namespace StudyDesck.API.Domain.Persistence.Contexts
             builder.Entity<Tutor>()
                 .HasMany(p => p.Sessions)
                 .WithOne(p => p.Tutor)
-                .HasForeignKey(p => p.TutorID);
+                .HasForeignKey(p => p.TutorId);
 
             // ExpertTopic Entity
             builder.Entity<ExpertTopic>().ToTable("ExpertTopics");
@@ -164,34 +166,26 @@ namespace StudyDesck.API.Domain.Persistence.Contexts
 
             //StudyMaterial Entity
             builder.Entity<StudyMaterial>().ToTable("StudyMaterials");
-            // Constraints
+            builder.Entity<StudyMaterial>().HasKey(p => p.Id);
             builder.Entity<StudyMaterial>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<StudyMaterial>().Property(p => p.Title).IsRequired().HasMaxLength(30);
             builder.Entity<StudyMaterial>().Property(p => p.Description).IsRequired().HasMaxLength(50);
             // Relationships
-            //builder.Entity<StudyMaterial>()
-            //    .HasMany(sym => sym.StudentMaterials)
-            //    .WithOne(stm => stm.StudyMaterial)
-            //    .HasForeignKey(stm => stm.StudyMaterialId);
-            //builder.Entity<StudyMaterial>()
-            //    .HasMany(sym => sym.SesionMaterials)
-            //    .WithOne(sem => sem.StudyMaterial)
-            //    .HasForeignKey(sem => sem.StudyMaterialId);
-            //builder.Entity<StudyMaterial>()
-            //    .HasOne(sm => sm.Topic)
-            //    .WithMany(to => to.StudyMaterials)
-            //    .HasForeignKey(sm => sm.TopicId);
+            builder.Entity<StudyMaterial>()
+                .HasOne(sm => sm.Topic)
+                .WithMany(to => to.StudyMaterials)
+                .HasForeignKey(sm => sm.TopicId);
 
             //SessionReservation
             builder.Entity<SessionReservation>().ToTable("SessionReservations");
+            builder.Entity<SessionReservation>().HasKey(sr => new { sr.StudentId, sr.SessionId });
             builder.Entity<SessionReservation>().Property(sr => sr.Qualification);
             builder.Entity<SessionReservation>().Property(sr => sr.Confirmed);
-            builder.Entity<SessionReservation>().HasKey(sr => new { sr.StudentId, sr.SessionId });
+            // relationships
             builder.Entity<SessionReservation>()
                 .HasOne(sr => sr.Session)
                 .WithMany(s => s.SessionReservations)
                 .HasForeignKey(sr => sr.SessionId);
-
             builder.Entity<SessionReservation>()
                 .HasOne(sr => sr.Student)
                 .WithMany(s => s.SessionReservations)
@@ -200,7 +194,7 @@ namespace StudyDesck.API.Domain.Persistence.Contexts
             // StudentMaterial Entity
             builder.Entity<StudentMaterial>().ToTable("StudentMaterials");
             builder.Entity<StudentMaterial>().HasKey(sm => new { sm.StudentId, sm.StudyMaterialId });
-            // relationship
+            // relationships
             builder.Entity<StudentMaterial>()
                 .HasOne(sms => sms.student)
                 .WithMany(s => s.StudentMaterials)

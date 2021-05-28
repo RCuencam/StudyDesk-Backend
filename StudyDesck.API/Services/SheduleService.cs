@@ -24,7 +24,7 @@ namespace StudyDesck.API.Services
             var existingShedule = await _sheduleRepository.FindById(id);
 
             if (existingShedule == null)
-                return new SheduleResponse("Shedule not found");
+                return new SheduleResponse("Schedule not found");
 
             try
             {
@@ -43,20 +43,20 @@ namespace StudyDesck.API.Services
         {
             var existingShedule = await _sheduleRepository.FindById(id);
             if (existingShedule == null)
-                return new SheduleResponse("Shedule not found");
+                return new SheduleResponse("Schedule not found");
             return new SheduleResponse(existingShedule);
         }
 
-        public async Task<IEnumerable<Shedule>> ListAsync()
+        public async Task<IEnumerable<Schedule>> ListAsync()
         {
             return await _sheduleRepository.ListAsync();
         }
 
-        //public async Task<IEnumerable<Shedule>> ListByTutorIdAsync(int tutorId)
+        //public async Task<IEnumerable<Schedule>> ListByTutorIdAsync(int tutorId)
         //{
         //    return await _sheduleRepository.ListByTutorIdAsync(tutorId);
         //}
-        public async Task<SheduleResponse> SaveAsync(Shedule shedule)
+        public async Task<SheduleResponse> SaveAsync(Schedule shedule)
         {
             try
             {
@@ -71,12 +71,12 @@ namespace StudyDesck.API.Services
             }
         }
 
-        public async Task<SheduleResponse> UpdateAsync(int id, Shedule shedule)
+        public async Task<SheduleResponse> UpdateAsync(int id, Schedule shedule)
         {
             var existingShedule = await _sheduleRepository.FindById(id);
 
             if (existingShedule == null)
-                return new SheduleResponse("Shedule not found");
+                return new SheduleResponse("Schedule not found");
 
             existingShedule.StarDate = shedule.StarDate;
             existingShedule.EndDate = shedule.EndDate;

@@ -8,7 +8,10 @@ namespace StudyDesck.API.Domain.Models
     public class Platform
     {
         public int Id { get; set; }
-        public string UrlReunion { get; set; }
+        public string PlatformUrl { get; set; }
         public string Name { get; set; }
+
+        // relationships
+        public List<Session> Sessions { get; set; }
     }
 }

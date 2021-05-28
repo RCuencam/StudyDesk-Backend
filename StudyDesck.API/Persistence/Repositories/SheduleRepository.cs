@@ -15,34 +15,34 @@ namespace StudyDesck.API.Persistence.Repositories
         {
         }
 
-        public async Task AddAsync(Shedule shedule)
+        public async Task AddAsync(Schedule shedule)
         {
-            await _context.Shedules.AddAsync(shedule);
+            await _context.Schedules.AddAsync(shedule);
         }
 
-        public async Task<Shedule> FindById(int id)
+        public async Task<Schedule> FindById(int id)
         {
-            return await _context.Shedules.FindAsync(id);
+            return await _context.Schedules.FindAsync(id);
         }
 
-        public async Task<IEnumerable<Shedule>> ListAsync()
+        public async Task<IEnumerable<Schedule>> ListAsync()
         {
-            return await _context.Shedules.ToListAsync();
+            return await _context.Schedules.ToListAsync();
         }
 
-        //public async Task<IEnumerable<Shedule>> ListByTutorIdAsync(int tutorId)
+        //public async Task<IEnumerable<Schedule>> ListByTutorIdAsync(int tutorId)
         //{
-        //    return await _context.Shedules.
+        //    return await _context.Schedules.
         //}
 
-        public void Remove(Shedule shedule)
+        public void Remove(Schedule shedule)
         {
-            _context.Shedules.Remove(shedule);
+            _context.Schedules.Remove(shedule);
         }
 
-        public void Update(Shedule shedule)
+        public void Update(Schedule shedule)
         {
-            _context.Shedules.Update(shedule);
+            _context.Schedules.Update(shedule);
         }
     }
 }

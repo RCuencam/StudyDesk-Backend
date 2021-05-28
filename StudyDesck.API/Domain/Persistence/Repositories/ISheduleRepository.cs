@@ -8,11 +8,11 @@ namespace StudyDesck.API.Domain.Persistence.Repositories
 {
     public interface ISheduleRepository
     {
-        Task<IEnumerable<Shedule>> ListAsync();
-        //Task<IEnumerable<Shedule>> ListByTutorIdAsync(int tutorId);
-        Task AddAsync(Shedule shedule);
-        Task<Shedule> FindById(int id);
-        void Update(Shedule shedule);
-        void Remove(Shedule shedule);
+        Task<IEnumerable<Schedule>> ListAsync();
+        //Task<IEnumerable<Schedule>> ListByTutorIdAsync(int tutorId);
+        Task AddAsync(Schedule shedule);
+        Task<Schedule> FindById(int id);
+        void Update(Schedule shedule);
+        void Remove(Schedule shedule);
     }
 }

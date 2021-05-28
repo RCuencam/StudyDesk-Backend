@@ -17,7 +17,7 @@ namespace StudyDesck.API.Persistence.Repositories
 
         public async Task AddAsync(StudentMaterial studentMaterial)
         {
-            await _context.studentMaterials.AddAsync(studentMaterial);
+            await _context.StudentMaterials.AddAsync(studentMaterial);
         }
 
         public async Task AssignStudentMaterial(int studentId, long materialId, int categoryId, int instituteId)
@@ -38,7 +38,7 @@ namespace StudyDesck.API.Persistence.Repositories
 
         public async Task<StudentMaterial> FindByStudentIdAndStudyMaterialId(int studentId, long studyMaterial)
         {
-            return await _context.studentMaterials.FindAsync(studentId, studyMaterial);
+            return await _context.StudentMaterials.FindAsync(studentId, studyMaterial);
             
         }
 
@@ -54,7 +54,7 @@ namespace StudyDesck.API.Persistence.Repositories
 
         public async Task<IEnumerable<StudentMaterial>> ListByStudentIdAsync(int studentId)
         {
-            return await _context.studentMaterials
+            return await _context.StudentMaterials
                 .Where(sm => sm.StudentId == studentId)
                 .Include(sm => sm.StudyMaterial)
                 .ToListAsync();
@@ -62,7 +62,7 @@ namespace StudyDesck.API.Persistence.Repositories
 
         public void Remove(StudentMaterial studentMaterial)
         {
-            _context.studentMaterials.Remove(studentMaterial);
+            _context.StudentMaterials.Remove(studentMaterial);
         }
 
         public async Task UnassignstudyMaterial(int studentId, long materialId)

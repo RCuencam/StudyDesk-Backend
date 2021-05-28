@@ -28,11 +28,11 @@ namespace StudyDesck.API.Test
             var mockUnitOfWork = GetDefaultUnitOfWorkRepositoryInstance();
             var mockSheduleRepository = GetDefaultSheduleRepositoryInstance();
 
-            mockSheduleRepository.Setup(r => r.ListAsync()).ReturnsAsync(new List<Shedule>());
+            mockSheduleRepository.Setup(r => r.ListAsync()).ReturnsAsync(new List<Schedule>());
             var service = new SheduleService(mockSheduleRepository.Object, mockUnitOfWork.Object);
 
             // Act
-            List<Shedule> result = (List<Shedule>)await service.ListAsync();
+            List<Schedule> result = (List<Schedule>)await service.ListAsync();
             var SheduleCount = result.Count;
 
             // Assert
@@ -48,7 +48,7 @@ namespace StudyDesck.API.Test
             var mockSheduleRepository = GetDefaultSheduleRepositoryInstance();
             var SheduleId = 1;
 
-            mockSheduleRepository.Setup(r => r.FindById(SheduleId)).Returns(Task.FromResult<Shedule>(null));
+            mockSheduleRepository.Setup(r => r.FindById(SheduleId)).Returns(Task.FromResult<Schedule>(null));
             var service = new SheduleService(mockSheduleRepository.Object, mockUnitOfWork.Object);
 
             // Act
@@ -56,7 +56,7 @@ namespace StudyDesck.API.Test
             var message = result.Message;
 
             // Assert
-            message.Should().Be("Shedule not found");
+            message.Should().Be("Schedule not found");
         }
 
         [Test]
@@ -66,7 +66,7 @@ namespace StudyDesck.API.Test
             var mockUnitOfWork = GetDefaultUnitOfWorkRepositoryInstance();
             var mockSheduleRepository = GetDefaultSheduleRepositoryInstance();
             var SheduleId = 1;
-            var Shedule = new Shedule()
+            var Shedule = new Schedule()
             {
                 Id = 1,
                 StarDate = "string",
@@ -93,7 +93,7 @@ namespace StudyDesck.API.Test
             var mockUnitOfWork = GetDefaultUnitOfWorkRepositoryInstance();
             var mockSheduleRepository = GetDefaultSheduleRepositoryInstance();
             var SheduleId = 1;
-            var Shedule = new Shedule()
+            var Shedule = new Schedule()
             {
                 Id = 1,
                 StarDate = "string",
@@ -121,7 +121,7 @@ namespace StudyDesck.API.Test
             var mockUnitOfWork = GetDefaultUnitOfWorkRepositoryInstance();
             var mockSheduleRepository = GetDefaultSheduleRepositoryInstance();
             var SheduleId = 1;
-            var Shedule = new Shedule()
+            var Shedule = new Schedule()
             {
                 Id = 1,
                 StarDate = "string",
@@ -130,7 +130,7 @@ namespace StudyDesck.API.Test
                 TutorId = 1
             };
 
-            mockSheduleRepository.Setup(r => r.FindById(SheduleId)).Returns(Task.FromResult<Shedule>(null));
+            mockSheduleRepository.Setup(r => r.FindById(SheduleId)).Returns(Task.FromResult<Schedule>(null));
             mockSheduleRepository.Setup(r => r.Update(Shedule));
             var service = new SheduleService(mockSheduleRepository.Object, mockUnitOfWork.Object);
 
@@ -139,7 +139,7 @@ namespace StudyDesck.API.Test
             var message = result.Message;
 
             // Assert
-            message.Should().Be("Shedule not found");
+            message.Should().Be("Schedule not found");
         }
 
         [Test]
@@ -149,7 +149,7 @@ namespace StudyDesck.API.Test
             var mockUnitOfWork = GetDefaultUnitOfWorkRepositoryInstance();
             var mockSheduleRepository = GetDefaultSheduleRepositoryInstance();
             var SheduleId = 1;
-            var Shedule = new Shedule()
+            var Shedule = new Schedule()
             {
                 Id = 1,
                 StarDate = "string",
@@ -158,7 +158,7 @@ namespace StudyDesck.API.Test
                 TutorId = 1
             };
 
-            mockSheduleRepository.Setup(r => r.FindById(SheduleId)).Returns(Task.FromResult<Shedule>(null));
+            mockSheduleRepository.Setup(r => r.FindById(SheduleId)).Returns(Task.FromResult<Schedule>(null));
             mockSheduleRepository.Setup(r => r.Remove(Shedule));
             var service = new SheduleService(mockSheduleRepository.Object, mockUnitOfWork.Object);
 
@@ -167,7 +167,7 @@ namespace StudyDesck.API.Test
             var message = result.Message;
 
             // Assert
-            message.Should().Be("Shedule not found");
+            message.Should().Be("Schedule not found");
         }
 
         [Test]
@@ -177,7 +177,7 @@ namespace StudyDesck.API.Test
             var mockUnitOfWork = GetDefaultUnitOfWorkRepositoryInstance();
             var mockSheduleRepository = GetDefaultSheduleRepositoryInstance();
             var SheduleId = 1;
-            var Shedule = new Shedule()
+            var Shedule = new Schedule()
             {
                 Id = 1,
                 StarDate = "string",
