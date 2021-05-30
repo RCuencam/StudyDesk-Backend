@@ -32,21 +32,7 @@ namespace StudyDesck.API.Controllers
             _mapper = mapper;
         }
 
-        [SwaggerOperation(
-            Summary = "List Students by SessionId",
-            Description = "This endpoint returns all students that have the 'SessionId'",
-            OperationId = "ListStudentsBySessionId"
-        )]
-        [SwaggerResponse(200, "List of Students by SessionId", typeof(IEnumerable<StudentResource>))]
-        [HttpGet("{sessionId}/students")]
-        [ProducesResponseType(typeof(IEnumerable<StudentResource>), 200)]
-        public async Task<IEnumerable<StudentResource>> GetAllStudentsBySessionIdAsync(int sessionId)
-        {
-            var students = await _studentService.ListBySessionIdAsync(sessionId);
-            var resources = _mapper.Map<IEnumerable<Student>, IEnumerable<StudentResource>>(students);
-
-            return resources;
-        }
+        
 
         [SwaggerOperation(
             Summary = "List Sessions by StudentId",

@@ -1,6 +1,9 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using StudyDesck.API.Domain.Models;
 using StudyDesck.API.Domain.Services;
+using StudyDesck.API.Resources;
+using Swashbuckle.AspNetCore.Annotations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +27,22 @@ namespace StudyDesck.API.Controllers
             _studentService = studentService;
             _sessionService = sessionService;
             _mapper = mapper;
+        }
+
+        [SwaggerOperation(
+            Summary = "List Students by SessionId",
+            Description = "This endpoint returns all students that have the 'SessionId'",
+            OperationId = "ListStudentsBySessionId"
+        )]
+        [SwaggerResponse(200, "List of Students by SessionId", typeof(IEnumerable<StudentResource>))]
+        [HttpGet]
+        [ProducesResponseType(typeof(IEnumerable<StudentResource>), 200)]
+        public async Task<IEnumerable<StudentResource>> GetAllStudentsBySessionIdAsync(int sessionId)
+        {
+            var students = await _studentService.ListBySessionIdAsync(sessionId);
+            var resources = _mapper.Map<IEnumerable<Student>, IEnumerable<StudentResource>>(students);
+
+            return resources;
         }
     }
 }
