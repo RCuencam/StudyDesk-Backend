@@ -8,6 +8,5 @@ namespace StudyDesck.API.Resources
     public class SaveTopicResource
     {
         public string Name { get; set; }
-        public SaveCourseResource Course { get; set; }
     }
 }

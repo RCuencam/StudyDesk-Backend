@@ -27,9 +27,11 @@ namespace StudyDesck.API.Test
             // Arrange
             var mockUnitOfWork = GetDefaultUnitOfWorkRepositoryInstance();
             var mockTopicRepository = GetDefaultTopicRepositoryInstance();
+            var mockCourseRepository = new Mock<ICourseRepository>();
+
 
             mockTopicRepository.Setup(r => r.ListAsync()).ReturnsAsync(new List<Topic>());
-            var service = new TopicService(mockTopicRepository.Object, mockUnitOfWork.Object);
+            var service = new TopicService(mockTopicRepository.Object, mockUnitOfWork.Object, mockCourseRepository.Object);
 
             // Act
             List<Topic> result = (List<Topic>)await service.ListAsync();
@@ -46,10 +48,11 @@ namespace StudyDesck.API.Test
             // Arrange
             var mockUnitOfWork = GetDefaultUnitOfWorkRepositoryInstance();
             var mockTopicRepository = GetDefaultTopicRepositoryInstance();
+            var mockCourseRepository = new Mock<ICourseRepository>();
             var TopicId = 1;
 
             mockTopicRepository.Setup(r => r.FindById(TopicId)).Returns(Task.FromResult<Topic>(null));
-            var service = new TopicService(mockTopicRepository.Object, mockUnitOfWork.Object);
+            var service = new TopicService(mockTopicRepository.Object, mockUnitOfWork.Object, mockCourseRepository.Object);
 
             // Act
             TopicResponse result = await service.GetByIdAsync(TopicId);
@@ -65,6 +68,7 @@ namespace StudyDesck.API.Test
             // Arrange
             var mockUnitOfWork = GetDefaultUnitOfWorkRepositoryInstance();
             var mockTopicRepository = GetDefaultTopicRepositoryInstance();
+            var mockCourseRepository = new Mock<ICourseRepository>();
             var TopicId = 1;
             var topic = new Topic()
             {
@@ -74,7 +78,7 @@ namespace StudyDesck.API.Test
             };
 
             mockTopicRepository.Setup(r => r.FindById(TopicId)).Returns(Task.FromResult(topic));
-            var service = new TopicService(mockTopicRepository.Object, mockUnitOfWork.Object);
+            var service = new TopicService(mockTopicRepository.Object, mockUnitOfWork.Object, mockCourseRepository.Object);
 
             // Act
             TopicResponse result = await service.GetByIdAsync(TopicId);
@@ -90,6 +94,7 @@ namespace StudyDesck.API.Test
             // Arrange
             var mockUnitOfWork = GetDefaultUnitOfWorkRepositoryInstance();
             var mockTopicRepository = GetDefaultTopicRepositoryInstance();
+            var mockCourseRepository = new Mock<ICourseRepository>();
             var TopicId = 1;
             var topic = new Topic()
             {
@@ -100,7 +105,7 @@ namespace StudyDesck.API.Test
 
             mockTopicRepository.Setup(r => r.FindById(TopicId)).Returns(Task.FromResult(topic));
             mockTopicRepository.Setup(r => r.Update(topic));
-            var service = new TopicService(mockTopicRepository.Object, mockUnitOfWork.Object);
+            var service = new TopicService(mockTopicRepository.Object, mockUnitOfWork.Object, mockCourseRepository.Object);
 
             // Act
             TopicResponse result = await service.UpdateAsync(TopicId, topic);
@@ -116,6 +121,7 @@ namespace StudyDesck.API.Test
             // Arrange
             var mockUnitOfWork = GetDefaultUnitOfWorkRepositoryInstance();
             var mockTopicRepository = GetDefaultTopicRepositoryInstance();
+            var mockCourseRepository = new Mock<ICourseRepository>();
             var TopicId = 1;
             var topic = new Topic()
             {
@@ -126,7 +132,7 @@ namespace StudyDesck.API.Test
 
             mockTopicRepository.Setup(r => r.FindById(TopicId)).Returns(Task.FromResult<Topic>(null));
             mockTopicRepository.Setup(r => r.Update(topic));
-            var service = new TopicService(mockTopicRepository.Object, mockUnitOfWork.Object);
+            var service = new TopicService(mockTopicRepository.Object, mockUnitOfWork.Object, mockCourseRepository.Object);
 
             // Act
             TopicResponse result = await service.UpdateAsync(TopicId, topic);
@@ -142,6 +148,7 @@ namespace StudyDesck.API.Test
             // Arrange
             var mockUnitOfWork = GetDefaultUnitOfWorkRepositoryInstance();
             var mockTopicRepository = GetDefaultTopicRepositoryInstance();
+            var mockCourseRepository = new Mock<ICourseRepository>();
             var TopicId = 1;
             var topic = new Topic()
             {
@@ -152,7 +159,7 @@ namespace StudyDesck.API.Test
 
             mockTopicRepository.Setup(r => r.FindById(TopicId)).Returns(Task.FromResult<Topic>(null));
             mockTopicRepository.Setup(r => r.Remove(topic));
-            var service = new TopicService(mockTopicRepository.Object, mockUnitOfWork.Object);
+            var service = new TopicService(mockTopicRepository.Object, mockUnitOfWork.Object, mockCourseRepository.Object);
 
             // Act
             TopicResponse result = await service.DeleteAsync(TopicId);
@@ -168,6 +175,7 @@ namespace StudyDesck.API.Test
             // Arrange
             var mockUnitOfWork = GetDefaultUnitOfWorkRepositoryInstance();
             var mockTopicRepository = GetDefaultTopicRepositoryInstance();
+            var mockCourseRepository = new Mock<ICourseRepository>();
             var TopicId = 1;
             var topic = new Topic()
             {
@@ -178,7 +186,7 @@ namespace StudyDesck.API.Test
 
             mockTopicRepository.Setup(r => r.FindById(TopicId)).Returns(Task.FromResult(topic));
             mockTopicRepository.Setup(r => r.Remove(topic));
-            var service = new TopicService(mockTopicRepository.Object, mockUnitOfWork.Object);
+            var service = new TopicService(mockTopicRepository.Object, mockUnitOfWork.Object, mockCourseRepository.Object);
 
             // Act
             TopicResponse result = await service.DeleteAsync(TopicId);
