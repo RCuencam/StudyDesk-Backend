@@ -104,7 +104,7 @@ namespace StudyDesck.API.Domain.Persistence.Contexts
             builder.Entity<Session>()
                 .HasOne(s => s.Platform)
                 .WithMany(p => p.Sessions)
-                .HasForeignKey(s => s.PlataformId);
+                .HasForeignKey(s => s.PlatformId);
             builder.Entity<Session>().
                 HasOne(p => p.Topic).
                 WithMany(t => t.Sessions).

@@ -29,13 +29,17 @@ namespace StudyDesck.API.Resources
         public float Price { get; set; }
 
         ///Relaciones
-        [Required]
-        public int TutorID { get; set; }
+        //[Required]
+        //public int TutorID { get; set; }
         //[Required]
         //public TutorResource Tutor { get; set; } //Reemplazar
 
-
-        public int CategoryID { get; set; }
+        [Required]
+        public int CategoryId { get; set; }
+        [Required]
+        public int PlatformId { get; set; }
+        [Required]
+        public int TopicId { get; set; }
         //public CategoryResource Category { get; set; }
 
     }

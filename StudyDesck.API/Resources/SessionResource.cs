@@ -22,5 +22,7 @@ namespace StudyDesck.API.Resources
         public TutorResource Tutor { get; set; } 
         //public int CategoryID { get; set; }
         public CategoryResource Category { get; set; }
+        public PlatformResource Platform { get; set; }
+        public TopicResource Topic { get; set; }
     }
 }
