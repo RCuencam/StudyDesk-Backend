@@ -11,6 +11,9 @@ namespace StudyDesck.API.Domain.Services
     {
         Task<IEnumerable<Career>> ListAsync();
         Task<CareerResponse> GetByIdAsync(int id);
+        Task<IEnumerable<Career>> FindByInstituteId(int instituteId);
+
+        Task<IEnumerable<Career>> GetByInstituteIdAndCareerId(int instituteId,int careerId);
         Task<CareerResponse> SaveAsync(Career career);
         Task<CareerResponse> UpdateAsync(int id, Career career);
         Task<CareerResponse> DeleteAsync(int id);

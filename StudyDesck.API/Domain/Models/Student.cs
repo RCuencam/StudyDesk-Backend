@@ -15,8 +15,10 @@ namespace StudyDesck.API.Domain.Models
         public string Password { get; set; }
         public int CareerId { get; set; }
         public Career Career { get; set; }
-        public List<SessionReservation> SessionReservations { get; set; }
 
+        public List<SessionReservation> SessionReservations { get; set; }
         public List<StudentMaterial> StudentMaterials { get; set; }
+        public List<TutorReservation> TutorReservations { get; set; }
+
     }
 }

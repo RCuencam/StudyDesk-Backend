@@ -23,6 +23,7 @@ namespace StudyDesck.API.Domain.Models
         public List<ExpertTopic> ExpertTopics { get; set; }
         public List<Schedule> Shedules { get; set; }
         public List<Session> Sessions { get; set; }
+        public List<TutorReservation> TutorReservations { get; set; }
         //public List<SessionMaterial> SessionMaterials { get; set; }
     }
 }

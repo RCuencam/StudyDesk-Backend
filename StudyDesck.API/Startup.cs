@@ -55,6 +55,7 @@ namespace StudyDesck.API
             services.AddScoped<IExpertTopicRepository, ExpertTopicRepository>();
             services.AddScoped<IStudentMaterialRepository, StudentMaterialRepository>();
             services.AddScoped<IStudyMaterialRepository, StudyMaterialRepository>();
+            services.AddScoped<ITutorReservationRepository, TutorReservationRepository>();
 
             // services:
             services.AddScoped<IInstituteService, InstituteService>();
@@ -70,6 +71,7 @@ namespace StudyDesck.API
             services.AddScoped<IExpertTopicService, ExpertTopicService>();
             services.AddScoped<IStudentMaterialService, StudentMaterialService>();
             services.AddScoped<IStudyMaterialService, StudyMaterialService>();
+            services.AddScoped<ITutorReservationService, TutorReservationService>();
            
             // end region
             services.AddRouting(options => options.LowercaseUrls = true); 
