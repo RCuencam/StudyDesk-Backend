@@ -75,7 +75,7 @@ namespace StudyDesck.API.Services
             var existingTutor = await _tutorRepository.FindById(id);
 
             if (existingTutor == null)
-                return new TutorResponse("Guardian not found");
+                return new TutorResponse("Tutor not found");
 
             existingTutor.Name = tutor.Name;
             existingTutor.LastName = tutor.LastName;

@@ -18,10 +18,10 @@ namespace StudyDesck.API.Test
         [SetUp]
         public void Setup()
         {
-            
+
         }
 
-       [Test]
+        [Test]
         public async Task GetAllAsyncWhenNoSheduleReturnsEmptyCollection()
         {
             // Arrange
@@ -69,9 +69,9 @@ namespace StudyDesck.API.Test
             var Shedule = new Schedule()
             {
                 Id = 1,
-                StarDate = "string",
-                EndDate = "string",
-                Date = "string",
+                StarDate = DateTime.MinValue,
+                EndDate = DateTime.MinValue,
+                Date = DateTime.MinValue,
                 TutorId = 1
             };
 
@@ -96,9 +96,9 @@ namespace StudyDesck.API.Test
             var Shedule = new Schedule()
             {
                 Id = 1,
-                StarDate = "string",
-                EndDate = "string",
-                Date = "string",
+                StarDate = DateTime.MinValue,
+                EndDate = DateTime.MinValue,
+                Date = DateTime.MinValue,
                 TutorId = 1
             };
 
@@ -124,9 +124,9 @@ namespace StudyDesck.API.Test
             var Shedule = new Schedule()
             {
                 Id = 1,
-                StarDate = "string",
-                EndDate = "string",
-                Date = "string",
+                StarDate = DateTime.MinValue,
+                EndDate = DateTime.MinValue,
+                Date = DateTime.MinValue,
                 TutorId = 1
             };
 
@@ -152,9 +152,9 @@ namespace StudyDesck.API.Test
             var Shedule = new Schedule()
             {
                 Id = 1,
-                StarDate = "string",
-                EndDate = "string",
-                Date = "string",
+                StarDate = DateTime.MinValue,
+                EndDate = DateTime.MinValue,
+                Date = DateTime.MinValue,
                 TutorId = 1
             };
 
@@ -180,9 +180,9 @@ namespace StudyDesck.API.Test
             var Shedule = new Schedule()
             {
                 Id = 1,
-                StarDate = "string",
-                EndDate = "string",
-                Date = "string",
+                StarDate = DateTime.MinValue,
+                EndDate = DateTime.MinValue,
+                Date = DateTime.MinValue,
                 TutorId = 1
             };
 
