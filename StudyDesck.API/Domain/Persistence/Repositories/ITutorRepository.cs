@@ -9,8 +9,9 @@ namespace StudyDesck.API.Domain.Persistence.Repositories
     public interface ITutorRepository
     {
         Task<IEnumerable<Tutor>> ListAsync();
+        Task<IEnumerable<Tutor>> ListByCareerIdAsync(int careerId);
+        Task<Tutor> FindById(int tutorId);
         Task AddAsync(Tutor tutor);
-        Task<Tutor> FindById(int id);
         void Update(Tutor tutor);
         void Remove(Tutor tutor);
     }

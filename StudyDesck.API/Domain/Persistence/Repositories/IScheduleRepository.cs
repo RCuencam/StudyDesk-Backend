@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace StudyDesck.API.Domain.Persistence.Repositories
 {
-    public interface ISheduleRepository
+    public interface IScheduleRepository
     {
         Task<IEnumerable<Schedule>> ListAsync();
-        //Task<IEnumerable<Schedule>> ListByTutorIdAsync(int tutorId);
+        Task<IEnumerable<Schedule>> ListByTutorIdAsync(int tutorId);
         Task AddAsync(Schedule shedule);
         Task<Schedule> FindById(int id);
         void Update(Schedule shedule);

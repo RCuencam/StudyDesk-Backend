@@ -10,10 +10,10 @@ namespace StudyDesck.API.Domain.Services
     public interface ITutorService
     {
         Task<IEnumerable<Tutor>> ListAsync();
-        Task<IEnumerable<Tutor>> ListByTopicIdAsync(int topicId);
-        Task<TutorResponse> GetByIdAsync(int id);
-        Task<TutorResponse> SaveAsync(Tutor tutor);
-        Task<TutorResponse> UpdateAsync(int id, Tutor tutor);
-        Task<TutorResponse> DeleteAsync(int id);
+        Task<IEnumerable<Tutor>> ListByCareerIdAsync(int carrerId);
+        Task<TutorResponse> GetByIdAsync(int tutorId);
+        Task<TutorResponse> SaveAsync(int careerId, Tutor tutor);
+        Task<TutorResponse> UpdateAsync(int tutorId, Tutor tutor);
+        Task<TutorResponse> DeleteAsync(int tutorId);
     }
 }

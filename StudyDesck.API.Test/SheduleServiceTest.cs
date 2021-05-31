@@ -29,7 +29,7 @@ namespace StudyDesck.API.Test
             var mockSheduleRepository = GetDefaultSheduleRepositoryInstance();
 
             mockSheduleRepository.Setup(r => r.ListAsync()).ReturnsAsync(new List<Schedule>());
-            var service = new SheduleService(mockSheduleRepository.Object, mockUnitOfWork.Object);
+            var service = new ScheduleService(mockSheduleRepository.Object, mockUnitOfWork.Object);
 
             // Act
             List<Schedule> result = (List<Schedule>)await service.ListAsync();
@@ -49,10 +49,10 @@ namespace StudyDesck.API.Test
             var SheduleId = 1;
 
             mockSheduleRepository.Setup(r => r.FindById(SheduleId)).Returns(Task.FromResult<Schedule>(null));
-            var service = new SheduleService(mockSheduleRepository.Object, mockUnitOfWork.Object);
+            var service = new ScheduleService(mockSheduleRepository.Object, mockUnitOfWork.Object);
 
             // Act
-            SheduleResponse result = await service.GetByIdAsync(SheduleId);
+            ScheduleResponse result = await service.GetByIdAsync(SheduleId);
             var message = result.Message;
 
             // Assert
@@ -76,10 +76,10 @@ namespace StudyDesck.API.Test
             };
 
             mockSheduleRepository.Setup(r => r.FindById(SheduleId)).Returns(Task.FromResult(Shedule));
-            var service = new SheduleService(mockSheduleRepository.Object, mockUnitOfWork.Object);
+            var service = new ScheduleService(mockSheduleRepository.Object, mockUnitOfWork.Object);
 
             // Act
-            SheduleResponse result = await service.GetByIdAsync(SheduleId);
+            ScheduleResponse result = await service.GetByIdAsync(SheduleId);
             var resource = result.Resource;
 
             // Assert
@@ -104,10 +104,10 @@ namespace StudyDesck.API.Test
 
             mockSheduleRepository.Setup(r => r.FindById(SheduleId)).Returns(Task.FromResult(Shedule));
             mockSheduleRepository.Setup(r => r.Update(Shedule));
-            var service = new SheduleService(mockSheduleRepository.Object, mockUnitOfWork.Object);
+            var service = new ScheduleService(mockSheduleRepository.Object, mockUnitOfWork.Object);
 
             // Act
-            SheduleResponse result = await service.UpdateAsync(SheduleId, Shedule);
+            ScheduleResponse result = await service.UpdateAsync(SheduleId, Shedule);
             var resource = result.Resource;
 
             // Assert
@@ -132,10 +132,10 @@ namespace StudyDesck.API.Test
 
             mockSheduleRepository.Setup(r => r.FindById(SheduleId)).Returns(Task.FromResult<Schedule>(null));
             mockSheduleRepository.Setup(r => r.Update(Shedule));
-            var service = new SheduleService(mockSheduleRepository.Object, mockUnitOfWork.Object);
+            var service = new ScheduleService(mockSheduleRepository.Object, mockUnitOfWork.Object);
 
             // Act
-            SheduleResponse result = await service.UpdateAsync(SheduleId, Shedule);
+            ScheduleResponse result = await service.UpdateAsync(SheduleId, Shedule);
             var message = result.Message;
 
             // Assert
@@ -160,10 +160,10 @@ namespace StudyDesck.API.Test
 
             mockSheduleRepository.Setup(r => r.FindById(SheduleId)).Returns(Task.FromResult<Schedule>(null));
             mockSheduleRepository.Setup(r => r.Remove(Shedule));
-            var service = new SheduleService(mockSheduleRepository.Object, mockUnitOfWork.Object);
+            var service = new ScheduleService(mockSheduleRepository.Object, mockUnitOfWork.Object);
 
             // Act
-            SheduleResponse result = await service.DeleteAsync(SheduleId);
+            ScheduleResponse result = await service.DeleteAsync(SheduleId);
             var message = result.Message;
 
             // Assert
@@ -188,19 +188,19 @@ namespace StudyDesck.API.Test
 
             mockSheduleRepository.Setup(r => r.FindById(SheduleId)).Returns(Task.FromResult(Shedule));
             mockSheduleRepository.Setup(r => r.Remove(Shedule));
-            var service = new SheduleService(mockSheduleRepository.Object, mockUnitOfWork.Object);
+            var service = new ScheduleService(mockSheduleRepository.Object, mockUnitOfWork.Object);
 
             // Act
-            SheduleResponse result = await service.DeleteAsync(SheduleId);
+            ScheduleResponse result = await service.DeleteAsync(SheduleId);
             var instance = result.Resource;
 
             // Assert
             instance.Should().Be(Shedule);
         }
 
-        private Mock<ISheduleRepository> GetDefaultSheduleRepositoryInstance()
+        private Mock<IScheduleRepository> GetDefaultSheduleRepositoryInstance()
         {
-            return new Mock<ISheduleRepository>();
+            return new Mock<IScheduleRepository>();
         }
         private Mock<IUnitOfWork> GetDefaultUnitOfWorkRepositoryInstance()
         {
