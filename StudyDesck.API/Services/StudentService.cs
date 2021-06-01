@@ -12,7 +12,7 @@ namespace StudyDesck.API.Services
     public class StudentService : IStudentService
     {
         private readonly IStudentRepository _studentRepository;
-        //private readonly ICareerRepository _careerRepository;
+        private readonly ICareerRepository _careerRepository;
         private readonly ISessionReservationRepository _sessionReservationRepository;
         private readonly IUnitOfWork _unitOfWork;
 
@@ -99,5 +99,6 @@ namespace StudyDesck.API.Services
                 return new StudentResponse("Has ocurred an error updating the student " + e.Message);
             }
         }
+
     }
 }

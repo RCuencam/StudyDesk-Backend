@@ -13,5 +13,7 @@ namespace StudyDesck.API.Domain.Models
 
         // relationships
         public List<Session> Sessions { get; set; }
+        public List<TutorReservation> TutorReservations { get; set; }
+
     }
 }

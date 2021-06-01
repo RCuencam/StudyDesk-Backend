@@ -24,6 +24,7 @@ namespace StudyDesck.API.Mapping
             CreateMap<Schedule, SheduleResource>();
             CreateMap<SessionReservation, SessionReservationResource>();
             CreateMap<StudyMaterial, StudyMaterialResource>();
+            CreateMap<TutorReservation, TutorReservationResource>();
         }
 
     }

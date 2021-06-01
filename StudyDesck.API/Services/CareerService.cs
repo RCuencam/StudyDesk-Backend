@@ -12,6 +12,7 @@ namespace StudyDesck.API.Services
     public class CareerService : ICareerService
     {
         private readonly ICareerRepository _careerRepository;
+        private readonly IInstituteRepository _instituteRepository;
         //private readonly IInstituteRepository _instituteRepository;
         private readonly IUnitOfWork _unitOfWork;
 
@@ -47,6 +48,18 @@ namespace StudyDesck.API.Services
                 return new CareerResponse("Career not found");
 
             return new CareerResponse(existingCareer);
+        }
+
+        public async Task<IEnumerable<Career>> FindByInstituteId(int instituteId)
+        {
+            var list = await _careerRepository.FindByInstituteIdAsync(instituteId);
+            return list;
+        }
+
+        public async Task<IEnumerable<Career>> GetByInstituteIdAndCareerId(int instituteId, int careerId)
+        {
+            var list = await _careerRepository.FindByInstituteIdAndCareerId(instituteId, careerId);
+            return list;
         }
 
         public async Task<IEnumerable<Career>> ListAsync()

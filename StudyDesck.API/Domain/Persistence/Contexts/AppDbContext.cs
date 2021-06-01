@@ -25,6 +25,8 @@ namespace StudyDesck.API.Domain.Persistence.Contexts
         public DbSet<StudyMaterial> StudyMaterials { get; set; }
         public DbSet<SessionReservation> SessionReservations { get; set; }
         public DbSet<StudentMaterial> StudentMaterials { get; set; }
+        public DbSet<TutorReservation> TutorReservations { get; set; }
+
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
@@ -211,6 +213,26 @@ namespace StudyDesck.API.Domain.Persistence.Contexts
                 .HasOne(sms => sms.Institute)
                 .WithMany(i => i.StudentMaterials)
                 .HasForeignKey(sms => sms.InstituteId);
+
+            builder.Entity<TutorReservation>().ToTable("TutorReservations");
+            builder.Entity<TutorReservation>().HasKey(tr => new { tr.StudentId, tr.PlatformId, tr.TutorId });
+            builder.Entity<TutorReservation>().Property(tr => tr.Qualification);
+            builder.Entity<TutorReservation>().Property(tr => tr.StartDateTime);
+            //relationships
+            builder.Entity<TutorReservation>()
+                .HasOne(tr => tr.Tutor)
+                .WithMany(tr => tr.TutorReservations)
+                .HasForeignKey(tr => tr.TutorId);
+
+            builder.Entity<TutorReservation>()
+                .HasOne(tr => tr.Student)
+                .WithMany(tr => tr.TutorReservations)
+                .HasForeignKey(tr => tr.StudentId);
+
+            builder.Entity<TutorReservation>()
+                .HasOne(tr => tr.Platform)
+                .WithMany(tr => tr.TutorReservations)
+                .HasForeignKey(tr => tr.PlatformId);
 
             // end region
             builder.ApplySnakeCaseNamingConvetion();
