@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace StudyDesck.API.Controllers
 {
     [ApiController]
-    [Route("/api/[controller]")]
+    [Route("/api")]
     [Produces("application/json")]
     public class TutorReservationsController : ControllerBase
     {
@@ -31,7 +31,7 @@ namespace StudyDesck.API.Controllers
             _mapper = mapper;
         }
 
-        [HttpGet]
+        [HttpGet("tutor_reservations")]
         public async Task<IEnumerable<TutorReservationResource>> GetAllAsync()
         {
 
@@ -40,7 +40,7 @@ namespace StudyDesck.API.Controllers
             return resources;
         }
 
-        [HttpPost("{studentId}/{tutorId}/{platformId}")]
+        [HttpPost("/students/{studentId}/tutors/{tutorId}/platforms/{platformId}")]
         public async Task<IActionResult> PostAsync(int studentId, int tutorId, int platformId, [FromBody] SaveTutorReservationResource resource)
         {
             if (!ModelState.IsValid)
@@ -58,7 +58,7 @@ namespace StudyDesck.API.Controllers
             return Ok(tutorReservationResource);
         }
 
-        [HttpPut("{studentId}/{tutorId}/{platformId}")]
+        [HttpPut("/students/{studentId}/tutors/{tutorId}/platforms/{platformId}")]
         public async Task<IActionResult> PutAsync(int studentId, int tutorId, int platformId, [FromBody] SaveTutorReservationResource resource)
         {
             if (!ModelState.IsValid)
@@ -74,7 +74,7 @@ namespace StudyDesck.API.Controllers
             return Ok(tutorReservationResource);
         }
 
-        [HttpDelete("{studentId}/{tutorId}/{platformId}")]
+        [HttpDelete("students/{studentId}/tutors/{tutorId}/platforms/{platformId}")]
         public async Task<IActionResult> DeleteAsync(int studentId, int tutorId, int platformId)
         {
             var result = await _tutorReservationService.UnassignTutorReservationAsync(studentId, tutorId, platformId);

@@ -65,5 +65,16 @@ namespace StudyDesck.API.Controllers
             return Ok(careerResource);
         }
 
+        [HttpDelete("institutes/{instituteId}/careers/{careerId}")]
+        public async Task<IActionResult> DeleteAsync(int careerId)
+        {
+            var result = await _careerService.DeleteAsync(careerId);
+            if (!result.Success)
+                return BadRequest(result.Message);
+
+            var careerResource = _mapper.Map<Career, CareerResource>(result.Resource);
+            return Ok(careerResource);
+        }
+
     }
 }
