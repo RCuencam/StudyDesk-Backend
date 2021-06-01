@@ -12,13 +12,12 @@ namespace StudyDesck.API.Services
     public class TutorService : ITutorService
     {
         private readonly ITutorRepository _tutorRepository;
-        private readonly IExpertTopicRepository _expertTopicRepository;
         private readonly IUnitOfWork _unitOfWork;
-        public TutorService(ITutorRepository tutorRepository, IUnitOfWork unitOfWork, IExpertTopicRepository expertTopicRepository)
+
+        public TutorService(ITutorRepository guardianRepository, IUnitOfWork unitOfWork)
         {
-            _tutorRepository = tutorRepository;
+            _tutorRepository = guardianRepository;
             _unitOfWork = unitOfWork;
-            _expertTopicRepository = expertTopicRepository;
         }
 
         public async Task<TutorResponse> DeleteAsync(int id)
@@ -37,13 +36,14 @@ namespace StudyDesck.API.Services
             }
             catch (Exception ex)
             {
-                return new TutorResponse($"An error ocurred while deleting tutor: {ex.Message}");
+                return new TutorResponse($"An error ocurred while deleting the tutor: {ex.Message}");
             }
         }
 
         public async Task<TutorResponse> GetByIdAsync(int id)
         {
             var existingTutor = await _tutorRepository.FindById(id);
+
             if (existingTutor == null)
                 return new TutorResponse("Tutor not found");
             return new TutorResponse(existingTutor);
@@ -54,17 +54,11 @@ namespace StudyDesck.API.Services
             return await _tutorRepository.ListAsync();
         }
 
-        public async Task<IEnumerable<Tutor>> ListByTopicIdAsync(int topicId)
-        {
-            var expertTopics = await _expertTopicRepository.ListByTopicIdAsync(topicId);
-            var tutors = expertTopics.Select(et => et.Tutor).ToList();
-            return tutors;
-        }
-
-        public async Task<TutorResponse> SaveAsync(Tutor tutor)
+        public async Task<TutorResponse> SaveAsync(int careerId, Tutor tutor)
         {
             try
             {
+                tutor.CareerId = careerId;
                 await _tutorRepository.AddAsync(tutor);
                 await _unitOfWork.CompleteAsync();
 
@@ -85,8 +79,12 @@ namespace StudyDesck.API.Services
 
             existingTutor.Name = tutor.Name;
             existingTutor.LastName = tutor.LastName;
+            existingTutor.Description = tutor.Description;
+            existingTutor.Logo = tutor.Logo;
             existingTutor.Email = tutor.Email;
             existingTutor.Password = tutor.Password;
+            existingTutor.PricePerHour = tutor.PricePerHour;
+
 
             try
             {
@@ -99,6 +97,11 @@ namespace StudyDesck.API.Services
             {
                 return new TutorResponse($"An error ocurred while updating the tutor: {ex.Message}");
             }
+        }
+
+        public async Task<IEnumerable<Tutor>> ListByCareerIdAsync(int careerId)
+        {
+            return await _tutorRepository.ListByCareerIdAsync(careerId);
         }
     }
 }

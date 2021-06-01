@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace StudyDesck.API.Domain.Services.Comunications
 {
-    public class SheduleResponse : BaseResponse<Schedule>
+    public class ScheduleResponse : BaseResponse<Schedule>
     {
-        public SheduleResponse(Schedule resource) : base(resource)
+        public ScheduleResponse(Schedule resource) : base(resource)
         {
         }
 
-        public SheduleResponse(string message) : base(message)
+        public ScheduleResponse(string message) : base(message)
         {
         }
     }
