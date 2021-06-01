@@ -14,5 +14,8 @@ namespace StudyDesck.API.Resources
         [Required]
         [MaxLength(50)]
         public string Description { get; set; }
+
+        [Required]
+        public string FileUrl { get; set; }
     }
 }

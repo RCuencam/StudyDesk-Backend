@@ -54,9 +54,8 @@ namespace StudyDesck.API.Controllers
                 return BadRequest(ModelState.GetErrorMessages());
             }
 
-            resource.InstituteId = instituteId;
             var career = _mapper.Map<SaveCareerResource, Career>(resource);
-            var result = await _careerService.SaveAsync(career);
+            var result = await _careerService.SaveAsync(instituteId,career);
 
             if (!result.Success)
                 return BadRequest(result.Message);

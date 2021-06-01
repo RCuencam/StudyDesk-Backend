@@ -88,6 +88,20 @@ namespace StudyDesck.API.Services
             }
         }
 
+        public async Task<CareerResponse> SaveAsync(int instituteId,Career career)
+        {
+            try
+            {
+                career.InstituteId = instituteId;
+                await _careerRepository.AddAsync(career);
+                await _unitOfWork.CompleteAsync();
+                return new CareerResponse(career);
+            }
+            catch (Exception e)
+            {
+                return new CareerResponse("Has ocurred an error saving the career " + e.Message);
+            }
+        }
         public async Task<CareerResponse> UpdateAsync(int id, Career career)
         {
             var existingCareer = await _careerRepository.FindById(id);

@@ -20,13 +20,8 @@ namespace StudyDesck.API.Test
         {
 
         }
-<<<<<<< HEAD
         
        [Test]
-=======
-
-        [Test]
->>>>>>> 5e29f9a999c026c2acbcc2e04eb4dfa5d842bb37
         public async Task GetAllAsyncWhenNoSheduleReturnsEmptyCollection()
         {
             // Arrange

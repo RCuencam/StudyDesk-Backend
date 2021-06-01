@@ -9,7 +9,7 @@ namespace StudyDesck.API.Resources
     public class SavePlatformResource
     {
         [Required]
-        public string UrlReunion { get; set; }
+        public string PlatformUrl { get; set; }
         [Required]
         [MaxLength(15)]
         public string Name { get; set; }

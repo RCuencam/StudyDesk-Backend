@@ -13,6 +13,7 @@ namespace StudyDesck.API.Domain.Services
         Task<IEnumerable<Student>> ListBySessionIdAsync(int sessionId);
         Task<StudentResponse> GetByIdAsync(int id);
         Task<StudentResponse> SaveAsync(Student student);
+        Task<StudentResponse> SaveAsync(int careerId, Student student);
         Task<StudentResponse> UpdateAsync(int id, Student student);
         Task<StudentResponse> DeleteAsync(int id);
 

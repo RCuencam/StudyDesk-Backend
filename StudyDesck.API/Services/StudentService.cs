@@ -80,6 +80,20 @@ namespace StudyDesck.API.Services
                 return new StudentResponse("Has ocurred an error saving the student " + e.Message);
             }
         }
+        public async Task<StudentResponse> SaveAsync(int careerId,Student student)
+        {
+            try
+            {
+                student.CareerId = careerId;
+                await _studentRepository.AddAsync(student);
+                await _unitOfWork.CompleteAsync();
+                return new StudentResponse(student);
+            }
+            catch (Exception e)
+            {
+                return new StudentResponse("Has ocurred an error saving the student " + e.Message);
+            }
+        }
 
         public async Task<StudentResponse> UpdateAsync(int id, Student student)
         {

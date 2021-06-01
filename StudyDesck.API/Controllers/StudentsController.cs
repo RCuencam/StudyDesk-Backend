@@ -50,25 +50,7 @@ namespace StudyDesck.API.Controllers
         }
 
 
-        [HttpPost]
-        [ProducesResponseType(typeof(StudentResource), 200)]
-        [ProducesResponseType(typeof(BadRequestResult), 404)]
-        public async Task<IActionResult> PostAsync([FromBody] SaveStudentResource resource)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState.GetErrorMessages());
-            }
-
-            var student = _mapper.Map<SaveStudentResource, Student>(resource);
-            var result = await _studentService.SaveAsync(student);
-
-            if (!result.Success)
-                return BadRequest(result.Message);
-
-            var studentResource = _mapper.Map<Student, StudentResource>(result.Resource);
-            return Ok(studentResource);
-        }
+        
 
         [HttpPut("{id}")]
         [ProducesResponseType(typeof(StudentResource), 200)]
