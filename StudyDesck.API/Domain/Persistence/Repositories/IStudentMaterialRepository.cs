@@ -16,6 +16,7 @@ namespace StudyDesck.API.Domain.Persistence.Repositories
         void Remove(StudentMaterial studentMaterial);
 
         Task AssignStudentMaterial(int studentId, long materialId, int categoryId, int instituteId); // TODO to see
+        Task AssignStudentMaterial(int studentId, long materialId); // TODO to see
         Task UnassignstudyMaterial(int studentId, long materialId); // TODO to see
     }
 }

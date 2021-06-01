@@ -48,6 +48,11 @@ namespace StudyDesck.API.Services
             return await _studyMaterialRepository.ListAsync();
         }
 
+        public async Task<IEnumerable<StudyMaterial>> ListByStudentIdAsync(int studentId)
+        {
+            return await _studyMaterialRepository.ListByStudentIdAsync(studentId);
+        }
+
         public async Task<StudyMaterialResponse> SaveAsync(StudyMaterial studyMaterial)
         {
             try

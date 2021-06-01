@@ -8,14 +8,9 @@ namespace StudyDesck.API.Resources
 {
     public class SaveStudyMaterialResource
     {
-        [Required]
-        [MaxLength(30)]
         public string Title { get; set; }
-        [Required]
-        [MaxLength(50)]
         public string Description { get; set; }
-
-        [Required]
         public string FileUrl { get; set; }
+        public int TopicId { get; set; }
     }
 }
