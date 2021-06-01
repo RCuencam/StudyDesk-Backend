@@ -11,14 +11,14 @@ using System.Threading.Tasks;
 
 namespace StudyDesck.API.Controllers
 {
-    [Route("/api/[controller]")]
+    [Route("/api/tutors/{tutorId}/sessions")]
     [Produces("application/json")]
-    public class SessionsController : ControllerBase
+    public class TutorSessionsController : ControllerBase
     {
         private readonly ISessionService _sessionService;
         private readonly IMapper _mapper;
 
-        public SessionsController(ISessionService sessionService, IMapper mapper)
+        public TutorSessionsController(ISessionService sessionService, IMapper mapper)
         {
             _sessionService = sessionService;
             _mapper = mapper;
@@ -26,33 +26,33 @@ namespace StudyDesck.API.Controllers
 
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<SessionResource>), 200)]
-        public async Task<IEnumerable<SessionResource>> GetAllAsync()
+        public async Task<IEnumerable<SessionResource>> GetAllByTutorIdAsync(int tutorId)
         {
-            var sessions = await _sessionService.ListAsync();
+            var sessions = await _sessionService.ListByTutorIdAsync(tutorId);
             var resources = _mapper.Map<IEnumerable<Session>, IEnumerable<SessionResource>>(sessions);
 
             return resources;
         }
 
-        [HttpGet("{id}")]
-        [ProducesResponseType(typeof(SessionResource), 200)]
-        [ProducesResponseType(typeof(BadRequestResult), 404)]
-        public async Task<IActionResult> GetAsync(int id)
-        {
-            var result = await _sessionService.GetByIdAsync(id);
-            if (!result.Success)
-                return BadRequest(result.Message);
+        //[HttpGet("{id}")]
+        //[ProducesResponseType(typeof(SessionResource), 200)]
+        //[ProducesResponseType(typeof(BadRequestResult), 404)]
+        //public async Task<IActionResult> GetAsync(int id)
+        //{
+        //    var result = await _sessionService.GetByIdAsync(id);
+        //    if (!result.Success)
+        //        return BadRequest(result.Message);
 
-            var SessionResource = _mapper.Map<Session, SessionResource>(result.Resource);
+        //    var SessionResource = _mapper.Map<Session, SessionResource>(result.Resource);
 
-            return Ok(SessionResource);
-        }
+        //    return Ok(SessionResource);
+        //}
 
 
         [HttpPost]
         [ProducesResponseType(typeof(SessionResource), 200)]
         [ProducesResponseType(typeof(BadRequestResult), 404)]
-        public async Task<IActionResult> PostAsync([FromBody] SaveSessionResource resource)
+        public async Task<IActionResult> PostAsync(int tutorId,[FromBody] SaveSessionResource resource)
         {
             if (!ModelState.IsValid)
             {
@@ -60,7 +60,7 @@ namespace StudyDesck.API.Controllers
             }
 
             var session = _mapper.Map<SaveSessionResource, Session>(resource);
-            var result = await _sessionService.SaveAsync(session);
+            var result = await _sessionService.SaveAsync(tutorId,session);
 
             if (!result.Success)
                 return BadRequest(result.Message);
@@ -69,10 +69,10 @@ namespace StudyDesck.API.Controllers
             return Ok(SessionResource);
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("{sessionId}")]
         [ProducesResponseType(typeof(SessionResource), 200)]
         [ProducesResponseType(typeof(BadRequestResult), 404)]
-        public async Task<IActionResult> PutAsync(int id, [FromBody] SaveSessionResource resource)
+        public async Task<IActionResult> PutAsync(int tutorId,int sessionId, [FromBody] SaveSessionResource resource)
         {
             if (!ModelState.IsValid)
             {
@@ -80,7 +80,7 @@ namespace StudyDesck.API.Controllers
             }
 
             var session = _mapper.Map<SaveSessionResource, Session>(resource);
-            var result = await _sessionService.UpdateAsync(id, session);
+            var result = await _sessionService.UpdateAsync(tutorId,sessionId, session);
 
             if (!result.Success)
                 return BadRequest(result.Message);
@@ -89,12 +89,12 @@ namespace StudyDesck.API.Controllers
             return Ok(SessionResource);
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("{sessionId}")]
         [ProducesResponseType(typeof(SessionResource), 200)]
         [ProducesResponseType(typeof(BadRequestResult), 404)]
-        public async Task<IActionResult> DeleteAsync(int id)
+        public async Task<IActionResult> DeleteAsync(int tutorId,int sessionId)
         {
-            var result = await _sessionService.DeleteAsync(id);
+            var result = await _sessionService.DeleteAsync(tutorId,sessionId);
             if (!result.Success)
                 return BadRequest(result.Message);
 

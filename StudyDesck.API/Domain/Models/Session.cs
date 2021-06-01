@@ -20,7 +20,7 @@ namespace StudyDesck.API.Domain.Models
         public int TutorId { get; set; }
         public Tutor Tutor { get; set; }
         
-        public int PlataformId { get; set; }
+        public int PlatformId { get; set; }
         public Platform Platform { get; set; }
 
         public int TopicId { get; set; }

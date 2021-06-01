@@ -14,9 +14,9 @@ namespace StudyDesck.API.Controllers
 {
     //Cuales son los estudiantes asociados a una session
     [ApiController]
-    [Route("/api/[controller]")]
+    [Route("/api/students/{studentId}/sessions")]
     [Produces("application/json")]
-    public class SessionReservationsController : ControllerBase
+    public class StudentSessionsController : ControllerBase
     {
         private readonly ISessionReservationService _sessionReservationService;
         private readonly IStudentService _studentService;
@@ -24,7 +24,7 @@ namespace StudyDesck.API.Controllers
         private readonly IMapper _mapper;
 
       
-        public SessionReservationsController(ISessionReservationService sessionReservationService, IStudentService studentService, ISessionService sessionService, IMapper mapper)
+        public StudentSessionsController(ISessionReservationService sessionReservationService, IStudentService studentService, ISessionService sessionService, IMapper mapper)
         {
             _sessionReservationService = sessionReservationService;
             _studentService = studentService;
@@ -32,21 +32,7 @@ namespace StudyDesck.API.Controllers
             _mapper = mapper;
         }
 
-        [SwaggerOperation(
-            Summary = "List Students by SessionId",
-            Description = "This endpoint returns all students that have the 'SessionId'",
-            OperationId = "ListStudentsBySessionId"
-        )]
-        [SwaggerResponse(200, "List of Students by SessionId", typeof(IEnumerable<StudentResource>))]
-        [HttpGet("{sessionId}/students")]
-        [ProducesResponseType(typeof(IEnumerable<StudentResource>), 200)]
-        public async Task<IEnumerable<StudentResource>> GetAllStudentsBySessionIdAsync(int sessionId)
-        {
-            var students = await _studentService.ListBySessionIdAsync(sessionId);
-            var resources = _mapper.Map<IEnumerable<Student>, IEnumerable<StudentResource>>(students);
-
-            return resources;
-        }
+        
 
         [SwaggerOperation(
             Summary = "List Sessions by StudentId",
@@ -54,7 +40,7 @@ namespace StudyDesck.API.Controllers
             OperationId = "ListSessionsByStudentId"
         )]
         [SwaggerResponse(200, "List of sessions by StudentId", typeof(IEnumerable<SessionResource>))]
-        [HttpGet("{studentId}/sessions")]
+        [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<SessionResource>), 200)]
         public async Task<IEnumerable<SessionResource>> GetAllSessionsByStudentIdAsync(int studentId)
         {
@@ -66,15 +52,15 @@ namespace StudyDesck.API.Controllers
 
 
         [SwaggerOperation(
-            Summary = "Post Session Reservation by SessionId and StudentId",
+            Summary = "Post Session Reservation by StudentId and SessionId",
             Description = "This endpoint adds a session reservation between a session and a student",
             OperationId = "PostSessionReservationBySessionIdAndStudentId"
         )]
         [SwaggerResponse(200, "Post a session reservation by SessionId and StudentId", typeof(IEnumerable<SessionResource>))]
-        [HttpPost("{sessionId}/students/{studentId}")]
+        [HttpPost("{sessionId}")]
         [ProducesResponseType(typeof(IEnumerable<SessionReservationResource>), 200)]
         [ProducesResponseType(typeof(BadRequestResult), 404)]
-        public async Task<IActionResult> PostAsync(int sessionId, int studentId, [FromBody] SaveSessionReservationResource resource)
+        public async Task<IActionResult> PostAsync(int studentId, int sessionId, [FromBody] SaveSessionReservationResource resource)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState.GetErrorMessages());
@@ -93,15 +79,15 @@ namespace StudyDesck.API.Controllers
 
 
         [SwaggerOperation(
-           Summary = "Update Session Reservation by SessionId and StudentId",
+           Summary = "Update Session Reservation by StudentId and SessionId",
            Description = "This endpoint updates a session reservation between a session and a student",
            OperationId = "UpdateSessionReservationBySessionIdAndStudentId"
        )]
         [SwaggerResponse(200, "Update a session reservation by SessionId and StudentId", typeof(IEnumerable<SessionResource>))]
-        [HttpPut("{sessionId}/students/{studentId}")]
+        [HttpPut("{sessionId}")]
         [ProducesResponseType(typeof(IEnumerable<SessionReservationResource>), 200)]
         [ProducesResponseType(typeof(BadRequestResult), 404)]
-        public async Task<IActionResult> PutAsync(int sessionId, int studentId, [FromBody] SaveSessionReservationResource resource)
+        public async Task<IActionResult> PutAsync(int studentId, int sessionId, [FromBody] SaveSessionReservationResource resource)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState.GetErrorMessages());
@@ -119,15 +105,15 @@ namespace StudyDesck.API.Controllers
 
 
         [SwaggerOperation(
-           Summary = "Delete Session Reservation by SessionId and StudentId",
+           Summary = "Delete Session Reservation by StudentId and SessionId",
            Description = "This endpoint removes a session reservation between a session and a student",
            OperationId = "DeleteSessionReservationBySessionIdAndStudentId"
        )]
         [SwaggerResponse(200, "Delete a session reservation by SessionId and StudentId", typeof(IEnumerable<SessionResource>))]
-        [HttpDelete("{sessionId}/students/{studentId}")]
+        [HttpDelete("{sessionId}")]
         [ProducesResponseType(typeof(IEnumerable<SessionReservationResource>), 200)]
         [ProducesResponseType(typeof(BadRequestResult), 404)]
-        public async Task<IActionResult> DeleteAsync(int sessionId, int studentId)
+        public async Task<IActionResult> DeleteAsync(int studentId, int sessionId)
         {
             var result = await _sessionReservationService.UnassignSessionReservationAsync(studentId,sessionId);
             if (!result.Success)

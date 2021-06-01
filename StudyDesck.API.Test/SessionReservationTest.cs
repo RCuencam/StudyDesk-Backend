@@ -47,6 +47,33 @@ namespace StudyDesck.API.Test
         }
 
         [Test]
+        public async Task GetByStudentIdAndSessionIdAsyncWhenValidIdsReturnsASessionReservation()
+        {
+            //Arrange
+            var mockUnitOfWork = GetDefaultIUnitOfWorkInstance();
+            var mockSessionReservationRepository = GetDefaultISessionReservationRepositoryInstance();
+            var mockSessionRepository = GetDefaultISessionRepositoryInstance();
+            var mockStudentRepository = GetDefaultIStudentRepositoryInstance();
+            int sessionId = 1;
+            int studentId = 1;
+
+            var sessionReservDTO = new SessionReservation { Confirmed = false, Qualification = 2, StudentId = studentId, SessionId = sessionId };
+
+            mockSessionReservationRepository.Setup(sr => sr.FindByStudentIdAndSessionId(studentId, sessionId))
+                .Returns(Task.FromResult<SessionReservation>(sessionReservDTO));
+            var service = new SessionReservationService(mockSessionReservationRepository.Object, mockSessionRepository.Object, mockStudentRepository.Object, mockUnitOfWork.Object);
+
+
+            // Act
+            SessionReservationResponse result = await service.GetByStudentIdAndSessionId(studentId, sessionId);
+            var sessionReserv = result.Resource;
+
+            // Assert
+            Assert.AreEqual(sessionReserv, sessionReservDTO);
+
+        }
+
+        [Test]
         public async Task GetAllAsyncWhenNoSessionReservationsReturnsEmptyCollection()
         {
             //Arrange
@@ -65,7 +92,49 @@ namespace StudyDesck.API.Test
             sessionReservationsCount.Should().Equals(0);
         }
 
-        /*
+        [Test]
+        public async Task GetAllAsyncWhenSessionReservationsReturnsACollection()
+        {
+            //Arrange
+            var mockSessionReservationRepository = GetDefaultISessionReservationRepositoryInstance();
+            var mockSessionRepository = GetDefaultISessionRepositoryInstance();
+            var mockStudentRepository = GetDefaultIStudentRepositoryInstance();
+            var mockUnitOfWork = GetDefaultIUnitOfWorkInstance();
+
+            var sessionReservatioList = new List<SessionReservation>()
+            {
+                new SessionReservation{
+                    Qualification=0,
+                    Confirmed = true,
+                    SessionId = 1,
+                    StudentId = 1,
+                },
+                new SessionReservation{
+                    Qualification=2,
+                    Confirmed = false,
+                    SessionId = 3,
+                    StudentId = 1,
+                },
+                new SessionReservation
+                {
+                    Qualification=1,
+                    Confirmed = false,
+                    SessionId = 2,
+                    StudentId = 1,
+                }
+        };
+
+            mockSessionReservationRepository.Setup(r => r.ListAsync()).ReturnsAsync(sessionReservatioList);
+
+            var service = new SessionReservationService(mockSessionReservationRepository.Object, mockSessionRepository.Object, mockStudentRepository.Object, mockUnitOfWork.Object);
+            //Act
+            List<SessionReservation> result = (List<SessionReservation>)await service.ListAsync();
+            var sessionReservationsCount = result.Count;
+            //Assert
+            sessionReservationsCount.Should().BeGreaterThan(0);
+        }
+
+
         [Test]
         public async Task AsyncCreateSessionReservationWhenSessionReservationAlreadyExists()
         {
@@ -85,45 +154,37 @@ namespace StudyDesck.API.Test
                 Price = 20,
                 QuantityMembers = 5,
                 Title = "Fisica 1",
-                CategoryID = 1,
-                TutorID = 1,
+                CategoryId = 1,
+                TutorId = 1,
             };
 
-            var student = new Student
-            {
-                Id = 1,
-                Name = "Josias",
-                LastName = "Olaya",
-                Password = "213123",
-                Email = string.Empty,
-                Logo = string.Empty,
-                CareerId=1,
-            };
+            var student = new Student { Id = 1, Name = "Josias" };
+            
 
             var sessionReservation = new SessionReservation
             {
-                SessionId = 1,
-                StudentId = 1,
                 Confirmed = false,
-                Qualification = 2,
+                Qualification = 0,
+                Session = session,
+                SessionId = session.Id,
+                Student = student,
+                StudentId = student.Id,
             };
 
-            mockSessionRepository.Setup(r => r.AddAsync(session));
-            mockStudentRepository.Setup(r => r.AddAsync(student));
-            mockSessionReservationRepository.Setup(r => r.AddAsync(sessionReservation));
-            var service = new SessionReservationService(mockSessionReservationRepository.Object, mockSessionRepository.Object, mockStudentRepository.Object, mockUnitOfWork.Object);
-            //var serviceSession = new SessionService(mockSessionRepository.Object, mockSessionReservationRepository.Object,mockUnitOfWork.Object);
-            //var serviceStudent = new StudentService(mockStudentRepository.Object, mockSessionReservationRepository.Object, mockUnitOfWork.Object);
 
-            // Act
+            mockSessionReservationRepository.Setup(r => r.FindByStudentIdAndSessionId(student.Id,session.Id)).Returns(Task.FromResult<SessionReservation>(sessionReservation));
+            mockStudentRepository.Setup(r => r.FindById(student.Id)).Returns(Task.FromResult<Student>(student));
+            mockSessionRepository.Setup(r => r.FindById(session.Id)).Returns(Task.FromResult<Session>(session));
+            var service = new SessionReservationService(mockSessionReservationRepository.Object, mockSessionRepository.Object, mockStudentRepository.Object, mockUnitOfWork.Object);
             
+            //Act
             SessionReservationResponse result = await service.AssignSessionReservationAsync(student.Id, session.Id, sessionReservation);
             
             var message = result.Message;
 
             // Assert
             message.Should().Be("This session reservation already exist");
-        }*/
+        }
 
 
         [Test]
