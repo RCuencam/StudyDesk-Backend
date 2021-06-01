@@ -20,7 +20,7 @@ namespace StudyDesck.API.Test
         {
 
         }
-
+        
         [Test]
         public async Task GetAllAsyncWhenNoTutorsReturnsEmptyCollection()
         {
@@ -209,7 +209,7 @@ namespace StudyDesck.API.Test
             // Assert
             instance.Should().Be(Tutor);
         }
-
+        
           private Mock<ITutorRepository> GetDefaultTutorRepositoryInstance()
         {
             return new Mock<ITutorRepository>();
