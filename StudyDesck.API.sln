@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudyDesck.API", "StudyDesck.API\StudyDesck.API.csproj", "{C6C48187-0787-42C8-8B0A-1BE6D443D369}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudyDesck.API.Test", "StudyDesck.API.Test\StudyDesck.API.Test.csproj", "{303742E9-D23D-4441-ABE7-7578A85B854F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudyDesck.API.Test", "StudyDesck.API.Test\StudyDesck.API.Test.csproj", "{303742E9-D23D-4441-ABE7-7578A85B854F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpecFlowStudyDeskTest", "SpecFlowStudyDeskTest\SpecFlowStudyDeskTest.csproj", "{2EB9F7EB-9B07-417D-AE1E-94BFB2256416}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{303742E9-D23D-4441-ABE7-7578A85B854F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{303742E9-D23D-4441-ABE7-7578A85B854F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{303742E9-D23D-4441-ABE7-7578A85B854F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EB9F7EB-9B07-417D-AE1E-94BFB2256416}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EB9F7EB-9B07-417D-AE1E-94BFB2256416}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EB9F7EB-9B07-417D-AE1E-94BFB2256416}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EB9F7EB-9B07-417D-AE1E-94BFB2256416}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
