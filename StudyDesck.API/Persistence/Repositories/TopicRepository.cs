@@ -30,6 +30,14 @@ namespace StudyDesck.API.Persistence.Repositories
             return await _context.Topics.ToListAsync();
         }
 
+        public async Task<IEnumerable<Topic>> ListByCourseIdAsync(int courseId)
+        {
+            return await _context.Topics
+                .Include(t => t.Course)
+                    .ThenInclude(c => c.Career)
+                .ToListAsync();
+        }
+
         public void Remove(Topic topic)
         {
             _context.Topics.Remove(topic);

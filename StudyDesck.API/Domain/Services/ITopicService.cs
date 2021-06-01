@@ -14,5 +14,10 @@ namespace StudyDesck.API.Domain.Services
         Task<TopicResponse> SaveAsync(Topic topic);
         Task<TopicResponse> UpdateAsync(int id, Topic topic);
         Task<TopicResponse> DeleteAsync(int id);
+        Task<IEnumerable<Topic>> ListByCourseIdAsync(int courseId);
+        Task<TopicResponse> SaveAsync(int courseId, Topic topic);
+        Task<TopicResponse> UpdateAsync(int courseId, int id, Topic topic);
+        Task<TopicResponse> GetByIdAsync(int courseId, int id);
+        Task<TopicResponse> DeleteAsync(int courseId, int id);
     }
 }

@@ -4,6 +4,7 @@ using StudyDesck.API.Domain.Models;
 using StudyDesck.API.Domain.Services;
 using StudyDesck.API.Extentions;
 using StudyDesck.API.Resources;
+using Swashbuckle.AspNetCore.Annotations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,14 +13,14 @@ using System.Threading.Tasks;
 namespace StudyDesck.API.Controllers
 {
     [ApiController]
-    [Route("/api/[controller]")]
+    [Route("/api/courses/{courseId}/topics")]
     [Produces("application/json")]
-    public class TopicsController : ControllerBase
+    public class CourseTopicsController : ControllerBase
     {
         private readonly ITopicService _topicService;
         private readonly IMapper _mapper;
 
-        public TopicsController(ITopicService topicService, IMapper mapper)
+        public CourseTopicsController(ITopicService topicService, IMapper mapper)
         {
             _topicService = topicService;
             _mapper = mapper;
@@ -27,21 +28,23 @@ namespace StudyDesck.API.Controllers
 
 
         [HttpGet]
+        [SwaggerOperation(Summary = "List Topics by courseId")]
         [ProducesResponseType(typeof(IEnumerable<TopicResource>), 200)]
-        public async Task<IEnumerable<TopicResource>> GetAllAsync()
+        public async Task<IEnumerable<TopicResource>> GetAllByCourseIdAsync(int courseId)
         {
-            var topics = await _topicService.ListAsync();
+            var topics = await _topicService.ListByCourseIdAsync(courseId);
             var resorces = _mapper.Map<IEnumerable<Topic>, IEnumerable<TopicResource>>(topics);
 
             return resorces;
         }
 
         [HttpGet("{id}")]
+        [SwaggerOperation(Summary = "get a Topic of a Course")]
         [ProducesResponseType(typeof(TopicResource), 200)]
         [ProducesResponseType(typeof(BadRequestResult), 404)]
-        public async Task<IActionResult> GetAsync(int id)
+        public async Task<IActionResult> GetByIdAsync(int courseId, int id)
         {
-            var result = await _topicService.GetByIdAsync(id);
+            var result = await _topicService.GetByIdAsync(courseId, id);
             if (!result.Success)
                 return BadRequest(result.Message);
 
@@ -52,9 +55,10 @@ namespace StudyDesck.API.Controllers
 
 
         [HttpPost]
+        [SwaggerOperation(Summary = "create a Topic for a Course")]
         [ProducesResponseType(typeof(TopicResource), 200)]
         [ProducesResponseType(typeof(BadRequestResult), 404)]
-        public async Task<IActionResult> PostAsync([FromBody] SaveTopicResource resource)
+        public async Task<IActionResult> PostAsync(int courseId, [FromBody] SaveTopicResource resource)
         {
             if (!ModelState.IsValid)
             {
@@ -62,7 +66,7 @@ namespace StudyDesck.API.Controllers
             }
 
             var topic = _mapper.Map<SaveTopicResource, Topic>(resource);
-            var result = await _topicService.SaveAsync(topic);
+            var result = await _topicService.SaveAsync(courseId, topic);
 
             if (!result.Success)
                 return BadRequest(result.Message);
@@ -72,9 +76,10 @@ namespace StudyDesck.API.Controllers
         }
 
         [HttpPut("{id}")]
+        [SwaggerOperation(Summary = "update a Topic of a Course")]
         [ProducesResponseType(typeof(TopicResource), 200)]
         [ProducesResponseType(typeof(BadRequestResult), 404)]
-        public async Task<IActionResult> PutAsync(int id, [FromBody] SaveTopicResource resource)
+        public async Task<IActionResult> PutAsync(int courseId, int id, [FromBody] SaveTopicResource resource)
         {
             if (!ModelState.IsValid)
             {
@@ -82,7 +87,7 @@ namespace StudyDesck.API.Controllers
             }
 
             var topic = _mapper.Map<SaveTopicResource, Topic>(resource);
-            var result = await _topicService.UpdateAsync(id, topic);
+            var result = await _topicService.UpdateAsync(courseId, id, topic);
 
             if (!result.Success)
                 return BadRequest(result.Message);
@@ -92,11 +97,12 @@ namespace StudyDesck.API.Controllers
         }
 
         [HttpDelete("{id}")]
+        [SwaggerOperation(Summary = "delete a Topic of a Course")]
         [ProducesResponseType(typeof(TopicResource), 200)]
         [ProducesResponseType(typeof(BadRequestResult), 404)]
-        public async Task<IActionResult> DeleteAsync(int id)
+        public async Task<IActionResult> DeleteAsync(int courseId, int id)
         {
-            var result = await _topicService.DeleteAsync(id);
+            var result = await _topicService.DeleteAsync(courseId, id);
             if (!result.Success)
                 return BadRequest(result.Message);
 

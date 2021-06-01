@@ -4,6 +4,7 @@ using StudyDesck.API.Domain.Models;
 using StudyDesck.API.Domain.Services;
 using StudyDesck.API.Extentions;
 using StudyDesck.API.Resources;
+using Swashbuckle.AspNetCore.Annotations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,14 +13,14 @@ using System.Threading.Tasks;
 namespace StudyDesck.API.Controllers
 {
     [ApiController]
-    [Route("/api/[controller]")]
+    [Route("/api/career/{careerId}/courses")]
     [Produces("application/json")]
-    public class CoursesController : ControllerBase
+    public class CareerCoursesController : ControllerBase
     {
         private readonly ICourseService _courseService;
         private readonly IMapper _mapper;
 
-        public CoursesController(ICourseService courseService, IMapper mapper)
+        public CareerCoursesController(ICourseService courseService, IMapper mapper)
         {
             _courseService = courseService;
             _mapper = mapper;
@@ -27,21 +28,23 @@ namespace StudyDesck.API.Controllers
 
 
         [HttpGet]
+        [SwaggerOperation(Summary = "List Courses by categoryId")]
         [ProducesResponseType(typeof(IEnumerable<CourseResource>), 200)]
-        public async Task<IEnumerable<CourseResource>> GetAllAsync()
+        public async Task<IEnumerable<CourseResource>> GetAllByCareerIdAsync(int careerId)
         {
-            var courses = await _courseService.ListAsync();
+            var courses = await _courseService.ListByCareerIdAsync(careerId);
             var resorces = _mapper.Map<IEnumerable<Course>, IEnumerable<CourseResource>>(courses);
 
             return resorces;
         }
 
         [HttpGet("{id}")]
+        [SwaggerOperation(Summary = "Get Course by Id, and CareerId")]
         [ProducesResponseType(typeof(CourseResource), 200)]
         [ProducesResponseType(typeof(BadRequestResult), 404)]
-        public async Task<IActionResult> GetAsync(int id)
+        public async Task<IActionResult> GetByIdAsync(int careerId, int id)
         {
-            var result = await _courseService.GetByIdAsync(id);
+            var result = await _courseService.GetByIdAsync(careerId, id);
             if (!result.Success)
                 return BadRequest(result.Message);
 
@@ -52,9 +55,10 @@ namespace StudyDesck.API.Controllers
 
 
         [HttpPost]
+        [SwaggerOperation(Summary = "Create a Course for a career")]
         [ProducesResponseType(typeof(CourseResource), 200)]
         [ProducesResponseType(typeof(BadRequestResult), 404)]
-        public async Task<IActionResult> PostAsync([FromBody] SaveCourseResource resource)
+        public async Task<IActionResult> PostAsync(int careerId, [FromBody] SaveCourseResource resource)
         {
             if (!ModelState.IsValid)
             {
@@ -62,7 +66,7 @@ namespace StudyDesck.API.Controllers
             }
 
             var course = _mapper.Map<SaveCourseResource, Course>(resource);
-            var result = await _courseService.SaveAsync(course);
+            var result = await _courseService.SaveAsync(careerId, course);
 
             if (!result.Success)
                 return BadRequest(result.Message);
@@ -72,9 +76,10 @@ namespace StudyDesck.API.Controllers
         }
 
         [HttpPut("{id}")]
+        [SwaggerOperation(Summary = "update a Course of a career")]
         [ProducesResponseType(typeof(CourseResource), 200)]
         [ProducesResponseType(typeof(BadRequestResult), 404)]
-        public async Task<IActionResult> PutAsync(int id, [FromBody] SaveCourseResource resource)
+        public async Task<IActionResult> PutAsync(int careerId, int id, [FromBody] SaveCourseResource resource)
         {
             if (!ModelState.IsValid)
             {
@@ -82,7 +87,7 @@ namespace StudyDesck.API.Controllers
             }
 
             var course = _mapper.Map<SaveCourseResource, Course>(resource);
-            var result = await _courseService.UpdateAsync(id, course);
+            var result = await _courseService.UpdateAsync(careerId, id, course);
 
             if (!result.Success)
                 return BadRequest(result.Message);
@@ -92,11 +97,12 @@ namespace StudyDesck.API.Controllers
         }
 
         [HttpDelete("{id}")]
+        [SwaggerOperation(Summary = "Delete a Course of a career")]
         [ProducesResponseType(typeof(CourseResource), 200)]
         [ProducesResponseType(typeof(BadRequestResult), 404)]
-        public async Task<IActionResult> DeleteAsync(int id)
+        public async Task<IActionResult> DeleteAsync(int careerId, int id)
         {
-            var result = await _courseService.DeleteAsync(id);
+            var result = await _courseService.DeleteAsync(careerId, id);
             if (!result.Success)
                 return BadRequest(result.Message);
 
