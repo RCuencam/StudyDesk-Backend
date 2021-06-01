@@ -28,9 +28,10 @@ namespace StudyDesck.API.Test
             // Arrange
             var mockUnitOfWork = GetDefaultUnitOfWorkRepositoryInstance();
             var mockCourseRepository = GetDefaultCourseRepositoryInstance();
+            var mockCareerRepository = new Mock<ICareerRepository>();
 
             mockCourseRepository.Setup(r => r.ListAsync()).ReturnsAsync(new List<Course>());
-            var service = new CourseService(mockCourseRepository.Object, mockUnitOfWork.Object);
+            var service = new CourseService(mockCourseRepository.Object, mockUnitOfWork.Object, mockCareerRepository.Object);
 
             // Act
             List<Course> result = (List<Course>)await service.ListAsync();
@@ -47,10 +48,12 @@ namespace StudyDesck.API.Test
             // Arrange
             var mockUnitOfWork = GetDefaultUnitOfWorkRepositoryInstance();
             var mockCourseRepository = GetDefaultCourseRepositoryInstance();
+            var mockCareerRepository = new Mock<ICareerRepository>();
+
             var CourseId = 1;
 
             mockCourseRepository.Setup(r => r.FindById(CourseId)).Returns(Task.FromResult<Course>(null));
-            var service = new CourseService(mockCourseRepository.Object, mockUnitOfWork.Object);
+            var service = new CourseService(mockCourseRepository.Object, mockUnitOfWork.Object, mockCareerRepository.Object);
 
             // Act
             CourseResponse result = await service.GetByIdAsync(CourseId);
@@ -66,6 +69,8 @@ namespace StudyDesck.API.Test
             // Arrange
             var mockUnitOfWork = GetDefaultUnitOfWorkRepositoryInstance();
             var mockCourseRepository = GetDefaultCourseRepositoryInstance();
+            var mockCareerRepository = new Mock<ICareerRepository>();
+
             var CourseId = 1;
             var course = new Course()
             {
@@ -75,7 +80,7 @@ namespace StudyDesck.API.Test
             };
 
             mockCourseRepository.Setup(r => r.FindById(CourseId)).Returns(Task.FromResult(course));
-            var service = new CourseService(mockCourseRepository.Object, mockUnitOfWork.Object);
+            var service = new CourseService(mockCourseRepository.Object, mockUnitOfWork.Object, mockCareerRepository.Object);
 
             // Act
             CourseResponse result = await service.GetByIdAsync(CourseId);
@@ -91,6 +96,8 @@ namespace StudyDesck.API.Test
             // Arrange
             var mockUnitOfWork = GetDefaultUnitOfWorkRepositoryInstance();
             var mockCourseRepository = GetDefaultCourseRepositoryInstance();
+            var mockCareerRepository = new Mock<ICareerRepository>();
+
             var CourseId = 1;
             var course = new Course()
             {
@@ -101,7 +108,7 @@ namespace StudyDesck.API.Test
 
             mockCourseRepository.Setup(r => r.FindById(CourseId)).Returns(Task.FromResult(course));
             mockCourseRepository.Setup(r => r.Update(course));
-            var service = new CourseService(mockCourseRepository.Object, mockUnitOfWork.Object);
+            var service = new CourseService(mockCourseRepository.Object, mockUnitOfWork.Object, mockCareerRepository.Object);
 
             // Act
             CourseResponse result = await service.UpdateAsync(CourseId, course);
@@ -117,6 +124,8 @@ namespace StudyDesck.API.Test
             // Arrange
             var mockUnitOfWork = GetDefaultUnitOfWorkRepositoryInstance();
             var mockCourseRepository = GetDefaultCourseRepositoryInstance();
+            var mockCareerRepository = new Mock<ICareerRepository>();
+
             var CourseId = 1;
             var course = new Course()
             {
@@ -127,7 +136,7 @@ namespace StudyDesck.API.Test
 
             mockCourseRepository.Setup(r => r.FindById(CourseId)).Returns(Task.FromResult<Course>(null));
             mockCourseRepository.Setup(r => r.Update(course));
-            var service = new CourseService(mockCourseRepository.Object, mockUnitOfWork.Object);
+            var service = new CourseService(mockCourseRepository.Object, mockUnitOfWork.Object, mockCareerRepository.Object);
 
             // Act
             CourseResponse result = await service.UpdateAsync(CourseId, course);
@@ -143,6 +152,8 @@ namespace StudyDesck.API.Test
             // Arrange
             var mockUnitOfWork = GetDefaultUnitOfWorkRepositoryInstance();
             var mockCourseRepository = GetDefaultCourseRepositoryInstance();
+            var mockCareerRepository = new Mock<ICareerRepository>();
+
             var CourseId = 1;
             var course = new Course()
             {
@@ -153,7 +164,7 @@ namespace StudyDesck.API.Test
 
             mockCourseRepository.Setup(r => r.FindById(CourseId)).Returns(Task.FromResult<Course>(null));
             mockCourseRepository.Setup(r => r.Remove(course));
-            var service = new CourseService(mockCourseRepository.Object, mockUnitOfWork.Object);
+            var service = new CourseService(mockCourseRepository.Object, mockUnitOfWork.Object, mockCareerRepository.Object);
 
             // Act
             CourseResponse result = await service.DeleteAsync(CourseId);
@@ -169,6 +180,8 @@ namespace StudyDesck.API.Test
             // Arrange
             var mockUnitOfWork = GetDefaultUnitOfWorkRepositoryInstance();
             var mockCourseRepository = GetDefaultCourseRepositoryInstance();
+            var mockCareerRepository = new Mock<ICareerRepository>();
+
             var CourseId = 1;
             var course = new Course()
             {
@@ -179,7 +192,7 @@ namespace StudyDesck.API.Test
 
             mockCourseRepository.Setup(r => r.FindById(CourseId)).Returns(Task.FromResult(course));
             mockCourseRepository.Setup(r => r.Remove(course));
-            var service = new CourseService(mockCourseRepository.Object, mockUnitOfWork.Object);
+            var service = new CourseService(mockCourseRepository.Object, mockUnitOfWork.Object, mockCareerRepository.Object);
 
             // Act
             CourseResponse result = await service.DeleteAsync(CourseId);

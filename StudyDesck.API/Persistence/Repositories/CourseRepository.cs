@@ -30,6 +30,15 @@ namespace StudyDesck.API.Persistence.Repositories
             return await _context.Courses.ToListAsync();
         }
 
+        public async Task<IEnumerable<Course>> ListByCareerIdAsync(int careerId)
+        {
+            return await _context.Courses
+                .Where(co => co.CareerId == careerId)
+                .Include(co => co.Career)
+                    .ThenInclude(ca => ca.Institute)
+                .ToListAsync();
+        }
+
         public void Remove(Course course)
         {
             _context.Courses.Remove(course);

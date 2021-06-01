@@ -11,8 +11,5 @@ namespace StudyDesck.API.Resources
         [Required]
         [MaxLength(40)]
         public string Name { get; set; }
-        
-        [Required]
-        public SaveCareerResource Career { get; set; }
     }
 }

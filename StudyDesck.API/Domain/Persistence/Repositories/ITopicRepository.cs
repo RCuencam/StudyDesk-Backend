@@ -13,5 +13,6 @@ namespace StudyDesck.API.Domain.Persistence.Repositories
         Task<Topic> FindById(int id);
         void Update(Topic topic);
         void Remove(Topic topic);
+        Task<IEnumerable<Topic>> ListByCourseIdAsync(int courseId);
     }
 }
