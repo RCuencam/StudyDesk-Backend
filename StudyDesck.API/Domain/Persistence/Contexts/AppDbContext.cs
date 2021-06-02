@@ -26,6 +26,7 @@ namespace StudyDesck.API.Domain.Persistence.Contexts
         public DbSet<SessionReservation> SessionReservations { get; set; }
         public DbSet<StudentMaterial> StudentMaterials { get; set; }
         public DbSet<TutorReservation> TutorReservations { get; set; }
+        public DbSet<SessionMaterial> SessionMaterials { get; set; }
 
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
@@ -233,6 +234,24 @@ namespace StudyDesck.API.Domain.Persistence.Contexts
                 .HasOne(tr => tr.Platform)
                 .WithMany(tr => tr.TutorReservations)
                 .HasForeignKey(tr => tr.PlatformId);
+
+
+            //SessionMaterial Entity
+            builder.Entity<SessionMaterial>().ToTable("SessionMaterials");
+            builder.Entity<SessionMaterial>().HasNoKey();
+            builder.Entity<SessionMaterial>()
+                .HasOne(snm => snm.Session)
+                .WithMany(s => s.SessionMaterials)
+                .HasForeignKey(snm => snm.SessionId);
+            builder.Entity<SessionMaterial>()
+                .HasOne(snm => snm.StudyMaterial)
+                .WithMany(sym => sym.SessionMaterials)
+                .HasForeignKey(snm => snm.StudyMaterialId);
+            builder.Entity<SessionMaterial>()
+                .HasOne(snm => snm.Tutor)
+                .WithMany(t => t.SessionMaterials)
+                .HasForeignKey(snm => snm.TutorId);
+
 
             // end region
             builder.ApplySnakeCaseNamingConvetion();

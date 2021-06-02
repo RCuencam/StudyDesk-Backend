@@ -31,6 +31,6 @@ namespace StudyDesck.API.Domain.Models
         
         
         public List<SessionReservation> SessionReservations { get; set; }
-
+        public List<SessionMaterial> SessionMaterials { get; set; }
     }
 }
