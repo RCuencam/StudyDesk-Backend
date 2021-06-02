@@ -13,11 +13,13 @@ namespace StudyDesck.API.Services
     {
         private readonly ITutorRepository _tutorRepository;
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IExpertTopicRepository _expertTopicRepository;
 
-        public TutorService(ITutorRepository guardianRepository, IUnitOfWork unitOfWork)
+        public TutorService(ITutorRepository guardianRepository, IUnitOfWork unitOfWork, IExpertTopicRepository expertTopicRepository)
         {
             _tutorRepository = guardianRepository;
             _unitOfWork = unitOfWork;
+            _expertTopicRepository = expertTopicRepository;
         }
 
         public async Task<TutorResponse> DeleteAsync(int id)
@@ -53,7 +55,12 @@ namespace StudyDesck.API.Services
         {
             return await _tutorRepository.ListAsync();
         }
-
+        public async Task<IEnumerable<Tutor>> ListByTopicIdAsync(int topicId)
+        {
+            var expertTopics = await _expertTopicRepository.ListByTopicIdAsync(topicId);
+            var tutors = expertTopics.Select(et => et.Tutor).ToList();
+            return tutors;
+        }
         public async Task<TutorResponse> SaveAsync(int careerId, Tutor tutor)
         {
             try

@@ -107,7 +107,14 @@ namespace StudyDesck.API.Services
             }
         }
 
-        
+        public async Task<SessionReservationResponse> GetByStudentIdandSessionIdAsync(int studentId, int sessionId)
+        {
+            var existingSessionReserv = await _sessionResRepository.FindByStudentIdAndSessionId(studentId, sessionId);
+
+            if (existingSessionReserv == null)
+                return new SessionReservationResponse("SessionReservation not found");
+            return new SessionReservationResponse(existingSessionReserv);
+        }
 
 
     }
