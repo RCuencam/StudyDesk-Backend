@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "nJ0/36IUzMC31Gty6nSI7LWumTR+qJlmm7vwTva9Vn58tSL7OW27cUOMUKeRLf2K7HvMgvCx1r2VyFhrCQwjyg==",
+  "dgSpecHash": "+GmIoV9eyU4WJRDPaScmmqW3I7snKkxK8PPCTaIDmjFmLXu6l/WTXrTC04S7NXVKRdOr9u1IzDYb5YcconV+QQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\LENOVO\\Documents\\StudyDesk Backend\\StudyDesk-Backend\\SpecFlowStudyDeskTest\\SpecFlowStudyDeskTest.csproj",
+  "projectFilePath": "C:\\Users\\LENOVO\\Documents\\backupStudyDesk\\StudyDesk-Backend\\SpecFlowStudyDeskTest\\SpecFlowStudyDeskTest.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\LENOVO\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\LENOVO\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\LENOVO\\Documents\\StudyDesk Backend\\StudyDesk-Backend\\SpecFlowStudyDeskTest\\SpecFlowStudyDeskTest.csproj": {}
+    "C:\\Users\\LENOVO\\Documents\\backupStudyDesk\\StudyDesk-Backend\\SpecFlowStudyDeskTest\\SpecFlowStudyDeskTest.csproj": {}
   },
   "projects": {
-    "C:\\Users\\LENOVO\\Documents\\StudyDesk Backend\\StudyDesk-Backend\\SpecFlowStudyDeskTest\\SpecFlowStudyDeskTest.csproj": {
+    "C:\\Users\\LENOVO\\Documents\\backupStudyDesk\\StudyDesk-Backend\\SpecFlowStudyDeskTest\\SpecFlowStudyDeskTest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\LENOVO\\Documents\\StudyDesk Backend\\StudyDesk-Backend\\SpecFlowStudyDeskTest\\SpecFlowStudyDeskTest.csproj",
+        "projectUniqueName": "C:\\Users\\LENOVO\\Documents\\backupStudyDesk\\StudyDesk-Backend\\SpecFlowStudyDeskTest\\SpecFlowStudyDeskTest.csproj",
         "projectName": "SpecFlowStudyDeskTest",
-        "projectPath": "C:\\Users\\LENOVO\\Documents\\StudyDesk Backend\\StudyDesk-Backend\\SpecFlowStudyDeskTest\\SpecFlowStudyDeskTest.csproj",
+        "projectPath": "C:\\Users\\LENOVO\\Documents\\backupStudyDesk\\StudyDesk-Backend\\SpecFlowStudyDeskTest\\SpecFlowStudyDeskTest.csproj",
         "packagesPath": "C:\\Users\\LENOVO\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\LENOVO\\Documents\\StudyDesk Backend\\StudyDesk-Backend\\SpecFlowStudyDeskTest\\obj\\",
+        "outputPath": "C:\\Users\\LENOVO\\Documents\\backupStudyDesk\\StudyDesk-Backend\\SpecFlowStudyDeskTest\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -31,8 +31,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\LENOVO\\Documents\\StudyDesk Backend\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj": {
-                "projectPath": "C:\\Users\\LENOVO\\Documents\\StudyDesk Backend\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj"
+              "C:\\Users\\LENOVO\\Documents\\backupStudyDesk\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj": {
+                "projectPath": "C:\\Users\\LENOVO\\Documents\\backupStudyDesk\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj"
               }
             }
           }
@@ -83,14 +83,14 @@
         }
       }
     },
-    "C:\\Users\\LENOVO\\Documents\\StudyDesk Backend\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj": {
+    "C:\\Users\\LENOVO\\Documents\\backupStudyDesk\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\LENOVO\\Documents\\StudyDesk Backend\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj",
+        "projectUniqueName": "C:\\Users\\LENOVO\\Documents\\backupStudyDesk\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj",
         "projectName": "StudyDesck.API",
-        "projectPath": "C:\\Users\\LENOVO\\Documents\\StudyDesk Backend\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj",
+        "projectPath": "C:\\Users\\LENOVO\\Documents\\backupStudyDesk\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj",
         "packagesPath": "C:\\Users\\LENOVO\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\LENOVO\\Documents\\StudyDesk Backend\\StudyDesk-Backend\\StudyDesck.API\\obj\\",
+        "outputPath": "C:\\Users\\LENOVO\\Documents\\backupStudyDesk\\StudyDesk-Backend\\StudyDesck.API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
