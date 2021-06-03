@@ -10,7 +10,6 @@ namespace StudyDesck.API.Resources
         public long Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
-        //public StudentMaterialResource StudentMaterialResource { get; set; }
-        //public SesionMaterialResource SesionMaterialResource { get; set; }
+        public string FileUrl { get; set; }
     }
 }

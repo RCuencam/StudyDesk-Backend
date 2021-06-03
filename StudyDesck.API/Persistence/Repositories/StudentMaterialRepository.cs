@@ -36,6 +36,20 @@ namespace StudyDesck.API.Persistence.Repositories
             }
         }
 
+        public async Task AssignStudentMaterial(int studentId, long materialId)
+        {
+            StudentMaterial result = await FindByStudentIdAndStudyMaterialId(studentId, materialId);
+            if (result == null)
+            {
+                result = new StudentMaterial
+                {
+                    StudentId = studentId,
+                    StudyMaterialId = materialId
+                };
+                await AddAsync(result);
+            }
+        }
+
         public async Task<StudentMaterial> FindByStudentIdAndStudyMaterialId(int studentId, long studyMaterial)
         {
             return await _context.StudentMaterials.FindAsync(studentId, studyMaterial);

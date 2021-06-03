@@ -28,6 +28,7 @@ namespace StudyDesck.API.Test
             // Arrange
             var mockStudentMaterial = new Mock<IStudentMaterialRepository>();
             var mockUnitOfWork = new Mock<IUnitOfWork>();
+            var mockStudyMaterial = new Mock<IStudyMaterialRepository>();
             int studentId = 1;
             long materialId = 1;
             int categoryId = 1;
@@ -42,11 +43,11 @@ namespace StudyDesck.API.Test
             mockStudentMaterial.Setup(r => r.AssignStudentMaterial(studentId, materialId, categoryId, instituteId));
             mockStudentMaterial.Setup(r => r.FindByStudentIdAndStudyMaterialId(studentId, materialId))
                 .Returns(Task.FromResult(studentMaterial));
-            var service = new StudentMaterialService(mockStudentMaterial.Object, mockUnitOfWork.Object);
+            var service = new StudentMaterialService(mockStudentMaterial.Object, mockUnitOfWork.Object, mockStudyMaterial.Object);
 
             // Act
             StudentMaterialResponse result = 
-                await service.AssignStudentMaterialAsync(studentId, materialId, categoryId, instituteId);
+                await service.AssignStudentMaterialAsync(studentId, materialId);
 
             // Assert
             result.Should().Equals(studentMaterial);
@@ -58,6 +59,7 @@ namespace StudyDesck.API.Test
             // Arrange
             var mockStudentMaterial = new Mock<IStudentMaterialRepository>();
             var mockUnitOfWork = new Mock<IUnitOfWork>();
+            var mockStudyMaterial = new Mock<IStudyMaterialRepository>();
             int studentId = 1;
             long materialId = 1;
             int categoryId = 1;
@@ -65,11 +67,11 @@ namespace StudyDesck.API.Test
             mockStudentMaterial.Setup(r => r.FindByStudentIdAndStudyMaterialId(studentId, materialId))
                 .Returns(Task.FromResult<StudentMaterial>(null));
             mockStudentMaterial.Setup(r => r.AssignStudentMaterial(studentId, materialId, categoryId, instituteId));
-            var service = new StudentMaterialService(mockStudentMaterial.Object, mockUnitOfWork.Object);
+            var service = new StudentMaterialService(mockStudentMaterial.Object, mockUnitOfWork.Object, mockStudyMaterial.Object);
 
             // Act
             StudentMaterialResponse result =
-                await service.AssignStudentMaterialAsync(studentId, materialId, categoryId, instituteId);
+                await service.AssignStudentMaterialAsync(studentId, materialId);
 
             // Assert
             result.Resource.Should().Equals(null);
@@ -82,6 +84,8 @@ namespace StudyDesck.API.Test
             // Arrange
             var mockStudentMaterial = new Mock<IStudentMaterialRepository>();
             var mockUnitOfWork = new Mock<IUnitOfWork>();
+            var mockStudyMaterial = new Mock<IStudyMaterialRepository>();
+
             int studentId = 1;
             long materialId = 1;
             int categoryId = 1;
@@ -97,7 +101,7 @@ namespace StudyDesck.API.Test
             mockStudentMaterial.Setup(r => r.FindByStudentIdAndStudyMaterialId(studentId, materialId))
                 .Returns(Task.FromResult(studentMaterial));
             mockStudentMaterial.Setup(r => r.Remove(studentMaterial));
-            var service = new StudentMaterialService(mockStudentMaterial.Object, mockUnitOfWork.Object);
+            var service = new StudentMaterialService(mockStudentMaterial.Object, mockUnitOfWork.Object, mockStudyMaterial.Object);
 
             // Act
             StudentMaterialResponse result =
@@ -113,12 +117,14 @@ namespace StudyDesck.API.Test
             // Arrange
             var mockStudentMaterial = new Mock<IStudentMaterialRepository>();
             var mockUnitOfWork = new Mock<IUnitOfWork>();
+            var mockStudyMaterial = new Mock<IStudyMaterialRepository>();
+
             int studentId = 1;
             long materialId = 1;
             mockStudentMaterial.Setup(r => r.FindByStudentIdAndStudyMaterialId(studentId, materialId))
                 .Returns(Task.FromResult<StudentMaterial>(null));
             mockStudentMaterial.Setup(r => r.UnassignstudyMaterial(studentId, materialId));
-            var service = new StudentMaterialService(mockStudentMaterial.Object, mockUnitOfWork.Object);
+            var service = new StudentMaterialService(mockStudentMaterial.Object, mockUnitOfWork.Object, mockStudyMaterial.Object);
 
             // Act
             StudentMaterialResponse result =

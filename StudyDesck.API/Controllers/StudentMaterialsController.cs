@@ -14,29 +14,30 @@ namespace StudyDesck.API.Controllers
     public class StudentMaterialsController : ControllerBase
     {
         private readonly IStudentMaterialService _studentMaterialService;
+        private readonly IStudyMaterialService _studyMaterialService;
         private readonly IMapper _mapper;
 
-        public StudentMaterialsController(IStudentMaterialService studentMaterialService, IMapper mapper)
+        public StudentMaterialsController(IStudentMaterialService studentMaterialService, IMapper mapper, IStudyMaterialService studyMaterialService)
         {
             _studentMaterialService = studentMaterialService;
             _mapper = mapper;
+            _studyMaterialService = studyMaterialService;
         }
 
-        [HttpGet] // to do: implement in controller StudentStudyMaterialsController -> 
+        [HttpGet]
         public async Task<IEnumerable<StudyMaterialResource>> GetAllStudyMaterialByStudentIdAsync(int studentId)
         {
-            var result = await _studentMaterialService.ListByStudentIdAsync(studentId);
-            var models = result.Select(s => s.StudyMaterial).ToList(); // BAD
-            var resources = _mapper.Map<IEnumerable<StudyMaterial>, IEnumerable<StudyMaterialResource>>(models);
+            var result = await _studyMaterialService.ListByStudentIdAsync(studentId);
+            var resources = _mapper.Map<IEnumerable<StudyMaterial>, IEnumerable<StudyMaterialResource>>(result);
             return resources;
+
         }
-    
-        [HttpPost("{materialId}/categories/{categoryId}/institutes/{instituteId}")]
-        public async Task<IActionResult> AssignStudentMaterialAsync
-            (int studentId, long materialId, int categoryId, int instituteId)
+
+        [HttpPost]
+        public async Task<IActionResult> AssignStudentMaterialAsync(int studentId, [FromBody] SaveStudentMaterialResource resource)
         {
-            var result = await _studentMaterialService
-                .AssignStudentMaterialAsync(studentId, materialId, categoryId, instituteId);
+            var studentMaterial = _mapper.Map<SaveStudentMaterialResource, StudentMaterial>(resource);
+            var result = await _studentMaterialService.AssignStudentMaterialAsync(studentId, studentMaterial);
 
             if (!result.Success)
                 return BadRequest(result.Message);
@@ -47,8 +48,7 @@ namespace StudyDesck.API.Controllers
         }
 
         [HttpDelete("{materialId}")]
-        public async Task<IActionResult> UnassignStudentMaterialAsync
-            (int studentId, long materialId)
+        public async Task<IActionResult> UnassignStudentMaterialAsync(int studentId, long materialId)
         {
             var result = await _studentMaterialService
                 .UnassignStudentMaterialAsync(studentId, materialId);

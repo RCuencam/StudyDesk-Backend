@@ -10,8 +10,11 @@ namespace StudyDesck.API.Domain.Persistence.Repositories
     {
         Task<IEnumerable<StudyMaterial>> ListAsync();
         Task AddAsync(StudyMaterial studyMaterial);
-        Task<StudyMaterial> FindById(int id);
+        Task<StudyMaterial> SaveAsync(StudyMaterial studyMaterial);
+
+        Task<StudyMaterial> FindById(long id);
         void Update(StudyMaterial studyMaterial);
         void Remove(StudyMaterial studyMaterial);
+        Task<IEnumerable<StudyMaterial>> ListByStudentIdAsync(int studentId);
     }
 }

@@ -20,7 +20,7 @@ namespace StudyDesck.API.Persistence.Repositories
             await _context.StudyMaterials.AddAsync(studyMaterial);
         }
 
-        public async Task<StudyMaterial> FindById(int id)
+        public async Task<StudyMaterial> FindById(long id)
         {
             return await _context.StudyMaterials.FindAsync(id);
         }
@@ -30,9 +30,23 @@ namespace StudyDesck.API.Persistence.Repositories
             return await _context.StudyMaterials.ToListAsync();
         }
 
+        public async Task<IEnumerable<StudyMaterial>> ListByStudentIdAsync(int studentId)
+        {
+            return await _context.StudentMaterials
+                .Where(sm => sm.StudentId == studentId)
+                .Select(sm => sm.StudyMaterial)
+                .ToListAsync();
+        }
+
         public void Remove(StudyMaterial studyMaterial)
         {
             _context.StudyMaterials.Remove(studyMaterial);
+        }
+
+        public async Task<StudyMaterial> SaveAsync(StudyMaterial studyMaterial)
+        {
+            var result = await _context.StudyMaterials.AddAsync(studyMaterial);
+            return result.Entity;
         }
 
         public void Update(StudyMaterial studyMaterial)

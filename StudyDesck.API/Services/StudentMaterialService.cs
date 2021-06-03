@@ -12,12 +12,15 @@ namespace StudyDesck.API.Services
     public class StudentMaterialService : IStudentMaterialService
     {
         private readonly IStudentMaterialRepository _studentMaterialRepository;
+        private readonly IStudyMaterialRepository _studyMaterialRepository;
         private readonly IUnitOfWork _unitOfWork;
 
-        public StudentMaterialService(IStudentMaterialRepository studentMaterialRepository, IUnitOfWork unitOfWork)
+        public StudentMaterialService
+            (IStudentMaterialRepository studentMaterialRepository, IUnitOfWork unitOfWork, IStudyMaterialRepository studyMaterialRepository)
         {
             _studentMaterialRepository = studentMaterialRepository;
             _unitOfWork = unitOfWork;
+            _studyMaterialRepository = studyMaterialRepository;
         }
 
         public async Task<IEnumerable<StudentMaterial>> ListByStudentIdAsync(int studentId)
@@ -25,12 +28,12 @@ namespace StudyDesck.API.Services
             return await _studentMaterialRepository.ListByStudentIdAsync(studentId);
         }
 
-        public async Task<StudentMaterialResponse> AssignStudentMaterialAsync
-            (int studentId, long materialId, int categoryId, int instituteId)
+        // deprecated
+        public async Task<StudentMaterialResponse> AssignStudentMaterialAsync(int studentId, long materialId)
         {
             try
             {
-                await _studentMaterialRepository.AssignStudentMaterial(studentId, materialId, categoryId, instituteId);
+                await _studentMaterialRepository.AssignStudentMaterial(studentId, materialId);
                 await _unitOfWork.CompleteAsync();
                 StudentMaterial studentMaterial = 
                     await _studentMaterialRepository.FindByStudentIdAndStudyMaterialId(studentId, materialId);
@@ -54,6 +57,10 @@ namespace StudyDesck.API.Services
                 _studentMaterialRepository.Remove(studentMaterial);
                 await _unitOfWork.CompleteAsync();
 
+                var material = await _studyMaterialRepository.FindById(materialId);
+                 _studyMaterialRepository.Remove(material);
+                await _unitOfWork.CompleteAsync();
+
                 return new StudentMaterialResponse(studentMaterial);
 
             }
@@ -65,6 +72,28 @@ namespace StudyDesck.API.Services
         
         }
 
+        public async Task<StudentMaterialResponse> AssignStudentMaterialAsync(int studentId, StudentMaterial studentMaterial)
+        {
+            try
+            {
+                var material = await _studyMaterialRepository.SaveAsync(studentMaterial.StudyMaterial);
+                await _unitOfWork.CompleteAsync();
+                await _studentMaterialRepository.AssignStudentMaterial(studentId,
+                    material.Id,
+                    studentMaterial.CategoryId, 
+                    studentMaterial.InstituteId);
 
+                await _unitOfWork.CompleteAsync();
+                StudentMaterial result =
+                    await _studentMaterialRepository.FindByStudentIdAndStudyMaterialId(studentId, material.Id);
+                return new StudentMaterialResponse(result);
+
+            }
+            catch (Exception ex)
+            {
+                return new StudentMaterialResponse
+                    ($"An error ocurred while assigning StudyMaterial to Student: {ex.Message}");
+            }
+        }
     }
 }
