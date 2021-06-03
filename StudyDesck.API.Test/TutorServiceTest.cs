@@ -27,9 +27,10 @@ namespace StudyDesck.API.Test
             // Arrange
             var mockUnitOfWork = GetDefaultUnitOfWorkRepositoryInstance();
             var mockTutorRepository = GetDefaultTutorRepositoryInstance();
+            var mockExpertTopicRepository = new Mock<IExpertTopicRepository>();
 
             mockTutorRepository.Setup(r => r.ListAsync()).ReturnsAsync(new List<Tutor>());
-            var service = new TutorService(mockTutorRepository.Object, mockUnitOfWork.Object);
+            var service = new TutorService(mockTutorRepository.Object, mockUnitOfWork.Object, mockExpertTopicRepository.Object);
 
             // Act
             List<Tutor> result = (List<Tutor>)await service.ListAsync();
@@ -46,10 +47,11 @@ namespace StudyDesck.API.Test
             // Arrange
             var mockUnitOfWork = GetDefaultUnitOfWorkRepositoryInstance();
             var mockTutorRepository = GetDefaultTutorRepositoryInstance();
+            var mockExpertTopicRepository = new Mock<IExpertTopicRepository>();
             var TutorId = 1;
 
             mockTutorRepository.Setup(r => r.FindById(TutorId)).Returns(Task.FromResult<Tutor>(null));
-            var service = new TutorService(mockTutorRepository.Object, mockUnitOfWork.Object);
+            var service = new TutorService(mockTutorRepository.Object, mockUnitOfWork.Object, mockExpertTopicRepository.Object);
 
             // Act
             TutorResponse result = await service.GetByIdAsync(TutorId);
@@ -65,6 +67,7 @@ namespace StudyDesck.API.Test
             // Arrange
             var mockUnitOfWork = GetDefaultUnitOfWorkRepositoryInstance();
             var mockTutorRepository = GetDefaultTutorRepositoryInstance();
+            var mockExpertTopicRepository = new Mock<IExpertTopicRepository>();
             var TutorId = 1;
             var Tutor = new Tutor()
             {
@@ -78,7 +81,7 @@ namespace StudyDesck.API.Test
                 PricePerHour = 0            };
 
             mockTutorRepository.Setup(r => r.FindById(TutorId)).Returns(Task.FromResult(Tutor));
-            var service = new TutorService(mockTutorRepository.Object, mockUnitOfWork.Object);
+            var service = new TutorService(mockTutorRepository.Object, mockUnitOfWork.Object, mockExpertTopicRepository.Object);
 
             // Act
             TutorResponse result = await service.GetByIdAsync(TutorId);
@@ -94,6 +97,7 @@ namespace StudyDesck.API.Test
             // Arrange
             var mockUnitOfWork = GetDefaultUnitOfWorkRepositoryInstance();
             var mockTutorRepository = GetDefaultTutorRepositoryInstance();
+            var mockExpertTopicRepository = new Mock<IExpertTopicRepository>();
             var TutorId = 1;
             var Tutor = new Tutor()
             {
@@ -109,7 +113,7 @@ namespace StudyDesck.API.Test
 
             mockTutorRepository.Setup(r => r.FindById(TutorId)).Returns(Task.FromResult(Tutor));
             mockTutorRepository.Setup(r => r.Update(Tutor));
-            var service = new TutorService(mockTutorRepository.Object, mockUnitOfWork.Object);
+            var service = new TutorService(mockTutorRepository.Object, mockUnitOfWork.Object, mockExpertTopicRepository.Object);
 
             // Act
             TutorResponse result = await service.UpdateAsync(TutorId, Tutor);
@@ -125,6 +129,7 @@ namespace StudyDesck.API.Test
             // Arrange
             var mockUnitOfWork = GetDefaultUnitOfWorkRepositoryInstance();
             var mockTutorRepository = GetDefaultTutorRepositoryInstance();
+            var mockExpertTopicRepository = new Mock<IExpertTopicRepository>();
             var TutorId = 1;
             var Tutor = new Tutor()
             {
@@ -140,7 +145,7 @@ namespace StudyDesck.API.Test
 
             mockTutorRepository.Setup(r => r.FindById(TutorId)).Returns(Task.FromResult<Tutor>(null));
             mockTutorRepository.Setup(r => r.Update(Tutor));
-            var service = new TutorService(mockTutorRepository.Object, mockUnitOfWork.Object);
+            var service = new TutorService(mockTutorRepository.Object, mockUnitOfWork.Object, mockExpertTopicRepository.Object);
 
             // Act
             TutorResponse result = await service.UpdateAsync(TutorId, Tutor);
@@ -156,6 +161,7 @@ namespace StudyDesck.API.Test
             // Arrange
             var mockUnitOfWork = GetDefaultUnitOfWorkRepositoryInstance();
             var mockTutorRepository = GetDefaultTutorRepositoryInstance();
+            var mockExpertTopicRepository = new Mock<IExpertTopicRepository>();
             var TutorId = 1;
             var Tutor = new Tutor()
             {
@@ -171,7 +177,7 @@ namespace StudyDesck.API.Test
 
             mockTutorRepository.Setup(r => r.FindById(TutorId)).Returns(Task.FromResult<Tutor>(null));
             mockTutorRepository.Setup(r => r.Remove(Tutor));
-            var service = new TutorService(mockTutorRepository.Object, mockUnitOfWork.Object);
+            var service = new TutorService(mockTutorRepository.Object, mockUnitOfWork.Object, mockExpertTopicRepository.Object);
 
             // Act
             TutorResponse result = await service.DeleteAsync(TutorId);
@@ -187,6 +193,7 @@ namespace StudyDesck.API.Test
             // Arrange
             var mockUnitOfWork = GetDefaultUnitOfWorkRepositoryInstance();
             var mockTutorRepository = GetDefaultTutorRepositoryInstance();
+            var mockExpertTopicRepository = new Mock<IExpertTopicRepository>();
             var TutorId = 1;
             var Tutor = new Tutor()
             {
@@ -202,7 +209,7 @@ namespace StudyDesck.API.Test
 
             mockTutorRepository.Setup(r => r.FindById(TutorId)).Returns(Task.FromResult(Tutor));
             mockTutorRepository.Setup(r => r.Remove(Tutor));
-            var service = new TutorService(mockTutorRepository.Object, mockUnitOfWork.Object);
+            var service = new TutorService(mockTutorRepository.Object, mockUnitOfWork.Object, mockExpertTopicRepository.Object);
 
             // Act
             TutorResponse result = await service.DeleteAsync(TutorId);

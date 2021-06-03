@@ -30,7 +30,7 @@ namespace StudyDesck.API.Test
             var mockUnitOfWork = new Mock<IUnitOfWork>();
             var mockStudyMaterial = new Mock<IStudyMaterialRepository>();
             int studentId = 1;
-            long materialId = 1;
+            int materialId = 1;
             int categoryId = 1;
             int instituteId = 1;
             var studentMaterial = new StudentMaterial()
@@ -61,7 +61,7 @@ namespace StudyDesck.API.Test
             var mockUnitOfWork = new Mock<IUnitOfWork>();
             var mockStudyMaterial = new Mock<IStudyMaterialRepository>();
             int studentId = 1;
-            long materialId = 1;
+            int materialId = 1;
             int categoryId = 1;
             int instituteId = 1;
             mockStudentMaterial.Setup(r => r.FindByStudentIdAndStudyMaterialId(studentId, materialId))
@@ -87,7 +87,7 @@ namespace StudyDesck.API.Test
             var mockStudyMaterial = new Mock<IStudyMaterialRepository>();
 
             int studentId = 1;
-            long materialId = 1;
+            int materialId = 1;
             int categoryId = 1;
             int instituteId = 1;
             var studentMaterial = new StudentMaterial()
@@ -120,7 +120,7 @@ namespace StudyDesck.API.Test
             var mockStudyMaterial = new Mock<IStudyMaterialRepository>();
 
             int studentId = 1;
-            long materialId = 1;
+            int materialId = 1;
             mockStudentMaterial.Setup(r => r.FindByStudentIdAndStudyMaterialId(studentId, materialId))
                 .Returns(Task.FromResult<StudentMaterial>(null));
             mockStudentMaterial.Setup(r => r.UnassignstudyMaterial(studentId, materialId));

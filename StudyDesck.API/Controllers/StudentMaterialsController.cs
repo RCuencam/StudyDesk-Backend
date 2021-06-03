@@ -48,7 +48,7 @@ namespace StudyDesck.API.Controllers
         }
 
         [HttpDelete("{materialId}")]
-        public async Task<IActionResult> UnassignStudentMaterialAsync(int studentId, long materialId)
+        public async Task<IActionResult> UnassignStudentMaterialAsync(int studentId, int materialId)
         {
             var result = await _studentMaterialService
                 .UnassignStudentMaterialAsync(studentId, materialId);

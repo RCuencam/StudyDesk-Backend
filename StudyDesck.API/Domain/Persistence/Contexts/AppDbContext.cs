@@ -238,7 +238,7 @@ namespace StudyDesck.API.Domain.Persistence.Contexts
 
             //SessionMaterial Entity
             builder.Entity<SessionMaterial>().ToTable("SessionMaterials");
-            builder.Entity<SessionMaterial>().HasNoKey();
+            builder.Entity<SessionMaterial>().HasKey(snm => new { snm.SessionId, snm.TutorId });
             builder.Entity<SessionMaterial>()
                 .HasOne(snm => snm.Session)
                 .WithMany(s => s.SessionMaterials)

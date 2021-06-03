@@ -20,8 +20,8 @@ namespace StudyDesck.API.Domain.Services
 
 
         Task<IEnumerable<SessionMaterial>> ListBySessionIdAsync(int sessionId);
-        Task<SessionMaterialResponse> AssignSessionMaterialAsync(int sessionId, long materialId);
-        Task<SessionMaterialResponse> UnassignSessionMaterialAsync(int sessionId, long materialId);
+        Task<SessionMaterialResponse> AssignSessionMaterialAsync(int sessionId, int materialId);
+        Task<SessionMaterialResponse> UnassignSessionMaterialAsync(int sessionId, int materialId);
         Task<SessionMaterialResponse> AssignSessionMaterialAsync(int sessionId, SessionMaterial sessionMaterial);
 
     }

@@ -29,7 +29,7 @@ namespace StudyDesck.API.Services
         }
 
         // deprecated
-        public async Task<StudentMaterialResponse> AssignStudentMaterialAsync(int studentId, long materialId)
+        public async Task<StudentMaterialResponse> AssignStudentMaterialAsync(int studentId, int materialId)
         {
             try
             {
@@ -47,7 +47,7 @@ namespace StudyDesck.API.Services
             }
         }
 
-        public async Task<StudentMaterialResponse> UnassignStudentMaterialAsync(int studentId, long materialId)
+        public async Task<StudentMaterialResponse> UnassignStudentMaterialAsync(int studentId, int materialId)
         {
             try
             {

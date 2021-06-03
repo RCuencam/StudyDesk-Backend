@@ -8,7 +8,7 @@ namespace StudyDesck.API.Resources
     public class StudentMaterialResource
     {
         public int StudentId { get; set; }
-        public long StudyMaterialId { get; set; }
+        public int StudyMaterialId { get; set; }
         public int CategoryId { get; set; }
         public int InstituteId { get; set; }
     }

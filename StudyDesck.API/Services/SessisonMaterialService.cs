@@ -29,7 +29,7 @@ namespace StudyDesck.API.Services
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<SessionMaterialResponse> AssignSessionMaterialAsync(int sessionId, long materialId)
+        public async Task<SessionMaterialResponse> AssignSessionMaterialAsync(int sessionId, int materialId)
         {
             try
             {
@@ -72,7 +72,7 @@ namespace StudyDesck.API.Services
             return await _sessionMaterialRepository.ListBySessionIdAsync(sessionId);
         }
 
-        public async Task<SessionMaterialResponse> UnassignSessionMaterialAsync(int sessionId, long materialId)
+        public async Task<SessionMaterialResponse> UnassignSessionMaterialAsync(int sessionId, int materialId)
         {
             try
             {

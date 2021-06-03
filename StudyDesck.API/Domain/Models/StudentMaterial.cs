@@ -10,7 +10,7 @@ namespace StudyDesck.API.Domain.Models
         public int StudentId { get; set; }
         public Student student { get; set; }
 
-        public long StudyMaterialId { get; set; }
+        public int StudyMaterialId { get; set; }
         public StudyMaterial StudyMaterial { get; set; }
 
         public int CategoryId { get; set; }

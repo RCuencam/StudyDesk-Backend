@@ -14,7 +14,6 @@ namespace StudyDesck.API.Controllers
     public class SessionMaterialsController : ControllerBase
     {
         private readonly ISessionMaterialService _sessionMaterialService;
-        private readonly IStudyMaterialService _studyMaterialService;
         private readonly ISessionService _sessionService;
         private readonly IMapper _mapper;
 
@@ -22,15 +21,45 @@ namespace StudyDesck.API.Controllers
         {
             _sessionMaterialService = sessionMaterialService;
             _mapper = mapper;
-            _studyMaterialService = studyMaterialService;
             _sessionService = sessionService;
         }
 
         [HttpGet]
-        public async Task<IEnumerable<SessionMaterialResource>> GetAllSessionMaterialsBySessionIdAsync(int sessionId)
+        public async Task<IEnumerable<SessionResource>> GetAllSessionMaterialsBySessionIdAsync(int tutorId)
         {
-            var result = await 
+            var result = await _sessionService.ListByTutorIdAsync(tutorId);
+            var resources = _mapper.Map<IEnumerable<Session>, IEnumerable<SessionResource>>(result);
+            return resources;
         }
+
+        [HttpPost]
+        public async Task<IActionResult> AssignSessionMaterialAsync(int tutorId, [FromBody] SaveSessionMaterialResource resource)
+        {
+            var sessionMaterial = _mapper.Map<SaveSessionMaterialResource, SessionMaterial>(resource);
+            var result = await _sessionMaterialService.AssignSessionMaterialAsync(tutorId, sessionMaterial);
+
+            if (!result.Success)
+                return BadRequest(result.Message);
+
+            var materialResource = _mapper.Map<Session, SessionResource>(result.Resource.Session);
+
+            return Ok(materialResource);
+        }
+
+        [HttpDelete("{materialId}")]
+        public async Task<IActionResult> UnassignSessionMaterialAsync(int tutorId, int materialId)
+        {
+            var result = await _sessionMaterialService
+                .UnassignSessionMaterialAsync(tutorId, materialId);
+
+            if (!result.Success)
+                return BadRequest(result.Message);
+
+            var materialResource = _mapper.Map<Session, SessionResource>(result.Resource.Session);
+
+            return Ok(materialResource);
+        }
+
 
 
     }

@@ -20,7 +20,7 @@ namespace StudyDesck.API.Persistence.Repositories
             await _context.SessionMaterials.AddAsync(sessionMaterial);
         }
 
-        public async Task AssignSessionMaterial(int sessionId, long materialId, int tutorId)
+        public async Task AssignSessionMaterial(int sessionId, int materialId, int tutorId)
         {
             SessionMaterial result = await FindBySessionIdAndStudyMaterial(sessionId, materialId);
             if(result == null)
@@ -35,7 +35,7 @@ namespace StudyDesck.API.Persistence.Repositories
             }
         }
 
-        public async Task AssignSessionMaterial(int sessionId, long materialId)
+        public async Task AssignSessionMaterial(int sessionId, int materialId)
         {
             SessionMaterial result = await FindBySessionIdAndStudyMaterial(sessionId, materialId);
             if(result == null)
@@ -50,7 +50,7 @@ namespace StudyDesck.API.Persistence.Repositories
             
         }
 
-        public async Task UnassignStudyMaterial(int sessionId, long materialId)
+        public async Task UnassignStudyMaterial(int sessionId, int materialId)
         {
             SessionMaterial sessionMaterial = await FindBySessionIdAndStudyMaterial(sessionId, materialId);
             if (sessionMaterial != null)
@@ -97,7 +97,7 @@ namespace StudyDesck.API.Persistence.Repositories
             _context.SessionMaterials.Remove(sessionMaterial);
         }
 
-        public async Task<SessionMaterial> FindBySessionIdAndStudyMaterial(int sessionId, long studyMaterial)
+        public async Task<SessionMaterial> FindBySessionIdAndStudyMaterial(int sessionId, int studyMaterial)
         {
             return await _context.SessionMaterials.FindAsync(sessionId, studyMaterial);
         }

@@ -20,7 +20,7 @@ namespace StudyDesck.API.Persistence.Repositories
             await _context.StudyMaterials.AddAsync(studyMaterial);
         }
 
-        public async Task<StudyMaterial> FindById(long id)
+        public async Task<StudyMaterial> FindById(int id)
         {
             return await _context.StudyMaterials.FindAsync(id);
         }
