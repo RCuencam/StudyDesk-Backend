@@ -44,8 +44,8 @@ namespace StudyDesck.API.Controllers
             var result = await _tutorService.GetByIdAsync(id);
             if (!result.Success)
                 return BadRequest(result.Message);
-            var guardianResource = _mapper.Map<Tutor, TutorResource>(result.Resource);
-            return Ok(guardianResource);
+            var tutorResource = _mapper.Map<Tutor, TutorResource>(result.Resource);
+            return Ok(tutorResource);
         }
 
         //[HttpPost]

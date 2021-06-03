@@ -9,7 +9,6 @@ namespace SpecFlowStudyDeskTest.Steps
         // For additional details on SpecFlow step definitions see https://go.specflow.org/doc-stepdef
 
         private readonly ScenarioContext _scenarioContext;
-
         public CalculatorStepDefinitions(ScenarioContext scenarioContext)
         {
             _scenarioContext = scenarioContext;

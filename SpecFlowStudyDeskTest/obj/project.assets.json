@@ -8511,12 +8511,17 @@
     ]
   },
   "packageFolders": {
+<<<<<<< HEAD
     "C:\\Users\\LENOVO\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+=======
+    "C:\\Users\\ADRIAN\\.nuget\\packages\\": {}
+>>>>>>> fd9cbab2ddab0a243512785fd2fafb6655058ddf
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\LENOVO\\Documents\\StudyDesk Backend\\StudyDesk-Backend\\SpecFlowStudyDeskTest\\SpecFlowStudyDeskTest.csproj",
       "projectName": "SpecFlowStudyDeskTest",
       "projectPath": "C:\\Users\\LENOVO\\Documents\\StudyDesk Backend\\StudyDesk-Backend\\SpecFlowStudyDeskTest\\SpecFlowStudyDeskTest.csproj",
@@ -8528,6 +8533,16 @@
       ],
       "configFilePaths": [
         "C:\\Users\\LENOVO\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+      "projectUniqueName": "C:\\Users\\ADRIAN\\Desktop\\5to Ciclo\\Web\\TrabajoFinal2\\StudyDesk-Backend\\SpecFlowStudyDeskTest\\SpecFlowStudyDeskTest.csproj",
+      "projectName": "SpecFlowStudyDeskTest",
+      "projectPath": "C:\\Users\\ADRIAN\\Desktop\\5to Ciclo\\Web\\TrabajoFinal2\\StudyDesk-Backend\\SpecFlowStudyDeskTest\\SpecFlowStudyDeskTest.csproj",
+      "packagesPath": "C:\\Users\\ADRIAN\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ADRIAN\\Desktop\\5to Ciclo\\Web\\TrabajoFinal2\\StudyDesk-Backend\\SpecFlowStudyDeskTest\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\ADRIAN\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> fd9cbab2ddab0a243512785fd2fafb6655058ddf
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8541,8 +8556,13 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
+<<<<<<< HEAD
             "C:\\Users\\LENOVO\\Documents\\StudyDesk Backend\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj": {
               "projectPath": "C:\\Users\\LENOVO\\Documents\\StudyDesk Backend\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj"
+=======
+            "C:\\Users\\ADRIAN\\Desktop\\5to Ciclo\\Web\\TrabajoFinal2\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj": {
+              "projectPath": "C:\\Users\\ADRIAN\\Desktop\\5to Ciclo\\Web\\TrabajoFinal2\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj"
+>>>>>>> fd9cbab2ddab0a243512785fd2fafb6655058ddf
             }
           }
         }
@@ -8589,7 +8609,11 @@
             "privateAssets": "all"
           }
         },
+<<<<<<< HEAD
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+=======
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
+>>>>>>> fd9cbab2ddab0a243512785fd2fafb6655058ddf
       }
     }
   }

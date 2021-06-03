@@ -14,11 +14,13 @@ namespace StudyDesck.API.Services
         private readonly ITopicRepository _topicRepository;
         private readonly ICourseRepository _courseRepository;
         private readonly IUnitOfWork _unitOfWork;
-        public TopicService(ITopicRepository repository, IUnitOfWork unitOfWork, ICourseRepository courseRepository)
+        private readonly IExpertTopicRepository _expertTopicRepository;
+        public TopicService(ITopicRepository repository, IUnitOfWork unitOfWork, ICourseRepository courseRepository, IExpertTopicRepository expertTopicRepository)
         {
             _topicRepository = repository;
             _unitOfWork = unitOfWork;
             _courseRepository = courseRepository;
+            _expertTopicRepository = expertTopicRepository;
         }
 
         public async Task<TopicResponse> DeleteAsync(int id)
@@ -77,7 +79,12 @@ namespace StudyDesck.API.Services
 
             return new TopicResponse(existingTopic);
         }
-
+         public async Task<IEnumerable<Topic>> ListByTutorIdAsync(int topicId)
+        {
+            var expertTopics = await _expertTopicRepository.ListByTutorIdAsync(topicId);
+            var topics = expertTopics.Select(et => et.Topic).ToList();
+            return topics;
+        }
         public async Task<IEnumerable<Topic>> ListAsync()
         {
             return await _topicRepository.ListAsync();

@@ -23,7 +23,7 @@ namespace StudyDesck.API.Controllers
         private readonly ISessionService _sessionService;
         private readonly IMapper _mapper;
 
-      
+
         public StudentSessionsController(ISessionReservationService sessionReservationService, IStudentService studentService, ISessionService sessionService, IMapper mapper)
         {
             _sessionReservationService = sessionReservationService;
@@ -32,7 +32,7 @@ namespace StudyDesck.API.Controllers
             _mapper = mapper;
         }
 
-        
+
 
         [SwaggerOperation(
             Summary = "List Sessions by StudentId",
@@ -50,6 +50,17 @@ namespace StudyDesck.API.Controllers
             return resources;
         }
 
+        [HttpGet("{sessionId}")]
+        [ProducesResponseType(typeof(SessionReservationResource), 200)]
+        [ProducesResponseType(typeof(BadRequestResult), 404)]
+        public async Task<IActionResult> GetAsync(int studentId, int sessionId)
+        {
+            var result = await _sessionReservationService.GetByStudentIdAndSessionId(studentId, sessionId);
+            if (!result.Success)
+                return BadRequest(result.Message);
+            var sessionReservationResource = _mapper.Map<SessionReservation, SessionReservationResource>(result.Resource);
+            return Ok(sessionReservationResource);
+        }
 
         [SwaggerOperation(
             Summary = "Post Session Reservation by StudentId and SessionId",
