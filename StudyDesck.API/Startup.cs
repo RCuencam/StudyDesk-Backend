@@ -58,6 +58,7 @@ namespace StudyDesck.API
             services.AddScoped<ITutorReservationRepository, TutorReservationRepository>();
 
             services.AddScoped<IScheduleRepository, ScheduleRepository>();
+            services.AddScoped<ISessionMaterialRepository, SessionMaterialRepository>();
 
 
             // services:
@@ -75,6 +76,7 @@ namespace StudyDesck.API
             services.AddScoped<IStudentMaterialService, StudentMaterialService>();
             services.AddScoped<IStudyMaterialService, StudyMaterialService>();
             services.AddScoped<ITutorReservationService, TutorReservationService>();
+            services.AddScoped<ISessionMaterialService, SessisonMaterialService>();
            
             services.AddScoped<IScheduleService, ScheduleService>();
 
