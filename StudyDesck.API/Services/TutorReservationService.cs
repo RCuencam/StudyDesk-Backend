@@ -13,117 +13,68 @@ namespace StudyDesck.API.Services
     public class TutorReservationService : ITutorReservationService
     {
         private readonly ITutorReservationRepository _tutorReservationRespository;
-        private readonly IStudentRepository _studentRepository;
-        private readonly ITutorRepository _tutorRepository;
-        private readonly IPlatformRepository _platformRepository;
         private readonly IUnitOfWork _unitOfWork;
 
-        public TutorReservationService(ITutorReservationRepository tutorReservationRespository, IStudentRepository studentRepository, ITutorRepository tutorRepository, IPlatformRepository platformRepository, IUnitOfWork unitOfWork)
+        public TutorReservationService(ITutorReservationRepository tutorReservationRespository, IUnitOfWork unitOfWork)
         {
             _tutorReservationRespository = tutorReservationRespository;
-            _studentRepository = studentRepository;
-            _tutorRepository = tutorRepository;
-            _platformRepository = platformRepository;
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<TutorReservationResponse> AssignTutorReservationAsync(int studentId, int tutorId, int platformId, TutorReservation tutorReservation)
+
+        public async Task<IEnumerable<TutorReservation>> ListByStudentIdAsync(int studentId)
         {
-            var student = await _studentRepository.FindById(studentId);
-            var tutor = await _tutorRepository.FindById(tutorId);
-            var platform = await _platformRepository.FindById(platformId);
+            return await _tutorReservationRespository.ListByStudentIdAsync(studentId);
+        }
 
-            if (student == null || tutor == null || platform==null)
-                return new TutorReservationResponse("StudenId or TutorId or PlatformId not found");
+        public async Task<IEnumerable<TutorReservation>> ListByTutorIdAsync(int tutorId)
+        {
+            return await _tutorReservationRespository.ListByTutorIdAsync(tutorId);
+        }
 
-            var existsIt = await _tutorReservationRespository.FindByStudentIdAndTutorIdAndPlatformId(studentId, tutorId, platformId);
-            if (existsIt != null)
-                return new TutorReservationResponse("This tutor reservation already exist");
+        public async Task<IEnumerable<TutorReservation>> ListTutorReservationByTutorIdAsync(int tutorId)
+        {
+            return await _tutorReservationRespository.ListAllByTutorIdAsync(tutorId);
+        }
 
+        public async Task<TutorReservationResponse> SaveTutorReservation(int studentId, int tutorId, TutorReservation tutorReservation)
+        {
             try
             {
-                tutorReservation.Student = student;
-                tutorReservation.Tutor = tutor;
-                tutorReservation.Platform = platform;
                 tutorReservation.StudentId = studentId;
                 tutorReservation.TutorId = tutorId;
-                tutorReservation.PlatformId = platformId;
-
                 await _tutorReservationRespository.AddAsync(tutorReservation);
                 await _unitOfWork.CompleteAsync();
-                return new TutorReservationResponse(tutorReservation);
+                return new TutorReservationResponse("saved satisfactory!");
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                return new TutorReservationResponse($"Ocurrió un error: {e.Message}");
+                return new TutorReservationResponse
+                    ($"An error ocurred while assigning the Tutor to Student: {ex.Message}");
             }
         }
 
-        public Task<TutorReservationResponse> GetByPlatformId(int platformId)
+        public async Task<TutorReservationResponse> UpdateTutorReservation(int id, int studentId, int tutorId, TutorReservation tutorReservation)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<TutorReservationResponse> GetByStudentId(int studentId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<TutorReservationResponse> GetByStudentIdAndTutorIdAndPlatformId(int studentId, int tutorId, int platformId)
-        {
-            var existingTutorReserv = await _tutorReservationRespository.FindByStudentIdAndTutorIdAndPlatformId(studentId, tutorId, platformId);
-            if (existingTutorReserv == null)
-                return new TutorReservationResponse("This tutor reservation is not found");
-            return new TutorReservationResponse(existingTutorReserv);
-        }
-
-        public Task<TutorReservationResponse> GetByTutorId(int tutorId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<IEnumerable<TutorReservation>> ListAsync()
-        {
-            return await _tutorReservationRespository.ListAsync();
-        }
-
-        public async Task<TutorReservationResponse> UnassignTutorReservationAsync(int studentId, int tutorId, int platformId)
-        {
-            var existingTutorReserv = await _tutorReservationRespository.FindByStudentIdAndTutorIdAndPlatformId(studentId, tutorId, platformId);
-            if (existingTutorReserv == null)
+            var existing = await _tutorReservationRespository.FindById(id, studentId, tutorId);
+            if (existing == null)
                 return new TutorReservationResponse("TutorReservation not found");
 
+            existing.Qualification = tutorReservation.Qualification;
+            existing.PlatformUrl = tutorReservation.PlatformUrl;
+            existing.StartDateTime = tutorReservation.StartDateTime;
+            existing.EndDateTime = tutorReservation.EndDateTime;
+            existing.Description = tutorReservation.Description;
+            
             try
             {
-                _tutorReservationRespository.Remove(existingTutorReserv);
+                _tutorReservationRespository.Update(existing);
                 await _unitOfWork.CompleteAsync();
-                return new TutorReservationResponse(existingTutorReserv);
+                return new TutorReservationResponse(existing);
             }
             catch (Exception e)
             {
-                return new TutorReservationResponse($"Ocurrió un error: {e.Message}");
-            }
-        }
-
-        public async Task<TutorReservationResponse> UpdateTutorReservationAsync(int studentId, int tutorId, int platformId, TutorReservation tutorReservation)
-        {
-            var existingTutorReserv = await _tutorReservationRespository.FindByStudentIdAndTutorIdAndPlatformId(studentId, tutorId, platformId);
-            if (existingTutorReserv == null)
-                return new TutorReservationResponse("TutorReservation not found");
-
-            try
-            {
-                existingTutorReserv.Qualification = tutorReservation.Qualification;
-                existingTutorReserv.StartDateTime = tutorReservation.StartDateTime;
-                existingTutorReserv.TotalPrice = tutorReservation.TotalPrice;
-
-                _tutorReservationRespository.Update(existingTutorReserv);
-                await _unitOfWork.CompleteAsync();
-                return new TutorReservationResponse(existingTutorReserv);
-            }
-            catch (Exception e)
-            {
-                return new TutorReservationResponse($"Ocurrió un error: {e.Message}");
+                return new TutorReservationResponse("Has ocurred an error updating TutorReservation " + e.Message);
             }
         }
     }

@@ -8,14 +8,16 @@ namespace StudyDesck.API.Domain.Models
     public class TutorReservation
     {
         public int Id { get; set; }
-        public string StartDateTime { get; set; }
-        public double TotalPrice { get; set; }
-        public int Qualification { get; set; }
         public Tutor Tutor { get; set; }
         public int TutorId { get; set; }
+        
         public Student Student { get; set; }
         public int StudentId { get; set; }
-        public Platform Platform { get; set; }
-        public int PlatformId { get; set; }
+
+        public string PlatformUrl { get; set; }
+        public DateTime StartDateTime { get; set; }
+        public DateTime EndDateTime { get; set; }
+        public short Qualification { get; set; }
+        public string Description { get; set; }     
     }
 }

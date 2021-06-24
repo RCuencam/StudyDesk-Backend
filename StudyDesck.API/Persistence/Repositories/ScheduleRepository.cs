@@ -33,7 +33,10 @@ namespace StudyDesck.API.Persistence.Repositories
         }
         public async Task<IEnumerable<Schedule>> ListAsync()
         {
-            return await _context.Schedules.ToListAsync();
+            return await _context.Schedules
+                .Include(s => s.Tutor)
+                    .ThenInclude(t => t.Career)
+                .ToListAsync();
         }
         public void Remove(Schedule shedule)
         {

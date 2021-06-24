@@ -62,8 +62,7 @@ namespace StudyDesck.API.Services
                 shedule.TutorId = tutorId;
                 await _sheduleRepository.AddAsync(shedule);
                 await _unitOfWork.CompleteAsync();
-
-                return new ScheduleResponse(shedule);
+                return new ScheduleResponse("successfully created schedule!");
             }
             catch (Exception ex)
             {
@@ -80,7 +79,6 @@ namespace StudyDesck.API.Services
 
             existingShedule.StarDate = shedule.StarDate;
             existingShedule.EndDate = shedule.EndDate;
-            existingShedule.Date = shedule.Date;
 
             try
             {

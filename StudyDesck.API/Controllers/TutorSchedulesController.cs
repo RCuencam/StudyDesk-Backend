@@ -22,6 +22,7 @@ namespace StudyDesck.API.Controllers
             _scheduleService = scheduleService;
             _mapper = mapper;
         }
+
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<ScheduleResource>), 200)]
         public async Task<IEnumerable<ScheduleResource>> GetAllByTutorIdAsync(int tutorId)
@@ -31,6 +32,7 @@ namespace StudyDesck.API.Controllers
                 .Map<IEnumerable<Schedule>, IEnumerable<ScheduleResource>>(schedules);
             return resources;
         }
+
         [HttpGet("{scheduleId}")]
         [ProducesResponseType(typeof(ScheduleResource), 200)]
         [ProducesResponseType(typeof(BadRequestResult), 404)]
@@ -42,6 +44,7 @@ namespace StudyDesck.API.Controllers
             var scheduleResource = _mapper.Map<Schedule, ScheduleResource>(result.Resource);
             return Ok(scheduleResource);
         }
+
         [HttpPost]
         [ProducesResponseType(typeof(ScheduleResource), 200)]
         [ProducesResponseType(typeof(BadRequestResult), 404)]
@@ -59,6 +62,7 @@ namespace StudyDesck.API.Controllers
             var scheduleResource = _mapper.Map<Schedule, ScheduleResource>(result.Resource);
             return Ok(scheduleResource);
         }
+
         [HttpPut("{scheduleId}")]
         [ProducesResponseType(typeof(ScheduleResource), 200)]
         [ProducesResponseType(typeof(BadRequestResult), 404)]
@@ -76,6 +80,7 @@ namespace StudyDesck.API.Controllers
             var scheduleResource = _mapper.Map<Schedule, ScheduleResource>(result.Resource);
             return Ok(scheduleResource);
         }
+
         [HttpDelete("{scheduleId}")]
         [ProducesResponseType(typeof(ScheduleResource), 200)]
         [ProducesResponseType(typeof(BadRequestResult), 404)]

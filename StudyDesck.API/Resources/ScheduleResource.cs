@@ -8,9 +8,8 @@ namespace StudyDesck.API.Resources
     public class ScheduleResource
     {
         public int Id { get; set; }
-        public int TutorId { get; set; }
+        public TutorResource Tutor { get; set; }
         public DateTime StarDate { get; set; }
         public DateTime EndDate { get; set; }
-        public DateTime Date { get; set; }
     }
 }

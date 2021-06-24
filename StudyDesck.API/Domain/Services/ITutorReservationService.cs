@@ -9,13 +9,11 @@ namespace StudyDesck.API.Domain.Services
 {
     public interface ITutorReservationService
     {
-        Task<IEnumerable<TutorReservation>> ListAsync();
-        Task<TutorReservationResponse> GetByStudentIdAndTutorIdAndPlatformId(int studentId, int tutorId, int platformId);
-        Task<TutorReservationResponse> GetByStudentId(int studentId);
-        Task<TutorReservationResponse> GetByTutorId(int tutorId);
-        Task<TutorReservationResponse> GetByPlatformId(int platformId);
-        Task<TutorReservationResponse> AssignTutorReservationAsync(int studentId, int tutorId, int platformId, TutorReservation tutorReservation);
-        Task<TutorReservationResponse> UnassignTutorReservationAsync(int studentId, int tutorId, int platformId);
-        Task<TutorReservationResponse> UpdateTutorReservationAsync(int studentId, int tutorId, int platformId, TutorReservation tutorReservation);
+        Task<IEnumerable<TutorReservation>> ListByStudentIdAsync(int studentId);
+        Task<IEnumerable<TutorReservation>> ListByTutorIdAsync(int tutorId);
+        Task<IEnumerable<TutorReservation>> ListTutorReservationByTutorIdAsync(int tutorId);
+        Task<TutorReservationResponse> SaveTutorReservation(int studentId, int tutorId, TutorReservation tutorReservation);
+        Task<TutorReservationResponse> UpdateTutorReservation(int id, int studentId, int tutorId, TutorReservation tutorReservation);
+
     }
 }

@@ -128,9 +128,8 @@ namespace StudyDesck.API.Domain.Persistence.Contexts
             builder.Entity<Schedule>().ToTable("Schedules");
             builder.Entity<Schedule>().HasKey(p => p.Id);
             builder.Entity<Schedule>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
-            builder.Entity<Schedule>().Property(p => p.StarDate).IsRequired().HasMaxLength(30);
-            builder.Entity<Schedule>().Property(p => p.EndDate).IsRequired().HasMaxLength(30);
-            builder.Entity<Schedule>().Property(p => p.Date).IsRequired().HasMaxLength(30);
+            builder.Entity<Schedule>().Property(p => p.StarDate).IsRequired();
+            builder.Entity<Schedule>().Property(p => p.EndDate).IsRequired();
 
             // Tutor Entity
             builder.Entity<Tutor>().ToTable("Tutors");
@@ -216,25 +215,18 @@ namespace StudyDesck.API.Domain.Persistence.Contexts
                 .HasForeignKey(sms => sms.InstituteId);
 
             builder.Entity<TutorReservation>().ToTable("TutorReservations");
-            builder.Entity<TutorReservation>().HasKey(tr => new { tr.StudentId, tr.PlatformId, tr.TutorId });
-            builder.Entity<TutorReservation>().Property(tr => tr.Qualification);
-            builder.Entity<TutorReservation>().Property(tr => tr.StartDateTime);
+            builder.Entity<TutorReservation>().HasKey(tr => new { tr.TutorId, tr.StudentId });
+            builder.Entity<TutorReservation>().HasKey(tr => tr.Id);
+            builder.Entity<TutorReservation>().Property(tr => tr.Id).ValueGeneratedOnAdd();
             //relationships
             builder.Entity<TutorReservation>()
                 .HasOne(tr => tr.Tutor)
                 .WithMany(tr => tr.TutorReservations)
                 .HasForeignKey(tr => tr.TutorId);
-
             builder.Entity<TutorReservation>()
                 .HasOne(tr => tr.Student)
                 .WithMany(tr => tr.TutorReservations)
                 .HasForeignKey(tr => tr.StudentId);
-
-            builder.Entity<TutorReservation>()
-                .HasOne(tr => tr.Platform)
-                .WithMany(tr => tr.TutorReservations)
-                .HasForeignKey(tr => tr.PlatformId);
-
 
             //SessionMaterial Entity
             builder.Entity<SessionMaterial>().ToTable("SessionMaterials");

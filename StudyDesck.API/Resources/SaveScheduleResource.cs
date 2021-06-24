@@ -9,10 +9,8 @@ namespace StudyDesck.API.Resources
     public class SaveScheduleResource
     {
         [Required]
-        public DateTime StarDate { get; set; } = DateTime.Now;
+        public DateTime StarDate { get; set; }
         [Required]
-        public DateTime EndDate { get; set; } = DateTime.Now;
-        [Required]
-        public DateTime Date { get; set; } = DateTime.Now;
+        public DateTime EndDate { get; set; }
     }
 }

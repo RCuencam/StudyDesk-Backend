@@ -12,77 +12,73 @@ using System.Threading.Tasks;
 namespace StudyDesck.API.Controllers
 {
     [ApiController]
+
     [Route("/api")]
     [Produces("application/json")]
     public class TutorReservationsController : ControllerBase
     {
         private readonly ITutorReservationService _tutorReservationService;
-        private readonly IStudentService _studentService;
-        private readonly ITutorService _tutorService;
-        private readonly IPlatformService _platformService;
         private readonly IMapper _mapper;
 
-        public TutorReservationsController(ITutorReservationService tutorReservationService, IStudentService studentService, ITutorService tutorService, IPlatformService platformService, IMapper mapper)
+        public TutorReservationsController(ITutorReservationService tutorReservationService, IMapper mapper)
         {
             _tutorReservationService = tutorReservationService;
-            _studentService = studentService;
-            _tutorService = tutorService;
-            _platformService = platformService;
             _mapper = mapper;
         }
 
-        [HttpGet("tutor_reservations")]
-        public async Task<IEnumerable<TutorReservationResource>> GetAllAsync()
+        [HttpGet("students/{studentId}/tutors")]
+        public async Task<IEnumerable<TutorReservationResource>> GetAllTutorsByStudentIdAsync(int studentId)
         {
-
-            var result = await _tutorReservationService.ListAsync();
+            var result = await _tutorReservationService.ListByStudentIdAsync(studentId);
             var resources = _mapper.Map<IEnumerable<TutorReservation>, IEnumerable<TutorReservationResource>>(result);
             return resources;
         }
 
-        [HttpPost("/students/{studentId}/tutors/{tutorId}/platforms/{platformId}")]
-        public async Task<IActionResult> PostAsync(int studentId, int tutorId, int platformId, [FromBody] SaveTutorReservationResource resource)
-        {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState.GetErrorMessages());
 
+        [HttpGet("tutors/{tutorId}/students")]
+        public async Task<IEnumerable<TutorReservationResource>> GetAllStudentsByTutorIdAsync(int tutorId)
+        {
+            var result = await _tutorReservationService.ListByTutorIdAsync(tutorId);
+            var resources = _mapper.Map<IEnumerable<TutorReservation>, IEnumerable<TutorReservationResource>>(result);
+            return resources;
+        }
+
+        [HttpPost("students/{studentId}/tutors/{tutorId}")]
+        public async Task<IActionResult> createTutorReservationAsync(int studentId, int tutorId, [FromBody] SaveTutorReservationResource resource)
+        {
             var tutorReservation = _mapper.Map<SaveTutorReservationResource, TutorReservation>(resource);
-
-            var result = await _tutorReservationService.AssignTutorReservationAsync(studentId, tutorId, platformId, tutorReservation);
+            var result = await _tutorReservationService.SaveTutorReservation(studentId, tutorId, tutorReservation);
 
             if (!result.Success)
                 return BadRequest(result.Message);
 
-            var tutorReservationResource = _mapper.Map<TutorReservation, TutorReservationResource>(result.Resource);
+            var materialResource = _mapper.Map<TutorReservation, TutorReservationResource>(result.Resource);
 
-            return Ok(tutorReservationResource);
+            return Ok(materialResource);
         }
 
-        [HttpPut("/students/{studentId}/tutors/{tutorId}/platforms/{platformId}")]
-        public async Task<IActionResult> PutAsync(int studentId, int tutorId, int platformId, [FromBody] SaveTutorReservationResource resource)
+        [HttpGet("tutors/{tutorId}/reservations")]
+        public async Task<IEnumerable<TutorReservationResource>> GetAllTutorReservationsAsync(int tutorId)
         {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState.GetErrorMessages());
+            var result = await _tutorReservationService.ListTutorReservationByTutorIdAsync(tutorId);
+            var resources = _mapper.Map<IEnumerable<TutorReservation>, IEnumerable<TutorReservationResource>>(result);
+            return resources;
+        }
 
+        [HttpPut("students/{studentId}/tutors/{tutorId}")]
+        public async Task<IActionResult> UpdateTutorReservationAsync(int id, int studentId, int tutorId, [FromBody] SaveTutorReservationResource resource)
+        {
+            // studentId and tutorId are optionals
             var tutorReservation = _mapper.Map<SaveTutorReservationResource, TutorReservation>(resource);
+            var result = await _tutorReservationService.UpdateTutorReservation(id, studentId, tutorId, tutorReservation);
 
-            var result = await _tutorReservationService.UpdateTutorReservationAsync(studentId, tutorId, platformId, tutorReservation);
             if (!result.Success)
                 return BadRequest(result.Message);
 
-            var tutorReservationResource = _mapper.Map<TutorReservation, TutorReservationResource>(result.Resource);
-            return Ok(tutorReservationResource);
+            var materialResource = _mapper.Map<TutorReservation, TutorReservationResource>(result.Resource);
+
+            return Ok(materialResource);
         }
 
-        [HttpDelete("students/{studentId}/tutors/{tutorId}/platforms/{platformId}")]
-        public async Task<IActionResult> DeleteAsync(int studentId, int tutorId, int platformId)
-        {
-            var result = await _tutorReservationService.UnassignTutorReservationAsync(studentId, tutorId, platformId);
-            if (!result.Success)
-                return BadRequest(result.Message);
-
-            var tutorReservationResource = _mapper.Map<TutorReservation, TutorReservationResource>(result.Resource);
-            return Ok(tutorReservationResource);
-        }
     }
 }

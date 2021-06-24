@@ -8,10 +8,10 @@ namespace StudyDesck.API.Resources
 {
     public class SaveTutorReservationResource
     {
-        [Required]
-        public string StartDateTime { get; set; }
-
-        [Required]
-        public double TotalPrice { get; set; }
+        public string PlatformUrl { get; set; }
+        public DateTime StartDateTime { get; set; }
+        public DateTime EndDateTime { get; set; }
+        public short Qualification { get; set; }
+        public string Description { get; set; }
     }
 }

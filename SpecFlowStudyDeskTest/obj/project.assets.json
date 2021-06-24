@@ -8447,25 +8447,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\carlos\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\germa\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\carlos\\Desktop\\AppsWEB Curso\\Proyecto StudyDesk\\StudyDesk-Backend\\SpecFlowStudyDeskTest\\SpecFlowStudyDeskTest.csproj",
+      "projectUniqueName": "E:\\Proyectos Programacion\\C#\\Universidad\\StudyDesk\\StudyDesk-Backend\\SpecFlowStudyDeskTest\\SpecFlowStudyDeskTest.csproj",
       "projectName": "SpecFlowStudyDeskTest",
-      "projectPath": "C:\\Users\\carlos\\Desktop\\AppsWEB Curso\\Proyecto StudyDesk\\StudyDesk-Backend\\SpecFlowStudyDeskTest\\SpecFlowStudyDeskTest.csproj",
-      "packagesPath": "C:\\Users\\carlos\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\carlos\\Desktop\\AppsWEB Curso\\Proyecto StudyDesk\\StudyDesk-Backend\\SpecFlowStudyDeskTest\\obj\\",
+      "projectPath": "E:\\Proyectos Programacion\\C#\\Universidad\\StudyDesk\\StudyDesk-Backend\\SpecFlowStudyDeskTest\\SpecFlowStudyDeskTest.csproj",
+      "packagesPath": "C:\\Users\\germa\\.nuget\\packages\\",
+      "outputPath": "E:\\Proyectos Programacion\\C#\\Universidad\\StudyDesk\\StudyDesk-Backend\\SpecFlowStudyDeskTest\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\carlos\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Users\\germa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
@@ -8478,8 +8478,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\carlos\\Desktop\\AppsWEB Curso\\Proyecto StudyDesk\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj": {
-              "projectPath": "C:\\Users\\carlos\\Desktop\\AppsWEB Curso\\Proyecto StudyDesk\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj"
+            "E:\\Proyectos Programacion\\C#\\Universidad\\StudyDesk\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj": {
+              "projectPath": "E:\\Proyectos Programacion\\C#\\Universidad\\StudyDesk\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj"
             }
           }
         }
