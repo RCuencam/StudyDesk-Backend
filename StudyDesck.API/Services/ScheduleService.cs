@@ -79,6 +79,7 @@ namespace StudyDesck.API.Services
 
             existingShedule.StarDate = shedule.StarDate;
             existingShedule.EndDate = shedule.EndDate;
+            existingShedule.Reserved = shedule.Reserved;
 
             try
             {

@@ -11,5 +11,6 @@ namespace StudyDesck.API.Resources
         public TutorResource Tutor { get; set; }
         public DateTime StarDate { get; set; }
         public DateTime EndDate { get; set; }
+        public bool Reserved { get; set; }
     }
 }

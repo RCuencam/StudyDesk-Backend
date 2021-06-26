@@ -12,5 +12,7 @@ namespace StudyDesck.API.Resources
         public DateTime StarDate { get; set; }
         [Required]
         public DateTime EndDate { get; set; }
+        public bool Reserved { get; set; }
+
     }
 }

@@ -10,6 +10,7 @@ namespace StudyDesck.API.Domain.Models
         public int Id { get; set; }
         public DateTime StarDate { get; set; }
         public DateTime EndDate { get; set; }
+        public bool Reserved { get; set; }
         
         // relationships
         public int TutorId { get; set; }
