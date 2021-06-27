@@ -13,6 +13,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using BCryptNet = BCrypt.Net;
 
 namespace StudyDesck.API.Services
 {
@@ -37,12 +38,13 @@ namespace StudyDesck.API.Services
             // finbyEmail
             AuthenticationResponse response;
             var students = _studentRepository.ListAsync();
-            var student = students.Result.SingleOrDefault(x => x.Email == request.Email && x.Password == request.Password);
-            if (student == null)
+            var student = students.Result.SingleOrDefault(x => x.Email == request.Email);
+
+            if (student == null || !BCryptNet.BCrypt.Verify(request.Password, student.Password))
             {
                 var tutors = _tutorRepository.ListAsync();
-                var tutor = tutors.Result.SingleOrDefault(x => x.Email == request.Email && x.Password == request.Password);
-                if (tutor == null) return null;
+                var tutor = tutors.Result.SingleOrDefault(x => x.Email == request.Email);
+                if (tutor == null || !BCryptNet.BCrypt.Verify(request.Password, tutor.Password)) return null;
                 response = _mapper.Map<Tutor, AuthenticationResponse>(tutor);
             } 
             else

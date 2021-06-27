@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BCryptNet = BCrypt.Net;
 
 namespace StudyDesck.API.Services
 {
@@ -85,6 +86,7 @@ namespace StudyDesck.API.Services
             try
             {
                 student.CareerId = careerId;
+                student.Password = BCryptNet.BCrypt.HashPassword(student.Password);
                 await _studentRepository.AddAsync(student);
                 await _unitOfWork.CompleteAsync();
                 return new StudentResponse(student);
@@ -102,6 +104,11 @@ namespace StudyDesck.API.Services
                 return new StudentResponse("student no encontrada");
 
             existingStudent.Name = student.Name;
+            existingStudent.LastName = student.LastName;
+            existingStudent.Logo = student.Logo;
+            student.Email = student.Email;
+            existingStudent.Password = BCryptNet.BCrypt.HashPassword(student.Password);
+
             try
             {
                 _studentRepository.Update(existingStudent);

@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BCryptNet = BCrypt.Net;
 
 namespace StudyDesck.API.Services
 {
@@ -55,17 +56,22 @@ namespace StudyDesck.API.Services
         {
             return await _tutorRepository.ListAsync();
         }
+
         public async Task<IEnumerable<Tutor>> ListByTopicIdAsync(int topicId)
         {
             var expertTopics = await _expertTopicRepository.ListByTopicIdAsync(topicId);
             var tutors = expertTopics.Select(et => et.Tutor).ToList();
             return tutors;
         }
+
         public async Task<TutorResponse> SaveAsync(int careerId, Tutor tutor)
         {
+            // validar que no exista el mismo email
+
             try
             {
                 tutor.CareerId = careerId;
+                tutor.Password = BCryptNet.BCrypt.HashPassword(tutor.Password);
                 await _tutorRepository.AddAsync(tutor);
                 await _unitOfWork.CompleteAsync();
 
@@ -89,9 +95,8 @@ namespace StudyDesck.API.Services
             existingTutor.Description = tutor.Description;
             existingTutor.Logo = tutor.Logo;
             existingTutor.Email = tutor.Email;
-            existingTutor.Password = tutor.Password;
+            existingTutor.Password = BCryptNet.BCrypt.HashPassword(tutor.Password);
             existingTutor.PricePerHour = tutor.PricePerHour;
-
 
             try
             {
@@ -109,6 +114,23 @@ namespace StudyDesck.API.Services
         public async Task<IEnumerable<Tutor>> ListByCareerIdAsync(int careerId)
         {
             return await _tutorRepository.ListByCareerIdAsync(careerId);
+        }
+
+        // Deprecated
+        public async Task<TutorResponse> SaveAsync(Tutor tutor)
+        {
+            try
+            {
+                // serializar password
+                await _tutorRepository.AddAsync(tutor);
+                await _unitOfWork.CompleteAsync();
+
+                return new TutorResponse(tutor);
+            }
+            catch (Exception ex)
+            {
+                return new TutorResponse($"An error ocurred while saving the tutor: {ex.Message}");
+            }
         }
     }
 }

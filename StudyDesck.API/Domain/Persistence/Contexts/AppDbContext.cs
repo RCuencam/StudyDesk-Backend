@@ -72,7 +72,7 @@ namespace StudyDesck.API.Domain.Persistence.Contexts
             builder.Entity<Student>().Property(p => p.LastName).IsRequired().HasMaxLength(40);
             builder.Entity<Student>().Property(p => p.Logo).IsRequired();
             builder.Entity<Student>().Property(p => p.Email).IsRequired().HasMaxLength(40);
-            builder.Entity<Student>().Property(p => p.Password).IsRequired().HasMaxLength(40);
+            builder.Entity<Student>().Property(p => p.Password).IsRequired();
 
             //Category
             builder.Entity<Category>().ToTable("Categories");
@@ -138,7 +138,7 @@ namespace StudyDesck.API.Domain.Persistence.Contexts
             builder.Entity<Tutor>().Property(p => p.Name).IsRequired().HasMaxLength(30);
             builder.Entity<Tutor>().Property(p => p.LastName).IsRequired().HasMaxLength(30);
             builder.Entity<Tutor>().Property(p => p.Email).IsRequired().HasMaxLength(30);
-            builder.Entity<Tutor>().Property(p => p.Password).IsRequired().HasMaxLength(30);
+            builder.Entity<Tutor>().Property(p => p.Password).IsRequired();
             // Relationships
             builder.Entity<Tutor>()
                 .HasOne(t => t.Career)

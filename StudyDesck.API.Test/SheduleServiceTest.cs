@@ -71,7 +71,6 @@ namespace StudyDesck.API.Test
                 Id = 1,
                 StarDate = DateTime.MinValue,
                 EndDate = DateTime.MinValue,
-                Date = DateTime.MinValue,
                 TutorId = 1
             };
 
@@ -98,7 +97,6 @@ namespace StudyDesck.API.Test
                 Id = 1,
                 StarDate = DateTime.MinValue,
                 EndDate = DateTime.MinValue,
-                Date = DateTime.MinValue,
                 TutorId = 1
             };
 
@@ -126,7 +124,6 @@ namespace StudyDesck.API.Test
                 Id = 1,
                 StarDate = DateTime.MinValue,
                 EndDate = DateTime.MinValue,
-                Date = DateTime.MinValue,
                 TutorId = 1
             };
 
@@ -154,7 +151,6 @@ namespace StudyDesck.API.Test
                 Id = 1,
                 StarDate = DateTime.MinValue,
                 EndDate = DateTime.MinValue,
-                Date = DateTime.MinValue,
                 TutorId = 1
             };
 
@@ -182,7 +178,6 @@ namespace StudyDesck.API.Test
                 Id = 1,
                 StarDate = DateTime.MinValue,
                 EndDate = DateTime.MinValue,
-                Date = DateTime.MinValue,
                 TutorId = 1
             };
 
