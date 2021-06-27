@@ -7,7 +7,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
     <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAJfDJPiYoXUiexUNkz8Ya4gAAAAACAAAAAAAQZgAAAAEAACAAAADk1Hu5LHd6LTB7nLiV3fbe4/ydIg2AHqJL2/JPntgU/gAAAAAOgAAAAAIAACAAAABrcHGYuXoqA6GyFRhlD/YpPtdK65QOxRunx9J6WKyrkYAAAABNiW95Y8Y2PHAbOm2OdpAD2iLPOAiTk9Kdas/j45I+tgCBTx7zITqiqSDMvxCGERxk16V4ayRUbsegEKO1Mp2WK4clNqQ/r2gR8J01OGBoxsUbUIsT8//GXJoCDnKMjqjzba/Nz/mVmiy+Ae7+d0S/6O+n6EkVW2jUct9DvZt9AkAAAAC+AwXlmVmDyaq6UrWfDCQKYfWSKzbrqHZHCJ8UgD6rAi3e9+TJwtS+fopT9rRxHxFQkJHPYdJCIBWxCscYJcb6</EncryptedPassword>
-    <History>True|2021-06-03T04:07:14.9231600Z;True|2021-06-02T22:50:57.9804175-05:00;True|2021-06-02T22:38:33.5927786-05:00;True|2021-06-02T22:32:49.4413016-05:00;</History>
+    <History>True|2021-06-27T03:57:22.1415149Z;True|2021-06-02T23:07:14.9231600-05:00;True|2021-06-02T22:50:57.9804175-05:00;True|2021-06-02T22:38:33.5927786-05:00;True|2021-06-02T22:32:49.4413016-05:00;</History>
   </PropertyGroup>
   <ItemGroup>
     <DestinationConnectionStrings Include="DefaultConnection">
