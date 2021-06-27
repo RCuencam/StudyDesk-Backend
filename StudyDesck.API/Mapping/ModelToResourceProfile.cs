@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using StudyDesck.API.Domain.Models;
+using StudyDesck.API.Domain.Services.Comunications;
 using StudyDesck.API.Resources;
 using System;
 using System.Collections.Generic;
@@ -27,6 +28,8 @@ namespace StudyDesck.API.Mapping
             CreateMap<TutorReservation, TutorReservationResource>();
             CreateMap<StudentMaterial, StudentMaterialResource>();
             CreateMap<SessionMaterial, SessionMaterialResource>();
+            CreateMap<Tutor, AuthenticationResponse>();
+            CreateMap<Student, AuthenticationResponse>();
         }
 
     }

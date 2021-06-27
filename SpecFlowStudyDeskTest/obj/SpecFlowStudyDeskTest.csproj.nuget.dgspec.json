@@ -132,9 +132,17 @@
               "target": "Package",
               "version": "[8.1.1, )"
             },
+            "BCrypt.Net-Next": {
+              "target": "Package",
+              "version": "[4.0.2, )"
+            },
             "FluentAssertions": {
               "target": "Package",
               "version": "[5.10.3, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[5.0.7, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
@@ -152,6 +160,10 @@
               "target": "Package",
               "version": "[1.1.6, )"
             },
+            "Microsoft.IdentityModel.Tokens": {
+              "target": "Package",
+              "version": "[6.11.1, )"
+            },
             "Moq": {
               "target": "Package",
               "version": "[4.16.1, )"
@@ -167,6 +179,10 @@
             "Swashbuckle.AspNetCore.Annotations": {
               "target": "Package",
               "version": "[6.1.4, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[6.11.1, )"
             }
           },
           "imports": [

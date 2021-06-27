@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using StudyDesck.API.Domain.Models;
 using StudyDesck.API.Domain.Services;
@@ -48,9 +49,6 @@ namespace StudyDesck.API.Controllers
 
             return Ok(studentResource);
         }
-
-
-        
 
         [HttpPut("{id}")]
         [ProducesResponseType(typeof(StudentResource), 200)]

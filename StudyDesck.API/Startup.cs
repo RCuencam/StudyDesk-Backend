@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -6,15 +7,18 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using StudyDesck.API.Domain.Persistence.Contexts;
 using StudyDesck.API.Domain.Persistence.Repositories;
 using StudyDesck.API.Domain.Services;
 using StudyDesck.API.Persistence.Repositories;
 using StudyDesck.API.Services;
+using StudyDesck.API.Settings;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace StudyDesck.API
@@ -31,8 +35,32 @@ namespace StudyDesck.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddCors();
             services.AddControllers();
+
+            var appSettingsSection = Configuration.GetSection("AppSettings");
+            services.Configure<AppSettings>(appSettingsSection);
+
+            var appSettings = appSettingsSection.Get<AppSettings>();
+            var key = Encoding.ASCII.GetBytes(appSettings.Secret);
+
+            services.AddAuthentication(x =>
+            {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(x => 
+                {
+                   x.RequireHttpsMetadata = false;
+                   x.SaveToken = true;
+                   x.TokenValidationParameters = new TokenValidationParameters
+                   {
+                       ValidateIssuerSigningKey = true,
+                       IssuerSigningKey = new SymmetricSecurityKey(key),
+                       ValidateIssuer = false,
+                       ValidateAudience = false
+                   };
+               });
+
 
             services.AddDbContext<AppDbContext>(options =>
             {
@@ -59,7 +87,6 @@ namespace StudyDesck.API
             services.AddScoped<IScheduleRepository, ScheduleRepository>();
             services.AddScoped<ISessionMaterialRepository, SessionMaterialRepository>();
 
-
             // services:
             services.AddScoped<IInstituteService, InstituteService>();
             services.AddScoped<ICareerService, CareerService>();
@@ -77,6 +104,7 @@ namespace StudyDesck.API
             services.AddScoped<ITutorReservationService, TutorReservationService>();
             services.AddScoped<ISessionMaterialService, SessisonMaterialService>();
             services.AddScoped<IScheduleService, ScheduleService>();
+            services.AddScoped<IUserService, UserService>(); // 
 
             // end region
             services.AddRouting(options => options.LowercaseUrls = true); 
@@ -104,6 +132,13 @@ namespace StudyDesck.API
 
             //app.UseHttpsRedirection(); // temp
             app.UseRouting();
+
+            app.UseCors(x => x.SetIsOriginAllowed(origin => true)
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+            .AllowCredentials());
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 
