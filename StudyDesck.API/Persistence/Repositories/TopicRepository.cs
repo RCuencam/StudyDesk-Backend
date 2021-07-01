@@ -33,6 +33,7 @@ namespace StudyDesck.API.Persistence.Repositories
         public async Task<IEnumerable<Topic>> ListByCourseIdAsync(int courseId)
         {
             return await _context.Topics
+                .Where(t => t.CourseId == courseId)
                 .Include(t => t.Course)
                     .ThenInclude(c => c.Career)
                 .ToListAsync();

@@ -14,6 +14,6 @@ namespace StudyDesck.API.Domain.Services
         Task<IEnumerable<TutorReservation>> ListTutorReservationByTutorIdAsync(int tutorId);
         Task<TutorReservationResponse> SaveTutorReservation(int studentId, int tutorId, TutorReservation tutorReservation);
         Task<TutorReservationResponse> UpdateTutorReservation(int id, int studentId, int tutorId, TutorReservation tutorReservation);
-
+        Task<TutorReservationResponse> DeleteTutorRerservationAsync(int id, int studentId, int tutorId);
     }
 }

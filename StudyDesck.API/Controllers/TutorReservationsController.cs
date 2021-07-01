@@ -75,9 +75,24 @@ namespace StudyDesck.API.Controllers
             if (!result.Success)
                 return BadRequest(result.Message);
 
-            var materialResource = _mapper.Map<TutorReservation, TutorReservationResource>(result.Resource);
+            var reservationResource = _mapper.Map<TutorReservation, TutorReservationResource>(result.Resource);
 
-            return Ok(materialResource);
+            return Ok(reservationResource);
+        }
+
+
+        [HttpDelete("students/{studentId}/tutors/{tutorId}")]
+        public async Task<IActionResult> DeleteTutorReservation(int id, int studentId, int tutorId)
+        {
+
+            var result = await _tutorReservationService.DeleteTutorRerservationAsync(id, studentId, tutorId);
+
+            if (!result.Success)
+                return BadRequest(result.Message);
+
+            var reservationResource = _mapper.Map<TutorReservation, TutorReservationResource>(result.Resource);
+
+            return Ok(reservationResource);
         }
 
     }

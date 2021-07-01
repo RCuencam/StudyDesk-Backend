@@ -21,6 +21,25 @@ namespace StudyDesck.API.Services
             _unitOfWork = unitOfWork;
         }
 
+        public async Task<TutorReservationResponse> DeleteTutorRerservationAsync(int id, int studentId, int tutorId)
+        {
+            var existingReservation = await _tutorReservationRespository.FindById(id, studentId, tutorId);
+            if (existingReservation == null)
+            {
+                return new TutorReservationResponse("The reservation with id " + id + ", tutor id " + tutorId +" and student id " + studentId +" was not found");
+            }
+
+            try
+            {
+                _tutorReservationRespository.Remove(existingReservation);
+                await _unitOfWork.CompleteAsync();
+                return new TutorReservationResponse(existingReservation);
+            }
+            catch (Exception e)
+            {
+                return new TutorReservationResponse("Has ocurred an error deleting the Course" + e.Message);
+            }
+        }
 
         public async Task<IEnumerable<TutorReservation>> ListByStudentIdAsync(int studentId)
         {
