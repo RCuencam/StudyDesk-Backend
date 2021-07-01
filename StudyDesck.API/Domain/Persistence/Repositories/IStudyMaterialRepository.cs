@@ -16,5 +16,6 @@ namespace StudyDesck.API.Domain.Persistence.Repositories
         void Update(StudyMaterial studyMaterial);
         void Remove(StudyMaterial studyMaterial);
         Task<IEnumerable<StudyMaterial>> ListByStudentIdAsync(int studentId);
+        Task<IEnumerable<StudyMaterial>> ListByTopicIdAsync(int topicId);
     }
 }

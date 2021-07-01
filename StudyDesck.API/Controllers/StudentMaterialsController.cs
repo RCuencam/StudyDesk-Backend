@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 namespace StudyDesck.API.Controllers
 {
     [Route("/api/student/{studentId}/materials")]
+    [ApiController]
     public class StudentMaterialsController : ControllerBase
     {
         private readonly IStudentMaterialService _studentMaterialService;

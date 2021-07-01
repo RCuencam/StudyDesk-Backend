@@ -65,6 +65,7 @@ namespace StudyDesck.API.Services
             existing.StartDateTime = tutorReservation.StartDateTime;
             existing.EndDateTime = tutorReservation.EndDateTime;
             existing.Description = tutorReservation.Description;
+            existing.Confirmed = tutorReservation.Confirmed;
             
             try
             {

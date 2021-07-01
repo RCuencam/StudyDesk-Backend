@@ -18,6 +18,7 @@ namespace StudyDesck.API.Domain.Models
         public DateTime StartDateTime { get; set; }
         public DateTime EndDateTime { get; set; }
         public short Qualification { get; set; }
-        public string Description { get; set; }     
+        public string Description { get; set; }  
+        public bool Confirmed { get; set; }
     }
 }

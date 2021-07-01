@@ -38,6 +38,13 @@ namespace StudyDesck.API.Persistence.Repositories
                 .ToListAsync();
         }
 
+        public async Task<IEnumerable<StudyMaterial>> ListByTopicIdAsync(int topicId)
+        {
+            return await _context.StudyMaterials
+                   .Where(sm => sm.TopicId == topicId)
+                   .ToListAsync();
+        }
+
         public void Remove(StudyMaterial studyMaterial)
         {
             _context.StudyMaterials.Remove(studyMaterial);
