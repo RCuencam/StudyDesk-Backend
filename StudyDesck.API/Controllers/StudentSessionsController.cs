@@ -51,6 +51,7 @@ namespace StudyDesck.API.Controllers
         }
 
         [HttpGet("{sessionId}")]
+        [SwaggerOperation(Summary = "List all sessions of a student")]
         [ProducesResponseType(typeof(SessionReservationResource), 200)]
         [ProducesResponseType(typeof(BadRequestResult), 404)]
         public async Task<IActionResult> GetAsync(int studentId, int sessionId)

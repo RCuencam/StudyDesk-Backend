@@ -25,6 +25,7 @@ namespace StudyDesck.API.Controllers
         }
 
         [HttpGet]
+        [SwaggerOperation(Summary = "List all schedules")]
         public async Task<IEnumerable<ScheduleResource>> GetAllAsync()
         {
             var results = await _scheduleService.ListAsync();

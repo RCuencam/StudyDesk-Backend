@@ -27,6 +27,7 @@ namespace StudyDesck.API.Controllers
         }
 
         [HttpGet]
+        [SwaggerOperation(Summary = "List all students")]
         [ProducesResponseType(typeof(IEnumerable<StudentResource>), 200)]
         public async Task<IEnumerable<StudentResource>> GetAllAsync()
         {
@@ -37,6 +38,7 @@ namespace StudyDesck.API.Controllers
         }
 
         [HttpGet("{id}")]
+        [SwaggerOperation(Summary = "List a student by studentId")]
         [ProducesResponseType(typeof(StudentResource), 200)]
         [ProducesResponseType(typeof(BadRequestResult), 404)]
         public async Task<IActionResult> GetAsync(int id)
@@ -51,6 +53,7 @@ namespace StudyDesck.API.Controllers
         }
 
         [HttpPut("{id}")]
+        [SwaggerOperation(Summary = "Update a student")]
         [ProducesResponseType(typeof(StudentResource), 200)]
         [ProducesResponseType(typeof(BadRequestResult), 404)]
         public async Task<IActionResult> PutAsync(int id, [FromBody] SaveStudentResource resource)
@@ -71,6 +74,7 @@ namespace StudyDesck.API.Controllers
         }
 
         [HttpDelete("{id}")]
+        [SwaggerOperation(Summary = "Delete a student")]
         [ProducesResponseType(typeof(StudentResource), 200)]
         [ProducesResponseType(typeof(BadRequestResult), 404)]
         public async Task<IActionResult> DeleteAsync(int id)

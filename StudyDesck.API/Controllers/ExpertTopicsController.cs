@@ -28,6 +28,7 @@ namespace StudyDesck.API.Controllers
         }
 
         [HttpGet("topics/{topicId}/tutor")]
+        [SwaggerOperation(Summary = "List all tutors by topicId")]
         public async Task<IEnumerable<TutorResource>> GetAllByTopicTdAsync(int topicId)
         {
             var tutors = await _tutorService.ListByTopicIdAsync(topicId);
@@ -37,6 +38,7 @@ namespace StudyDesck.API.Controllers
         }
 
         [HttpGet("tutors/{tutorId}/topics")]
+        [SwaggerOperation(Summary = "List all topics by tutorId")]
         public async Task<IEnumerable<TopicResource>> GetAllByTutorTdAsync(int tutorId)
         {
             var topics = await _topicService.ListByTutorIdAsync(tutorId);
@@ -46,6 +48,7 @@ namespace StudyDesck.API.Controllers
         }
 
         [HttpPost("{tutorId}")]
+        [SwaggerOperation(Summary = "Create a topic")]
         public async Task<IActionResult> AssignExpertTopic(int tutorId, int topicId)
         {
             var result = await _expertTopicService.AssignExpertTopicAsync(tutorId, topicId);

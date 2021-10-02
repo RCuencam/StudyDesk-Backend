@@ -25,6 +25,7 @@ namespace StudyDesck.API.Controllers
         }
 
         [HttpGet]
+        [SwaggerOperation(Summary = "List all sessions of a tutor")]
         [ProducesResponseType(typeof(IEnumerable<SessionResource>), 200)]
         public async Task<IEnumerable<SessionResource>> GetAllByTutorIdAsync(int tutorId)
         {
@@ -50,6 +51,7 @@ namespace StudyDesck.API.Controllers
 
 
         [HttpPost]
+        [SwaggerOperation(Summary = "Create a session for a tutor")]
         [ProducesResponseType(typeof(SessionResource), 200)]
         [ProducesResponseType(typeof(BadRequestResult), 404)]
         public async Task<IActionResult> PostAsync(int tutorId,[FromBody] SaveSessionResource resource)
@@ -70,6 +72,7 @@ namespace StudyDesck.API.Controllers
         }
 
         [HttpPut("{sessionId}")]
+        [SwaggerOperation(Summary = "Update a session of a tutor")]
         [ProducesResponseType(typeof(SessionResource), 200)]
         [ProducesResponseType(typeof(BadRequestResult), 404)]
         public async Task<IActionResult> PutAsync(int tutorId,int sessionId, [FromBody] SaveSessionResource resource)
@@ -90,6 +93,7 @@ namespace StudyDesck.API.Controllers
         }
 
         [HttpDelete("{sessionId}")]
+        [SwaggerOperation(Summary = "Delete a session of a tutor")]
         [ProducesResponseType(typeof(SessionResource), 200)]
         [ProducesResponseType(typeof(BadRequestResult), 404)]
         public async Task<IActionResult> DeleteAsync(int tutorId,int sessionId)

@@ -27,6 +27,7 @@ namespace StudyDesck.API.Controllers
         }
 
         [HttpGet("students/{studentId}/tutors")]
+        [SwaggerOperation(Summary = "List all tutors of a student")]
         public async Task<IEnumerable<TutorReservationResource>> GetAllTutorsByStudentIdAsync(int studentId)
         {
             var result = await _tutorReservationService.ListByStudentIdAsync(studentId);
@@ -36,6 +37,7 @@ namespace StudyDesck.API.Controllers
 
 
         [HttpGet("tutors/{tutorId}/students")]
+        [SwaggerOperation(Summary = "List all students of a tutor")]
         public async Task<IEnumerable<TutorReservationResource>> GetAllStudentsByTutorIdAsync(int tutorId)
         {
             var result = await _tutorReservationService.ListByTutorIdAsync(tutorId);
@@ -44,6 +46,7 @@ namespace StudyDesck.API.Controllers
         }
 
         [HttpPost("students/{studentId}/tutors/{tutorId}")]
+        [SwaggerOperation(Summary = "Create a reservation")]
         public async Task<IActionResult> createTutorReservationAsync(int studentId, int tutorId, [FromBody] SaveTutorReservationResource resource)
         {
             var tutorReservation = _mapper.Map<SaveTutorReservationResource, TutorReservation>(resource);
@@ -58,6 +61,7 @@ namespace StudyDesck.API.Controllers
         }
 
         [HttpGet("tutors/{tutorId}/reservations")]
+        [SwaggerOperation(Summary = "List all reservations of a tutor")]
         public async Task<IEnumerable<TutorReservationResource>> GetAllTutorReservationsAsync(int tutorId)
         {
             var result = await _tutorReservationService.ListTutorReservationByTutorIdAsync(tutorId);
@@ -66,6 +70,7 @@ namespace StudyDesck.API.Controllers
         }
 
         [HttpPut("students/{studentId}/tutors/{tutorId}")]
+        [SwaggerOperation(Summary = "Update a reservation of a student")]
         public async Task<IActionResult> UpdateTutorReservationAsync(int id, int studentId, int tutorId, [FromBody] SaveTutorReservationResource resource)
         {
             // studentId and tutorId are optionals
@@ -82,6 +87,7 @@ namespace StudyDesck.API.Controllers
 
 
         [HttpDelete("students/{studentId}/tutors/{tutorId}")]
+        [SwaggerOperation(Summary = "Delete a reservation of a student")]
         public async Task<IActionResult> DeleteTutorReservation(int id, int studentId, int tutorId)
         {
 

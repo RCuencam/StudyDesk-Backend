@@ -24,6 +24,7 @@ namespace StudyDesck.API.Controllers
         }
 
         [HttpGet]
+        [SwaggerOperation(Summary = "List all material of a topic")]
         public async Task<IEnumerable<StudyMaterialResource>> GetAllByTopicIdAsync(int topicId)
         {
             var materials = await _studyMaterialService.ListByTopicIdAsync(topicId);

@@ -27,6 +27,7 @@ namespace StudyDesck.API.Controllers
         }
 
         [HttpGet]
+        [SwaggerOperation(Summary = "List all tutors")]
         [ProducesResponseType(typeof(IEnumerable<TutorResource>), 200)]
         public async Task<IEnumerable<TutorResource>> GetAllAsync()
         {
@@ -37,6 +38,7 @@ namespace StudyDesck.API.Controllers
         }
 
         [HttpGet("{id}")]
+        [SwaggerOperation(Summary = "List a tutor by tutorId")]
         [ProducesResponseType(typeof(TutorResource), 200)]
         [ProducesResponseType(typeof(BadRequestResult), 404)]
         public async Task<IActionResult> GetAsync(int id)

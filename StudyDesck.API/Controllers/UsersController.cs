@@ -23,6 +23,7 @@ namespace StudyDesck.API.Controllers
 
         [AllowAnonymous]
         [HttpPost("authenticate")]
+        [SwaggerOperation(Summary = "Verify credentials")]
         public IActionResult Authenticate([FromBody] AuthenticationRequest request)
         {
             var response = _userService.Authenticate(request);

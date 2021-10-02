@@ -30,6 +30,7 @@ namespace StudyDesck.API.Controllers
         [SwaggerResponse(200, "List of Categories", typeof(IEnumerable<CategoryResource>))]
         [ProducesResponseType(typeof(IEnumerable<CategoryResource>), 200)]
         [HttpGet]
+        [SwaggerOperation(Summary = "List all categories")]
         public async Task<IEnumerable<CategoryResource>> GetAllAsync()
         {
             var categories = await _categoryService.ListAsync();
@@ -39,6 +40,7 @@ namespace StudyDesck.API.Controllers
 
 
         [HttpGet("{id}")]
+        [SwaggerOperation(Summary = "List a category by categoryId")]
         //[ProducesResponseType(typeof(CategoryResource), 200)]
         //[ProducesResponseType(typeof(BadRequestResult), 404)]
         public async Task<IActionResult> GetAsync(int id)
@@ -53,6 +55,7 @@ namespace StudyDesck.API.Controllers
         }
 
         [HttpPost]
+        [SwaggerOperation(Summary = "Create a category")]
         public async Task<IActionResult> PostAsync([FromBody] SaveCategoryResource resource)
         {
             if (!ModelState.IsValid)
@@ -70,6 +73,7 @@ namespace StudyDesck.API.Controllers
         }
 
         [HttpPut("{id}")]
+        [SwaggerOperation(Summary = "Update a category by categoryId")]
         public async Task<IActionResult> PutAsync(int id, [FromBody] SaveCategoryResource resource)
         {
             if (!ModelState.IsValid)
@@ -88,6 +92,7 @@ namespace StudyDesck.API.Controllers
         }
 
         [HttpDelete("{id}")]
+        [SwaggerOperation(Summary = "Delete a category by categoryId")]
         public async Task<IActionResult> DeleteAsync(int id)
         {
             var result = await _categoryService.DeleteAsync(id);

@@ -24,6 +24,7 @@ namespace StudyDesck.API.Controllers
         }
 
         [HttpGet]
+        [SwaggerOperation(Summary = "List all sessions of a topic")]
         [ProducesResponseType(typeof(IEnumerable<SessionResource>), 200)]
         public async Task<IEnumerable<SessionResource>> GetAllByTopicIdAsync(int topicId)
         {

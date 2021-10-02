@@ -25,6 +25,7 @@ namespace StudyDesck.API.Controllers
         }
 
         [HttpGet]
+        [SwaggerOperation(Summary = "List all material of a session")]
         public async Task<IEnumerable<SessionResource>> GetAllSessionMaterialsBySessionIdAsync(int tutorId)
         {
             var result = await _sessionService.ListByTutorIdAsync(tutorId);
@@ -33,6 +34,7 @@ namespace StudyDesck.API.Controllers
         }
 
         [HttpPost]
+        [SwaggerOperation(Summary = "Create a material for a session")]
         public async Task<IActionResult> AssignSessionMaterialAsync(int tutorId, [FromBody] SaveSessionMaterialResource resource)
         {
             var sessionMaterial = _mapper.Map<SaveSessionMaterialResource, SessionMaterial>(resource);
@@ -47,6 +49,7 @@ namespace StudyDesck.API.Controllers
         }
 
         [HttpDelete("{materialId}")]
+        [SwaggerOperation(Summary = "Delete a material of a session")]
         public async Task<IActionResult> UnassignSessionMaterialAsync(int tutorId, int materialId)
         {
             var result = await _sessionMaterialService

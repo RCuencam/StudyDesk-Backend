@@ -26,6 +26,7 @@ namespace StudyDesck.API.Controllers
         }
 
         [HttpPost]
+        [SwaggerOperation(Summary = "Create a Student for a Career")]
         [ProducesResponseType(typeof(StudentResource), 200)]
         [ProducesResponseType(typeof(BadRequestResult), 404)]
         public async Task<IActionResult> PostAsync(int careerId,[FromBody] SaveStudentResource resource)

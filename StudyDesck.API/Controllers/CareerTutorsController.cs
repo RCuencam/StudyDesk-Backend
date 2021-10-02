@@ -24,6 +24,7 @@ namespace StudyDesck.API.Controllers
         }
 
         [HttpGet]
+        [SwaggerOperation(Summary = "List Tutors by careerId")]
         [ProducesResponseType(typeof(IEnumerable<TutorResource>), 200)]
         public async Task<IEnumerable<TutorResource>> GetAllByCareerIdAsync(int careerId)
         {
@@ -34,6 +35,7 @@ namespace StudyDesck.API.Controllers
         }
 
         [HttpGet("{tutorId}")]
+        [SwaggerOperation(Summary = "List Tutors by careerId and tutorId")]
         [ProducesResponseType(typeof(TutorResource), 200)]
         [ProducesResponseType(typeof(BadRequestResult), 404)]
         public async Task<IActionResult> GetAsync(int tutorId)
@@ -46,6 +48,7 @@ namespace StudyDesck.API.Controllers
         }
 
         [HttpPost]
+        [SwaggerOperation(Summary = "Create a Tutor for a Career")]
         [ProducesResponseType(typeof(TutorResource), 200)]
         [ProducesResponseType(typeof(BadRequestResult), 404)]
         public async Task<IActionResult> PostAsync(int careerId, [FromBody] SaveTutorResource resource)
@@ -64,6 +67,7 @@ namespace StudyDesck.API.Controllers
         }
 
         [HttpPut("{tutorId}")]
+        [SwaggerOperation(Summary = "Update a tutor of a Career")]
         [ProducesResponseType(typeof(TutorResource), 200)]
         [ProducesResponseType(typeof(BadRequestResult), 404)]
         public async Task<IActionResult> PutAsync(int tutorId, [FromBody] SaveTutorResource resource)
@@ -82,6 +86,7 @@ namespace StudyDesck.API.Controllers
         }
 
         [HttpDelete("{tutorId}")]
+        [SwaggerOperation(Summary = "Delete a tutor of a career")]
         [ProducesResponseType(typeof(TutorResource), 200)]
         [ProducesResponseType(typeof(BadRequestResult), 404)]
         public async Task<IActionResult> DeleteAsync(int tutorId)

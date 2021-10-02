@@ -25,6 +25,7 @@ namespace StudyDesck.API.Controllers
         }
 
         [HttpGet]
+        [SwaggerOperation(Summary = "List all platforms")]
         [ProducesResponseType(typeof(IEnumerable<PlatformResource>), 200)]
         public async Task<IEnumerable<PlatformResource>> GetAllAsync()
         {
@@ -35,6 +36,7 @@ namespace StudyDesck.API.Controllers
         }
 
         [HttpGet("{id}")]
+        [SwaggerOperation(Summary = "List a platform by platformId")]
         [ProducesResponseType(typeof(PlatformResource), 200)]
         [ProducesResponseType(typeof(BadRequestResult), 404)]
         public async Task<IActionResult> GetAsync(int id)
@@ -50,6 +52,7 @@ namespace StudyDesck.API.Controllers
 
 
         [HttpPost]
+        [SwaggerOperation(Summary = "Create a platform")]
         [ProducesResponseType(typeof(PlatformResource), 200)]
         [ProducesResponseType(typeof(BadRequestResult), 404)]
         public async Task<IActionResult> PostAsync([FromBody] SavePlatformResource resource)
@@ -70,6 +73,7 @@ namespace StudyDesck.API.Controllers
         }
 
         [HttpPut("{id}")]
+        [SwaggerOperation(Summary = "Update a platform")]
         [ProducesResponseType(typeof(PlatformResource), 200)]
         [ProducesResponseType(typeof(BadRequestResult), 404)]
         public async Task<IActionResult> PutAsync(int id, [FromBody] SavePlatformResource resource)
@@ -90,6 +94,7 @@ namespace StudyDesck.API.Controllers
         }
 
         [HttpDelete("{id}")]
+        [SwaggerOperation(Summary = "Delete a platform")]
         [ProducesResponseType(typeof(PlatformResource), 200)]
         [ProducesResponseType(typeof(BadRequestResult), 404)]
         public async Task<IActionResult> DeleteAsync(int id)

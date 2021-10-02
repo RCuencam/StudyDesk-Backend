@@ -24,6 +24,7 @@ namespace StudyDesck.API.Controllers
         }
 
         [HttpGet]
+        [SwaggerOperation(Summary = "List all schedules of a tutor")]
         [ProducesResponseType(typeof(IEnumerable<ScheduleResource>), 200)]
         public async Task<IEnumerable<ScheduleResource>> GetAllByTutorIdAsync(int tutorId)
         {
@@ -34,6 +35,7 @@ namespace StudyDesck.API.Controllers
         }
 
         [HttpGet("{scheduleId}")]
+        [SwaggerOperation(Summary = "List a schedule of a tutor")]
         [ProducesResponseType(typeof(ScheduleResource), 200)]
         [ProducesResponseType(typeof(BadRequestResult), 404)]
         public async Task<IActionResult> GetAsync(int scheduleId)
@@ -46,6 +48,7 @@ namespace StudyDesck.API.Controllers
         }
 
         [HttpPost]
+        [SwaggerOperation(Summary = "Create a schedule for a tutor")]
         [ProducesResponseType(typeof(ScheduleResource), 200)]
         [ProducesResponseType(typeof(BadRequestResult), 404)]
         public async Task<IActionResult> PostAsync(int tutorId, [FromBody] SaveScheduleResource resource)
@@ -64,6 +67,7 @@ namespace StudyDesck.API.Controllers
         }
 
         [HttpPut("{scheduleId}")]
+        [SwaggerOperation(Summary = "Uodate a schedule of a tutor")]
         [ProducesResponseType(typeof(ScheduleResource), 200)]
         [ProducesResponseType(typeof(BadRequestResult), 404)]
         public async Task<IActionResult> PutAsync(int scheduleId, [FromBody] SaveScheduleResource resource)
@@ -82,6 +86,7 @@ namespace StudyDesck.API.Controllers
         }
 
         [HttpDelete("{scheduleId}")]
+        [SwaggerOperation(Summary = "Delete a schedule of a tutor")]
         [ProducesResponseType(typeof(ScheduleResource), 200)]
         [ProducesResponseType(typeof(BadRequestResult), 404)]
         public async Task<IActionResult> DeleteAsync(int scheduleId)

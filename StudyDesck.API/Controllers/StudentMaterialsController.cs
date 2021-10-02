@@ -26,6 +26,7 @@ namespace StudyDesck.API.Controllers
         }
 
         [HttpGet]
+        [SwaggerOperation(Summary = "List all materials of a student")]
         public async Task<IEnumerable<StudyMaterialResource>> GetAllStudyMaterialByStudentIdAsync(int studentId)
         {
             var result = await _studyMaterialService.ListByStudentIdAsync(studentId);
@@ -35,6 +36,7 @@ namespace StudyDesck.API.Controllers
         }
 
         [HttpPost]
+        [SwaggerOperation(Summary = "Create a material for a student")]
         public async Task<IActionResult> AssignStudentMaterialAsync(int studentId, [FromBody] SaveStudentMaterialResource resource)
         {
             var studentMaterial = _mapper.Map<SaveStudentMaterialResource, StudentMaterial>(resource);
@@ -49,6 +51,7 @@ namespace StudyDesck.API.Controllers
         }
 
         [HttpDelete("{materialId}")]
+        [SwaggerOperation(Summary = "Delete a material of a student")]
         public async Task<IActionResult> UnassignStudentMaterialAsync(int studentId, int materialId)
         {
             var result = await _studentMaterialService

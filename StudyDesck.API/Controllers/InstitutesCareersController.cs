@@ -28,6 +28,7 @@ namespace StudyDesck.API.Controllers
         }
 
         [HttpGet("institutes/{instituteId}/careers")]
+        [SwaggerOperation(Summary = "List all careers of an institute")]
         public async Task<IEnumerable<CareerResource>> GetAllByInstituteIdAsync(int instituteId)
         {
             var careers = await _careerService.FindByInstituteId(instituteId);
@@ -37,6 +38,7 @@ namespace StudyDesck.API.Controllers
         }
 
         [HttpGet("institutes/{instituteId}/careers/{careerId}")]
+        [SwaggerOperation(Summary = "List a career of an institute")]
         public async Task<IEnumerable<CareerResource>> GetAllByInstituteIdAndCareerIdAsync(int instituteId, int careerId)
         {
             var careers = await _careerService.GetByInstituteIdAndCareerId(instituteId, careerId);
@@ -46,7 +48,7 @@ namespace StudyDesck.API.Controllers
         }
 
         [HttpPost("institutes/{instituteId}/careers")]
-
+        [SwaggerOperation(Summary = "Create a career for an institute")]
         public async Task<IActionResult> PostAsync(int instituteId,[FromBody] SaveCareerResource resource)
         {
             if (!ModelState.IsValid)
@@ -65,6 +67,7 @@ namespace StudyDesck.API.Controllers
         }
 
         [HttpDelete("institutes/{instituteId}/careers/{careerId}")]
+        [SwaggerOperation(Summary = "Delete a career of an institute")]
         public async Task<IActionResult> DeleteAsync(int careerId)
         {
             var result = await _careerService.DeleteAsync(careerId);
