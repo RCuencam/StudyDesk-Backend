@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Proyectos Programacion\\C#\\Universidad\\StudyDesk\\StudyDesk-Backend\\SpecFlowStudyDeskTest\\SpecFlowStudyDeskTest.csproj": {}
+    "C:\\Users\\eduiz\\Desktop\\Ciclo 2021 - 2\\Aplicaciones móviles\\BACKEND\\StudyDesk-Backend\\SpecFlowStudyDeskTest\\SpecFlowStudyDeskTest.csproj": {}
   },
   "projects": {
-    "E:\\Proyectos Programacion\\C#\\Universidad\\StudyDesk\\StudyDesk-Backend\\SpecFlowStudyDeskTest\\SpecFlowStudyDeskTest.csproj": {
+    "C:\\Users\\eduiz\\Desktop\\Ciclo 2021 - 2\\Aplicaciones móviles\\BACKEND\\StudyDesk-Backend\\SpecFlowStudyDeskTest\\SpecFlowStudyDeskTest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Proyectos Programacion\\C#\\Universidad\\StudyDesk\\StudyDesk-Backend\\SpecFlowStudyDeskTest\\SpecFlowStudyDeskTest.csproj",
+        "projectUniqueName": "C:\\Users\\eduiz\\Desktop\\Ciclo 2021 - 2\\Aplicaciones móviles\\BACKEND\\StudyDesk-Backend\\SpecFlowStudyDeskTest\\SpecFlowStudyDeskTest.csproj",
         "projectName": "SpecFlowStudyDeskTest",
-        "projectPath": "E:\\Proyectos Programacion\\C#\\Universidad\\StudyDesk\\StudyDesk-Backend\\SpecFlowStudyDeskTest\\SpecFlowStudyDeskTest.csproj",
-        "packagesPath": "C:\\Users\\germa\\.nuget\\packages\\",
-        "outputPath": "E:\\Proyectos Programacion\\C#\\Universidad\\StudyDesk\\StudyDesk-Backend\\SpecFlowStudyDeskTest\\obj\\",
+        "projectPath": "C:\\Users\\eduiz\\Desktop\\Ciclo 2021 - 2\\Aplicaciones móviles\\BACKEND\\StudyDesk-Backend\\SpecFlowStudyDeskTest\\SpecFlowStudyDeskTest.csproj",
+        "packagesPath": "C:\\Users\\eduiz\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\eduiz\\Desktop\\Ciclo 2021 - 2\\Aplicaciones móviles\\BACKEND\\StudyDesk-Backend\\SpecFlowStudyDeskTest\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\germa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\eduiz\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -32,8 +32,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "E:\\Proyectos Programacion\\C#\\Universidad\\StudyDesk\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj": {
-                "projectPath": "E:\\Proyectos Programacion\\C#\\Universidad\\StudyDesk\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj"
+              "C:\\Users\\eduiz\\Desktop\\Ciclo 2021 - 2\\Aplicaciones móviles\\BACKEND\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj": {
+                "projectPath": "C:\\Users\\eduiz\\Desktop\\Ciclo 2021 - 2\\Aplicaciones móviles\\BACKEND\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj"
               }
             }
           }
@@ -80,24 +80,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\Proyectos Programacion\\C#\\Universidad\\StudyDesk\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj": {
+    "C:\\Users\\eduiz\\Desktop\\Ciclo 2021 - 2\\Aplicaciones móviles\\BACKEND\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Proyectos Programacion\\C#\\Universidad\\StudyDesk\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj",
+        "projectUniqueName": "C:\\Users\\eduiz\\Desktop\\Ciclo 2021 - 2\\Aplicaciones móviles\\BACKEND\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj",
         "projectName": "StudyDesck.API",
-        "projectPath": "E:\\Proyectos Programacion\\C#\\Universidad\\StudyDesk\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj",
-        "packagesPath": "C:\\Users\\germa\\.nuget\\packages\\",
-        "outputPath": "E:\\Proyectos Programacion\\C#\\Universidad\\StudyDesk\\StudyDesk-Backend\\StudyDesck.API\\obj\\",
+        "projectPath": "C:\\Users\\eduiz\\Desktop\\Ciclo 2021 - 2\\Aplicaciones móviles\\BACKEND\\StudyDesk-Backend\\StudyDesck.API\\StudyDesck.API.csproj",
+        "packagesPath": "C:\\Users\\eduiz\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\eduiz\\Desktop\\Ciclo 2021 - 2\\Aplicaciones móviles\\BACKEND\\StudyDesk-Backend\\StudyDesck.API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\germa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\eduiz\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -203,7 +203,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

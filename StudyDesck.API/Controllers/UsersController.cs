@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using StudyDesck.API.Domain.Services;
 using StudyDesck.API.Domain.Services.Comunications;
+using Swashbuckle.AspNetCore.Annotations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
