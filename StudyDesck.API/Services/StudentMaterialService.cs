@@ -76,16 +76,12 @@ namespace StudyDesck.API.Services
         {
             try
             {
-                var material = await _studyMaterialRepository.SaveAsync(studentMaterial.StudyMaterial);
-                await _unitOfWork.CompleteAsync();
-                await _studentMaterialRepository.AssignStudentMaterial(studentId,
-                    material.Id,
-                    studentMaterial.CategoryId, 
-                    studentMaterial.InstituteId);
+                
+                await _studentMaterialRepository.AssignStudentMaterial(studentId,studentMaterial.StudyMaterialId);
 
                 await _unitOfWork.CompleteAsync();
                 StudentMaterial result =
-                    await _studentMaterialRepository.FindByStudentIdAndStudyMaterialId(studentId, material.Id);
+                    await _studentMaterialRepository.FindByStudentIdAndStudyMaterialId(studentId, studentMaterial.StudyMaterialId);
                 return new StudentMaterialResponse(result);
 
             }

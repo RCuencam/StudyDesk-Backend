@@ -52,26 +52,26 @@ namespace StudyDesck.API.Controllers
         }
 
 
-        [HttpPost]
-        [SwaggerOperation(Summary = "Create a study material")]
-        [ProducesResponseType(typeof(StudyMaterialResource), 200)]
-        [ProducesResponseType(typeof(BadRequestResult), 404)]
-        public async Task<IActionResult> PostAsync([FromBody] SaveStudyMaterialResource resource)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState.GetErrorMessages());
-            }
+        //[HttpPost]
+        //[SwaggerOperation(Summary = "Create a study material")]
+        //[ProducesResponseType(typeof(StudyMaterialResource), 200)]
+        //[ProducesResponseType(typeof(BadRequestResult), 404)]
+        //public async Task<IActionResult> PostAsync([FromBody] SaveStudyMaterialResource resource)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState.GetErrorMessages());
+        //    }
 
-            var StudyMaterial = _mapper.Map<SaveStudyMaterialResource, StudyMaterial>(resource);
-            var result = await _studyMaterialService.SaveAsync(StudyMaterial);
+        //    var StudyMaterial = _mapper.Map<SaveStudyMaterialResource, StudyMaterial>(resource);
+        //    var result = await _studyMaterialService.SaveAsync(StudyMaterial);
 
-            if (!result.Success)
-                return BadRequest(result.Message);
+        //    if (!result.Success)
+        //        return BadRequest(result.Message);
 
-            var StudyMaterialResource = _mapper.Map<StudyMaterial, StudyMaterialResource>(result.Resource);
-            return Ok(StudyMaterialResource);
-        }
+        //    var StudyMaterialResource = _mapper.Map<StudyMaterial, StudyMaterialResource>(result.Resource);
+        //    return Ok(StudyMaterialResource);
+        //}
 
         [HttpPut("{id}")]
         [SwaggerOperation(Summary = "Update a study material")]

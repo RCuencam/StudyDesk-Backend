@@ -10,7 +10,7 @@ namespace StudyDesck.API.Domain.Services
     public interface IStudentMaterialService
     {
         Task<IEnumerable<StudentMaterial>> ListByStudentIdAsync(int studentId);
-        Task<StudentMaterialResponse> AssignStudentMaterialAsync(int studentId, int materialId);
+        //Task<StudentMaterialResponse> AssignStudentMaterialAsync(int studentId, int materialId);
         Task<StudentMaterialResponse> UnassignStudentMaterialAsync(int studentId, int materialId);
         Task<StudentMaterialResponse> AssignStudentMaterialAsync(int studentId, StudentMaterial studentMaterial);
     }

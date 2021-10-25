@@ -20,21 +20,6 @@ namespace StudyDesck.API.Persistence.Repositories
             await _context.StudentMaterials.AddAsync(studentMaterial);
         }
 
-        public async Task AssignStudentMaterial(int studentId, int materialId, int categoryId, int instituteId)
-        {
-            StudentMaterial result = await FindByStudentIdAndStudyMaterialId(studentId, materialId);
-            if (result == null)
-            {
-                result = new StudentMaterial
-                {
-                    StudentId = studentId,
-                    StudyMaterialId = materialId,
-                    CategoryId = categoryId,
-                    InstituteId = instituteId
-                };
-                await AddAsync(result);
-            }
-        }
 
         public async Task AssignStudentMaterial(int studentId, int materialId)
         {
@@ -56,15 +41,6 @@ namespace StudyDesck.API.Persistence.Repositories
             
         }
 
-        public Task<IEnumerable<StudentMaterial>> ListByCategoryIdAsync(int categoryId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<IEnumerable<StudentMaterial>> ListByInstituteIdAsync(int instituteId)
-        {
-            throw new NotImplementedException();
-        }
 
         public async Task<IEnumerable<StudentMaterial>> ListByStudentIdAsync(int studentId)
         {

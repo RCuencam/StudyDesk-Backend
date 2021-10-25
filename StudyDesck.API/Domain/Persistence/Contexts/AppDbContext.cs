@@ -172,6 +172,9 @@ namespace StudyDesck.API.Domain.Persistence.Contexts
             builder.Entity<StudyMaterial>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<StudyMaterial>().Property(p => p.Title).IsRequired().HasMaxLength(30);
             builder.Entity<StudyMaterial>().Property(p => p.Description).IsRequired().HasMaxLength(50);
+            builder.Entity<StudyMaterial>().Property(p => p.Size).IsRequired();
+            builder.Entity<StudyMaterial>().Property(p => p.FileName).IsRequired();
+            builder.Entity<StudyMaterial>().Property(p => p.FilePath).IsRequired();
             // Relationships
             builder.Entity<StudyMaterial>()
                 .HasOne(sm => sm.Topic)
@@ -205,14 +208,7 @@ namespace StudyDesck.API.Domain.Persistence.Contexts
                 .HasOne(sms => sms.StudyMaterial)
                 .WithMany(sm => sm.StudentMaterials)
                 .HasForeignKey(sms => sms.StudyMaterialId);
-            builder.Entity<StudentMaterial>()
-                .HasOne(sms => sms.Category)
-                .WithMany(c => c.StudentMaterials)
-                .HasForeignKey(sms => sms.CategoryId);
-            builder.Entity<StudentMaterial>()
-                .HasOne(sms => sms.Institute)
-                .WithMany(i => i.StudentMaterials)
-                .HasForeignKey(sms => sms.InstituteId);
+            
 
             builder.Entity<TutorReservation>().ToTable("TutorReservations");
             builder.Entity<TutorReservation>().HasKey(tr => new { tr.TutorId, tr.StudentId });

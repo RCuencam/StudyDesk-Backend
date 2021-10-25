@@ -11,7 +11,7 @@ namespace StudyDesck.API.Domain.Services
     {
         Task<IEnumerable<StudyMaterial>> ListAsync();
         Task<StudyMaterialResponse> GetByIdAsync(int id);
-        Task<StudyMaterialResponse> SaveAsync(StudyMaterial studyMaterial);
+        Task<StudyMaterialResponse> SaveAsync(int topicId, StudyMaterial studyMaterial);
         Task<StudyMaterialResponse> UpdateAsync(int id, StudyMaterial studyMaterial);
         Task<StudyMaterialResponse> DeleteAsync(int id);
         Task<IEnumerable<StudyMaterial>> ListByStudentIdAsync(int studentId);

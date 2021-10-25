@@ -12,11 +12,5 @@ namespace StudyDesck.API.Domain.Models
 
         public int StudyMaterialId { get; set; }
         public StudyMaterial StudyMaterial { get; set; }
-
-        public int CategoryId { get; set; }
-        public Category Category { get; set; }
-
-        public int InstituteId { get; set; }
-        public Institute Institute { get; set; }
     }
 }

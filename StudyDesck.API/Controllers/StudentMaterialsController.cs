@@ -37,16 +37,16 @@ namespace StudyDesck.API.Controllers
         }
 
         [HttpPost]
-        [SwaggerOperation(Summary = "Create a material for a student")]
-        public async Task<IActionResult> AssignStudentMaterialAsync(int studentId, [FromBody] SaveStudentMaterialResource resource)
+        [SwaggerOperation(Summary = "Assign Student with Material")]
+        public async Task<IActionResult> AssignStudentMaterialAsync(int studentId,[FromBody] SaveStudentMaterialResource resource)
         {
             var studentMaterial = _mapper.Map<SaveStudentMaterialResource, StudentMaterial>(resource);
-            var result = await _studentMaterialService.AssignStudentMaterialAsync(studentId, studentMaterial);
+            var result = await _studentMaterialService.AssignStudentMaterialAsync(studentId,studentMaterial);
 
             if (!result.Success)
                 return BadRequest(result.Message);
 
-            var materialResource = _mapper.Map<StudyMaterial, StudyMaterialResource>(result.Resource.StudyMaterial);
+            var materialResource = _mapper.Map<StudentMaterial, StudentMaterialResource>(result.Resource);
 
             return Ok(materialResource);
         }

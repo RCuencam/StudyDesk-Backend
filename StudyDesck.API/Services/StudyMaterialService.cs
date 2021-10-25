@@ -12,11 +12,13 @@ namespace StudyDesck.API.Services
     public class StudyMaterialService : IStudyMaterialService
     {
         private readonly IStudyMaterialRepository _studyMaterialRepository;
+        private readonly ITopicRepository _topicRepository;
         private readonly IUnitOfWork _unitOfWork;
-        public StudyMaterialService(IStudyMaterialRepository repository, IUnitOfWork unitOfWork)
+        public StudyMaterialService(IStudyMaterialRepository repository, IUnitOfWork unitOfWork, ITopicRepository topicRepository)
         {
             _studyMaterialRepository = repository;
             _unitOfWork = unitOfWork;
+            _topicRepository = topicRepository;
         }
         public async Task<StudyMaterialResponse> DeleteAsync(int id)
         {
@@ -58,10 +60,16 @@ namespace StudyDesck.API.Services
             return await _studyMaterialRepository.ListByTopicIdAsync(topicId);
         }
 
-        public async Task<StudyMaterialResponse> SaveAsync(StudyMaterial studyMaterial)
+        public async Task<StudyMaterialResponse> SaveAsync(int topicId, StudyMaterial studyMaterial)
         {
+            var existingTopic = await _topicRepository.FindById(topicId);
+
+            if (existingTopic == null)
+                return new StudyMaterialResponse("Topic Id not found");
+
             try
             {
+                studyMaterial.TopicId = topicId;
                 await _studyMaterialRepository.AddAsync(studyMaterial);
                 await _unitOfWork.CompleteAsync();
                 return new StudyMaterialResponse(studyMaterial);
@@ -80,6 +88,9 @@ namespace StudyDesck.API.Services
 
             existingStudyMaterial.Title = studyMaterial.Title;
             existingStudyMaterial.Description = studyMaterial.Description;
+            existingStudyMaterial.FileName = studyMaterial.FileName;
+            existingStudyMaterial.FilePath = studyMaterial.FilePath;
+            existingStudyMaterial.Size = studyMaterial.Size;
             try
             {
                 _studyMaterialRepository.Update(existingStudyMaterial);

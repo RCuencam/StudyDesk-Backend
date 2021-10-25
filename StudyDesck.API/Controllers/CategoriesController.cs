@@ -40,7 +40,7 @@ namespace StudyDesck.API.Controllers
 
 
         [HttpGet("{id}")]
-        [SwaggerOperation(Summary = "List a category by categoryId")]
+        [SwaggerOperation(Summary = "Get a category by CategoryId")]
         //[ProducesResponseType(typeof(CategoryResource), 200)]
         //[ProducesResponseType(typeof(BadRequestResult), 404)]
         public async Task<IActionResult> GetAsync(int id)
