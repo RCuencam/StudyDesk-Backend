@@ -39,7 +39,7 @@ namespace StudyDesck.API.Controllers
         }
 
         [HttpGet("{id}")]
-        [SwaggerOperation(Summary = "List a student by studentId")]
+        [SwaggerOperation(Summary = "Get a student by studentId")]
         [ProducesResponseType(typeof(StudentResource), 200)]
         [ProducesResponseType(typeof(BadRequestResult), 404)]
         public async Task<IActionResult> GetAsync(int id)

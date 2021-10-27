@@ -101,12 +101,12 @@ namespace StudyDesck.API.Services
         {
             var existingStudent = await _studentRepository.FindById(id);
             if (existingStudent == null)
-                return new StudentResponse("student no encontrada");
+                return new StudentResponse("student not found");
 
             existingStudent.Name = student.Name;
             existingStudent.LastName = student.LastName;
             existingStudent.Logo = student.Logo;
-            student.Email = student.Email;
+            existingStudent.Email = student.Email;
             existingStudent.Password = BCryptNet.BCrypt.HashPassword(student.Password);
 
             try

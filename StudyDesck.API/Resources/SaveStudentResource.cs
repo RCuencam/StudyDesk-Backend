@@ -16,13 +16,11 @@ namespace StudyDesck.API.Resources
         [MaxLength(40)]
         public string LastName { get; set; }
         [Required]
-        [MaxLength(40)]
         public string Logo { get; set; }
         [Required]
         [MaxLength(40)]
         public string Email { get; set; }
         [Required]
-        [MaxLength(40)]
         public string Password { get; set; }
 
 

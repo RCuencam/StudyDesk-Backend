@@ -170,8 +170,8 @@ namespace StudyDesck.API.Domain.Persistence.Contexts
             builder.Entity<StudyMaterial>().ToTable("StudyMaterials");
             builder.Entity<StudyMaterial>().HasKey(p => p.Id);
             builder.Entity<StudyMaterial>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
-            builder.Entity<StudyMaterial>().Property(p => p.Title).IsRequired().HasMaxLength(30);
-            builder.Entity<StudyMaterial>().Property(p => p.Description).IsRequired().HasMaxLength(50);
+            builder.Entity<StudyMaterial>().Property(p => p.Title).IsRequired().HasMaxLength(50);
+            builder.Entity<StudyMaterial>().Property(p => p.Description).IsRequired().HasMaxLength(115);
             builder.Entity<StudyMaterial>().Property(p => p.Size).IsRequired();
             builder.Entity<StudyMaterial>().Property(p => p.FileName).IsRequired();
             builder.Entity<StudyMaterial>().Property(p => p.FilePath).IsRequired();
