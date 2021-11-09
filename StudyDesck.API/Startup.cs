@@ -72,7 +72,7 @@ namespace StudyDesck.API
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             // repositories:
-            services.AddScoped<IInstituteRepository, InstituteRepository>();
+            services.AddScoped<IUniversityRepository, universityRepository>();
             services.AddScoped<ICareerRepository, CareerRepository>();
             services.AddScoped<IStudentRepository, StudentRepository>();
             services.AddScoped<ICourseRepository, CourseRepository>();
@@ -90,7 +90,7 @@ namespace StudyDesck.API
             services.AddScoped<ISessionMaterialRepository, SessionMaterialRepository>();
 
             // services:
-            services.AddScoped<IInstituteService, InstituteService>();
+            services.AddScoped<IUniversityService, universityService>();
             services.AddScoped<ICareerService, CareerService>();
             services.AddScoped<IStudentService, StudentService>();
             services.AddScoped<ICourseService, CourseService>();
@@ -115,7 +115,34 @@ namespace StudyDesck.API
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "StudyDesk.API", Version = "v1" });
                 c.EnableAnnotations();
-                
+
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    Description = "JWT Authorization header using the Bearer scheme.\r\n\r\nEnter your token in the text input below.",
+                    Name = "Authorization",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.Http,
+                    Scheme = "Bearer"
+                });
+
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement()
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "Bearer"
+                            },
+                            Scheme = "oauth2",
+                            Name = "Bearer",
+                            In = ParameterLocation.Header,
+                        },
+                        new List<string>()
+                    }
+                });
+
             });
         }
 

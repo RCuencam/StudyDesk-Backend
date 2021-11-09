@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 
 namespace StudyDesck.API.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("/api/[controller]")]
     [Produces("application/json")]

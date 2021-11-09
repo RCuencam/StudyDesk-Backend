@@ -9,11 +9,11 @@ namespace StudyDesck.API.Resources
     public class SaveTutorResource
     {
         [Required]
-        [MaxLength(30)]
+        [MaxLength(40)]
         public string Name { get; set; }
 
         [Required]
-        [MaxLength(30)]
+        [MaxLength(40)]
         public string LastName { get; set; }
 
         public string Description { get; set; }
@@ -21,11 +21,10 @@ namespace StudyDesck.API.Resources
         public string Logo { get; set; }
 
         [Required]
-        [MaxLength(30)]
+        [MaxLength(40)]
         public string Email { get; set; }
 
         [Required]
-        [MaxLength(30)]
         public string Password { get; set; }
         public double PricePerHour { get; set; }
     }

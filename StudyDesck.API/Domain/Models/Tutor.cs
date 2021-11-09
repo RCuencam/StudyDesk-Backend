@@ -18,8 +18,8 @@ namespace StudyDesck.API.Domain.Models
         public double PricePerHour { get; set; }
         
         // relationships
-        public int CareerId { get; set; }
-        public Career Career { get; set; }
+        public int CourseId { get; set; }
+        public Course Course { get; set; }
 
         public List<ExpertTopic> ExpertTopics { get; set; }
         public List<Schedule> Shedules { get; set; }

@@ -10,6 +10,7 @@ namespace StudyDesck.API.Domain.Services
     {
         // Nuestro Service, tendra un metodo adicional "Authenticate"
         AuthenticationResponse Authenticate(AuthenticationRequest request);
+        Task<AuthenticationResponse> ConvertStudentToTutor(int studentId, int courseId);
         //IEnumerable<User> GetAll();
     }
 }

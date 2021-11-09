@@ -35,7 +35,6 @@ namespace StudyDesck.API.Persistence.Repositories
         {
             return await _context.Schedules
                 .Include(s => s.Tutor)
-                    .ThenInclude(t => t.Career)
                 .ToListAsync();
         }
         public void Remove(Schedule shedule)

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using StudyDesck.API.Domain.Models;
 using StudyDesck.API.Domain.Services;
@@ -12,53 +13,56 @@ using System.Threading.Tasks;
 
 namespace StudyDesck.API.Controllers
 {
+    [Authorize]
     [ApiController]
-    [Route("api/careers/{careerId}/tutors")]
-    public class CareerTutorsController : ControllerBase
+    [Route("api/courses/{courseId}/tutors")]
+    [Produces("application/json")]
+    public class CourseTutorsController : ControllerBase
     {
         private readonly ITutorService _tutorService;
         private readonly IMapper _mapper;
-        public CareerTutorsController(ITutorService tutorService, IMapper mapper)
+        public CourseTutorsController(ITutorService tutorService, IMapper mapper)
         {
             _tutorService = tutorService;
             _mapper = mapper;
         }
 
         [HttpGet]
-        [SwaggerOperation(Summary = "List Tutors by careerId")]
+        [SwaggerOperation(Summary = "List Tutors by courseId")]
         [ProducesResponseType(typeof(IEnumerable<TutorResource>), 200)]
-        public async Task<IEnumerable<TutorResource>> GetAllByCareerIdAsync(int careerId)
+        public async Task<IEnumerable<TutorResource>> GetAllByCourseIdAsync(int courseId)
         {
-            var tutors = await _tutorService.ListByCareerIdAsync(careerId);
+            var tutors = await _tutorService.ListByCourseIdAsync(courseId);
             var resources = _mapper
                 .Map<IEnumerable<Tutor>, IEnumerable<TutorResource>>(tutors);
             return resources;
         }
 
         [HttpGet("{tutorId}")]
-        [SwaggerOperation(Summary = "List Tutors by careerId and tutorId")]
+        [SwaggerOperation(Summary = "Get a Tutor by courseId and tutorId")]
         [ProducesResponseType(typeof(TutorResource), 200)]
         [ProducesResponseType(typeof(BadRequestResult), 404)]
-        public async Task<IActionResult> GetAsync(int tutorId)
+        public async Task<IActionResult> GetAsync(int courseId, int tutorId)
         {
-            var result = await _tutorService.GetByIdAsync(tutorId);
+            var result = await _tutorService.GetByCourseIdandTutorIdAsync(courseId, tutorId);
             if (!result.Success)
                 return BadRequest(result.Message);
             var tutorResource = _mapper.Map<Tutor, TutorResource>(result.Resource);
             return Ok(tutorResource);
         }
 
+
         [HttpPost]
-        [SwaggerOperation(Summary = "Create a Tutor for a Career")]
+        [SwaggerOperation(Summary = "Create a Tutor for a Course")]
         [ProducesResponseType(typeof(TutorResource), 200)]
         [ProducesResponseType(typeof(BadRequestResult), 404)]
-        public async Task<IActionResult> PostAsync(int careerId, [FromBody] SaveTutorResource resource)
+        public async Task<IActionResult> PostAsync(int courseId, [FromBody] SaveTutorResource resource)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState.GetErrorMessages());
 
             var tutor = _mapper.Map<SaveTutorResource, Tutor>(resource);
-            var result = await _tutorService.SaveAsync(careerId, tutor);
+            var result = await _tutorService.SaveAsync(courseId, tutor);
 
             if (!result.Success)
                 return BadRequest(result.Message);
@@ -68,7 +72,7 @@ namespace StudyDesck.API.Controllers
         }
 
         [HttpPut("{tutorId}")]
-        [SwaggerOperation(Summary = "Update a tutor of a Career")]
+        [SwaggerOperation(Summary = "Update a tutor of a Course")]
         [ProducesResponseType(typeof(TutorResource), 200)]
         [ProducesResponseType(typeof(BadRequestResult), 404)]
         public async Task<IActionResult> PutAsync(int tutorId, [FromBody] SaveTutorResource resource)
@@ -87,7 +91,7 @@ namespace StudyDesck.API.Controllers
         }
 
         [HttpDelete("{tutorId}")]
-        [SwaggerOperation(Summary = "Delete a tutor of a career")]
+        [SwaggerOperation(Summary = "Delete a tutor of a course")]
         [ProducesResponseType(typeof(TutorResource), 200)]
         [ProducesResponseType(typeof(BadRequestResult), 404)]
         public async Task<IActionResult> DeleteAsync(int tutorId)

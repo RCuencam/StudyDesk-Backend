@@ -44,10 +44,10 @@ namespace StudyDesck.API.Persistence.Repositories
                 .Include(p => p.Topic)
                     .ThenInclude(p => p.Course)
                         .ThenInclude(p => p.Career)
-                            .ThenInclude(p => p.Institute)
+                            .ThenInclude(p => p.university)
                 .Include(p => p.Tutor)
-                    .ThenInclude(p => p.Career)
-                        .ThenInclude(p => p.Institute)
+                    .ThenInclude(p => p.Course)
+                        .ThenInclude(p => p.Career)
                 
                 .ToListAsync();
         }
@@ -61,10 +61,10 @@ namespace StudyDesck.API.Persistence.Repositories
                 .Include(p => p.Topic)
                     .ThenInclude(p => p.Course)
                         .ThenInclude(p => p.Career)
-                            .ThenInclude(p => p.Institute)
+                            .ThenInclude(p => p.university)
                 .Include(p => p.Tutor)
-                    .ThenInclude(p => p.Career)
-                        .ThenInclude(p => p.Institute)
+                    .ThenInclude(p => p.Course)
+                        .ThenInclude(p => p.Career)
                 .ToListAsync();
         }
 
@@ -75,10 +75,10 @@ namespace StudyDesck.API.Persistence.Repositories
                 .Include(p => p.Topic)
                     .ThenInclude(p => p.Course)
                         .ThenInclude(p => p.Career)
-                            .ThenInclude(p => p.Institute)
+                            .ThenInclude(p => p.university)
                 .Include(p => p.Tutor)
-                    .ThenInclude(p => p.Career)
-                        .ThenInclude(p => p.Institute)
+                    .ThenInclude(p => p.Course)
+                        .ThenInclude(p => p.Career)
                 .Include(p => p.Platform)
                 .Include(p => p.Category)
                 .ToListAsync();
@@ -89,12 +89,12 @@ namespace StudyDesck.API.Persistence.Repositories
             return await _context.Sessions
                 .Where(p => p.TutorId == tutorId)
                 .Include(p => p.Tutor)
-                    .ThenInclude(p => p.Career)
-                        .ThenInclude(p => p.Institute)
+                    .ThenInclude(p => p.Course)
+                        .ThenInclude(p => p.Career)
                 .Include(p => p.Topic)
                     .ThenInclude(p => p.Course)
                         .ThenInclude(p => p.Career)
-                            .ThenInclude(p => p.Institute)
+                            .ThenInclude(p => p.university)
                 .Include(p => p.Platform)
                 .Include(p => p.Category)
                 .ToListAsync();

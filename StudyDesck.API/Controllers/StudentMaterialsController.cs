@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using StudyDesck.API.Domain.Models;
 using StudyDesck.API.Domain.Services;
@@ -11,8 +12,10 @@ using System.Threading.Tasks;
 
 namespace StudyDesck.API.Controllers
 {
-    [Route("/api/student/{studentId}/materials")]
+    [Authorize]
     [ApiController]
+    [Route("/api/student/{studentId}/materials")]
+    [Produces("application/json")]
     public class StudentMaterialsController : ControllerBase
     {
         private readonly IStudentMaterialService _studentMaterialService;

@@ -9,6 +9,6 @@ namespace StudyDesck.API.Resources
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public InstituteResource Institute { get; set; }
+        public universityResource university { get; set; }
     }
 }

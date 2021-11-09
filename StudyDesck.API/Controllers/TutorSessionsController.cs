@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using StudyDesck.API.Domain.Models;
 using StudyDesck.API.Domain.Services;
@@ -12,6 +13,8 @@ using System.Threading.Tasks;
 
 namespace StudyDesck.API.Controllers
 {
+    [Authorize]
+    [ApiController]
     [Route("/api/tutors/{tutorId}/sessions")]
     [Produces("application/json")]
     public class TutorSessionsController : ControllerBase

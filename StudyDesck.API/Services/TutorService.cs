@@ -13,14 +13,16 @@ namespace StudyDesck.API.Services
     public class TutorService : ITutorService
     {
         private readonly ITutorRepository _tutorRepository;
+        private readonly ICourseRepository _courseRepository;
         private readonly IUnitOfWork _unitOfWork;
         private readonly IExpertTopicRepository _expertTopicRepository;
 
-        public TutorService(ITutorRepository guardianRepository, IUnitOfWork unitOfWork, IExpertTopicRepository expertTopicRepository)
+        public TutorService(ITutorRepository guardianRepository, IUnitOfWork unitOfWork, IExpertTopicRepository expertTopicRepository, ICourseRepository courseRepository)
         {
             _tutorRepository = guardianRepository;
             _unitOfWork = unitOfWork;
             _expertTopicRepository = expertTopicRepository;
+            _courseRepository = courseRepository;
         }
 
         public async Task<TutorResponse> DeleteAsync(int id)
@@ -64,13 +66,11 @@ namespace StudyDesck.API.Services
             return tutors;
         }
 
-        public async Task<TutorResponse> SaveAsync(int careerId, Tutor tutor)
+        public async Task<TutorResponse> SaveAsync(int courseId, Tutor tutor)
         {
-            // validar que no exista el mismo email
-
             try
             {
-                tutor.CareerId = careerId;
+                tutor.CourseId = courseId;
                 tutor.Password = BCryptNet.BCrypt.HashPassword(tutor.Password);
                 await _tutorRepository.AddAsync(tutor);
                 await _unitOfWork.CompleteAsync();
@@ -111,9 +111,9 @@ namespace StudyDesck.API.Services
             }
         }
 
-        public async Task<IEnumerable<Tutor>> ListByCareerIdAsync(int careerId)
+        public async Task<IEnumerable<Tutor>> ListByCourseIdAsync(int courseId)
         {
-            return await _tutorRepository.ListByCareerIdAsync(careerId);
+            return await _tutorRepository.ListByCourseIdAsync(courseId);
         }
 
         // Deprecated
@@ -131,6 +131,23 @@ namespace StudyDesck.API.Services
             {
                 return new TutorResponse($"An error ocurred while saving the tutor: {ex.Message}");
             }
+        }
+
+        public async Task<TutorResponse> GetByCourseIdandTutorIdAsync(int courseId, int tutorId)
+        {
+            var existingCourse = await _courseRepository.FindById(courseId);
+            if (existingCourse == null)
+            {
+                return new TutorResponse("CourseId not found");
+            }
+
+            var existingTutor = await _tutorRepository.FindById(tutorId);
+
+            if (existingTutor == null)
+                return new TutorResponse("Tutor not found");
+
+            return new TutorResponse(existingTutor);
+
         }
     }
 }

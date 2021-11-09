@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace StudyDesck.API.Domain.Services.Comunications
 {
-    public class InstituteResponse : BaseResponse<Institute>
+    public class UniversityResponse : BaseResponse<University>
     {
-        public InstituteResponse(Institute resource) : base(resource)
+        public UniversityResponse(University resource) : base(resource)
         {
         }
 
-        public InstituteResponse(string message) : base(message)
+        public UniversityResponse(string message) : base(message)
         {
         }
 

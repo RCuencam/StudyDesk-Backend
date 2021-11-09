@@ -12,8 +12,8 @@ namespace StudyDesck.API.Domain.Persistence.Repositories
         Task AddAsync(Career career);
         Task<Career> FindById(int id);
 
-        Task<IEnumerable<Career>> FindByInstituteIdAndCareerId(int instituteId, int careerId);
-        Task<IEnumerable<Career>> FindByInstituteIdAsync(int instituteId);
+        Task<IEnumerable<Career>> FindByuniversityIdAndCareerId(int universityId, int careerId);
+        Task<IEnumerable<Career>> FindByuniversityIdAsync(int universityId);
         void Update(Career career);
         void Remove(Career career);
     }

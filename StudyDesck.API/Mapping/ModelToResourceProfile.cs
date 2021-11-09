@@ -13,7 +13,7 @@ namespace StudyDesck.API.Mapping
     {
         public ModelToResourceProfile()
         {
-            CreateMap<Institute, InstituteResource>();
+            CreateMap<University, universityResource>();
             CreateMap<Career, CareerResource>();
             CreateMap<Student, StudentResource>();
             CreateMap<Course, CourseResource>();

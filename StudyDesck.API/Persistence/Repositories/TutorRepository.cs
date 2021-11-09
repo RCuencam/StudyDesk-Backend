@@ -40,11 +40,11 @@ namespace StudyDesck.API.Persistence.Repositories
             _context.Tutors.Update(tutor);
         }
 
-        public async Task<IEnumerable<Tutor>> ListByCareerIdAsync(int careerId)
+        public async Task<IEnumerable<Tutor>> ListByCourseIdAsync(int courseId)
         {
             return await _context.Tutors
-                .Where(t => t.CareerId == careerId)
-                .Include(t => t.Career)
+                .Where(t => t.CourseId == courseId)
+                .Include(t => t.Course)
                 .ToListAsync();
         }
     }

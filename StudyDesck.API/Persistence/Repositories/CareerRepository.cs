@@ -25,19 +25,19 @@ namespace StudyDesck.API.Persistence.Repositories
             return await _context.Careers.FindAsync(id);
         }
 
-        public async Task<IEnumerable<Career>> FindByInstituteIdAndCareerId(int instituteId, int careerId)
+        public async Task<IEnumerable<Career>> FindByuniversityIdAndCareerId(int universityId, int careerId)
         {
             return await _context.Careers
-                .Where(c => c.InstituteId == instituteId && c.Id== careerId)
-                .Include(c => c.Institute)
+                .Where(c => c.universityId == universityId && c.Id== careerId)
+                .Include(c => c.university)
                 .ToListAsync();
         }
 
-        public async Task<IEnumerable<Career>> FindByInstituteIdAsync(int instituteId)
+        public async Task<IEnumerable<Career>> FindByuniversityIdAsync(int universityId)
         {
             return await _context.Careers
-                .Where(c => c.InstituteId == instituteId)
-                .Include(c => c.Institute)
+                .Where(c => c.universityId == universityId)
+                .Include(c => c.university)
                 .ToListAsync();
         }
 

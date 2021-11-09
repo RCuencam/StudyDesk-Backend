@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using StudyDesck.API.Domain.Models;
 using StudyDesck.API.Domain.Services;
@@ -12,45 +13,46 @@ using System.Threading.Tasks;
 
 namespace StudyDesck.API.Controllers
 {
+    
     [ApiController]
     [Route("/api")]
     [Produces("application/json")]
-    public class InstitutesCareersController : ControllerBase
+    public class UniversityCareersController : ControllerBase
     {
-        private readonly IInstituteService _instituteService;
+        private readonly IUniversityService _universityService;
         private readonly ICareerService _careerService;
         private readonly IMapper _mapper;
 
-        public InstitutesCareersController(IInstituteService instituteService, ICareerService careerService, IMapper mapper)
+        public UniversityCareersController(IUniversityService universityService, ICareerService careerService, IMapper mapper)
         {
-            _instituteService = instituteService;
+            _universityService = universityService;
             _careerService = careerService;
             _mapper = mapper;
         }
 
-        [HttpGet("institutes/{instituteId}/careers")]
-        [SwaggerOperation(Summary = "List all careers of an institute")]
-        public async Task<IEnumerable<CareerResource>> GetAllByInstituteIdAsync(int instituteId)
+        [HttpGet("universities/{universityId}/careers")]
+        [SwaggerOperation(Summary = "List all careers of an university")]
+        public async Task<IEnumerable<CareerResource>> GetAllByuniversityIdAsync(int universityId)
         {
-            var careers = await _careerService.FindByInstituteId(instituteId);
+            var careers = await _careerService.FindByuniversityId(universityId);
             var resources = _mapper.Map<IEnumerable<Career>, IEnumerable<CareerResource>>(careers);
 
             return resources;
         }
 
-        [HttpGet("institutes/{instituteId}/careers/{careerId}")]
-        [SwaggerOperation(Summary = "List a career of an institute")]
-        public async Task<IEnumerable<CareerResource>> GetAllByInstituteIdAndCareerIdAsync(int instituteId, int careerId)
+        [HttpGet("universities/{universityId}/careers/{careerId}")]
+        [SwaggerOperation(Summary = "List a career of an university")]
+        public async Task<IEnumerable<CareerResource>> GetAllByuniversityIdAndCareerIdAsync(int universityId, int careerId)
         {
-            var careers = await _careerService.GetByInstituteIdAndCareerId(instituteId, careerId);
+            var careers = await _careerService.GetByuniversityIdAndCareerId(universityId, careerId);
             var resources = _mapper.Map<IEnumerable<Career>, IEnumerable<CareerResource>>(careers);
 
             return resources;
         }
 
-        [HttpPost("institutes/{instituteId}/careers")]
-        [SwaggerOperation(Summary = "Create a career for an institute")]
-        public async Task<IActionResult> PostAsync(int instituteId,[FromBody] SaveCareerResource resource)
+        [HttpPost("universities/{universityId}/careers")]
+        [SwaggerOperation(Summary = "Create a career for an university")]
+        public async Task<IActionResult> PostAsync(int universityId,[FromBody] SaveCareerResource resource)
         {
             if (!ModelState.IsValid)
             {
@@ -58,7 +60,7 @@ namespace StudyDesck.API.Controllers
             }
 
             var career = _mapper.Map<SaveCareerResource, Career>(resource);
-            var result = await _careerService.SaveAsync(instituteId,career);
+            var result = await _careerService.SaveAsync(universityId,career);
 
             if (!result.Success)
                 return BadRequest(result.Message);
@@ -67,8 +69,8 @@ namespace StudyDesck.API.Controllers
             return Ok(careerResource);
         }
 
-        [HttpDelete("institutes/{instituteId}/careers/{careerId}")]
-        [SwaggerOperation(Summary = "Delete a career of an institute")]
+        [HttpDelete("universities/{universityId}/careers/{careerId}")]
+        [SwaggerOperation(Summary = "Delete a career of an university")]
         public async Task<IActionResult> DeleteAsync(int careerId)
         {
             var result = await _careerService.DeleteAsync(careerId);

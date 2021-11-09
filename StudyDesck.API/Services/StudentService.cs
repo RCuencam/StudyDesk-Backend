@@ -13,7 +13,7 @@ namespace StudyDesck.API.Services
     public class StudentService : IStudentService
     {
         private readonly IStudentRepository _studentRepository;
-        private readonly ICareerRepository _careerRepository;
+        //private readonly ICareerRepository _careerRepository;
         private readonly ISessionReservationRepository _sessionReservationRepository;
         private readonly IUnitOfWork _unitOfWork;
 
@@ -70,6 +70,7 @@ namespace StudyDesck.API.Services
 
         public async Task<StudentResponse> SaveAsync(Student student)
         {
+
             try
             {
                 await _studentRepository.AddAsync(student);
@@ -83,6 +84,10 @@ namespace StudyDesck.API.Services
         }
         public async Task<StudentResponse> SaveAsync(int careerId,Student student)
         {
+            var existingEmail = _studentRepository.ListAsync().Result.Where(s => s.Email == student.Email);
+            if (existingEmail.ToList().Count > 0)
+                return new StudentResponse("This email already exists");
+
             try
             {
                 student.CareerId = careerId;

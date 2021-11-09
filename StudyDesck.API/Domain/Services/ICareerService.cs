@@ -11,11 +11,10 @@ namespace StudyDesck.API.Domain.Services
     {
         Task<IEnumerable<Career>> ListAsync();
         Task<CareerResponse> GetByIdAsync(int id);
-        Task<IEnumerable<Career>> FindByInstituteId(int instituteId);
-
-        Task<IEnumerable<Career>> GetByInstituteIdAndCareerId(int instituteId,int careerId);
+        Task<IEnumerable<Career>> FindByuniversityId(int universityId);
+        Task<IEnumerable<Career>> GetByuniversityIdAndCareerId(int universityId,int careerId);
         Task<CareerResponse> SaveAsync(Career career);
-        Task<CareerResponse> SaveAsync(int instituteId, Career career);
+        Task<CareerResponse> SaveAsync(int universityId, Career career);
         Task<CareerResponse> UpdateAsync(int id, Career career);
         Task<CareerResponse> DeleteAsync(int id);
     }

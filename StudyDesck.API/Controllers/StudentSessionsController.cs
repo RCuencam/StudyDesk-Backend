@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using StudyDesck.API.Domain.Models;
 using StudyDesck.API.Domain.Services;
@@ -13,6 +14,7 @@ using System.Threading.Tasks;
 namespace StudyDesck.API.Controllers
 {
     //Cuales son los estudiantes asociados a una session
+    [Authorize]
     [ApiController]
     [Route("/api/students/{studentId}/sessions")]
     [Produces("application/json")]

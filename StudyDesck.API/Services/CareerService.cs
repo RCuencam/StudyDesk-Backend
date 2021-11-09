@@ -12,15 +12,15 @@ namespace StudyDesck.API.Services
     public class CareerService : ICareerService
     {
         private readonly ICareerRepository _careerRepository;
-        private readonly IInstituteRepository _instituteRepository;
-        //private readonly IInstituteRepository _instituteRepository;
+        //private readonly IuniversityRepository _universityRepository;
+        //private readonly IuniversityRepository _universityRepository;
         private readonly IUnitOfWork _unitOfWork;
 
        
         public CareerService(ICareerRepository careerRepository, IUnitOfWork unitOfWork)
         {
             _careerRepository = careerRepository;
-            //_instituteRepository = instituteRepository;
+            //_universityRepository = universityRepository;
             _unitOfWork = unitOfWork;
         }
 
@@ -50,15 +50,15 @@ namespace StudyDesck.API.Services
             return new CareerResponse(existingCareer);
         }
 
-        public async Task<IEnumerable<Career>> FindByInstituteId(int instituteId)
+        public async Task<IEnumerable<Career>> FindByuniversityId(int universityId)
         {
-            var list = await _careerRepository.FindByInstituteIdAsync(instituteId);
+            var list = await _careerRepository.FindByuniversityIdAsync(universityId);
             return list;
         }
 
-        public async Task<IEnumerable<Career>> GetByInstituteIdAndCareerId(int instituteId, int careerId)
+        public async Task<IEnumerable<Career>> GetByuniversityIdAndCareerId(int universityId, int careerId)
         {
-            var list = await _careerRepository.FindByInstituteIdAndCareerId(instituteId, careerId);
+            var list = await _careerRepository.FindByuniversityIdAndCareerId(universityId, careerId);
             return list;
         }
 
@@ -67,7 +67,7 @@ namespace StudyDesck.API.Services
             var list = await _careerRepository.ListAsync();
             /*foreach (var item in list)
             {
-                item.Institute = await _instituteRepository.FindById(item.InstituteId);
+                item.university = await _universityRepository.FindById(item.universityId);
             }*/
             return list;
 
@@ -88,11 +88,11 @@ namespace StudyDesck.API.Services
             }
         }
 
-        public async Task<CareerResponse> SaveAsync(int instituteId,Career career)
+        public async Task<CareerResponse> SaveAsync(int universityId,Career career)
         {
             try
             {
-                career.InstituteId = instituteId;
+                career.universityId = universityId;
                 await _careerRepository.AddAsync(career);
                 await _unitOfWork.CompleteAsync();
                 return new CareerResponse(career);
@@ -109,7 +109,7 @@ namespace StudyDesck.API.Services
                 return new CareerResponse("category not found");
 
             existingCareer.Name = career.Name;
-            existingCareer.InstituteId = career.InstituteId;
+            existingCareer.universityId = career.universityId;
             try
             {
                 _careerRepository.Update(existingCareer);

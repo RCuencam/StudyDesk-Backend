@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace StudyDesck.API.Domain.Models
 {
-    public class Institute
+    public class University
     {
         public int Id { get; set; }
         public string Name { get; set; }

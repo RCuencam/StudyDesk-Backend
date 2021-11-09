@@ -12,7 +12,7 @@ namespace StudyDesck.API.Domain.Persistence.Contexts
     public class AppDbContext : DbContext
     {
         public DbSet<Career> Careers { get; set; }
-        public DbSet<Institute> Institutes { get; set; }
+        public DbSet<University> Universities { get; set; }
         public DbSet<Student> Students { get; set; }
         public DbSet<Course> Courses { get; set; }
         public DbSet<Topic> Topics { get; set; }
@@ -38,16 +38,16 @@ namespace StudyDesck.API.Domain.Persistence.Contexts
             base.OnModelCreating(builder);
             // my code:
 
-            //Institute
-            builder.Entity<Institute>().ToTable("Institutes");
-            builder.Entity<Institute>().HasKey(p => p.Id);
-            builder.Entity<Institute>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
-            builder.Entity<Institute>().Property(p => p.Name).IsRequired().HasMaxLength(40);
+            //university
+            builder.Entity<University>().ToTable("Universities");
+            builder.Entity<University>().HasKey(p => p.Id);
+            builder.Entity<University>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+            builder.Entity<University>().Property(p => p.Name).IsRequired().HasMaxLength(40);
             //Relationships
-            builder.Entity<Institute>()
+            builder.Entity<University>()
                 .HasMany(p => p.Careers)
-                .WithOne(p => p.Institute)
-                .HasForeignKey(p => p.InstituteId);
+                .WithOne(p => p.university)
+                .HasForeignKey(p => p.universityId);
 
             //Career
             builder.Entity<Career>().ToTable("Careers");
@@ -73,6 +73,7 @@ namespace StudyDesck.API.Domain.Persistence.Contexts
             builder.Entity<Student>().Property(p => p.Logo).IsRequired();
             builder.Entity<Student>().Property(p => p.Email).IsRequired().HasMaxLength(40);
             builder.Entity<Student>().Property(p => p.Password).IsRequired();
+            builder.Entity<Student>().Property(p => p.isTutor).IsRequired();
 
             //Category
             builder.Entity<Category>().ToTable("Categories");
@@ -123,27 +124,40 @@ namespace StudyDesck.API.Domain.Persistence.Contexts
                 .HasMany(p => p.Topics)
                 .WithOne(p => p.Course)
                 .HasForeignKey(p => p.CourseId);
+            builder.Entity<Course>()
+                .HasMany(p => p.Tutors)
+                .WithOne(p => p.Course)
+                .HasForeignKey(p => p.CourseId);
+
 
             // Schedule Entity
             builder.Entity<Schedule>().ToTable("Schedules");
             builder.Entity<Schedule>().HasKey(p => p.Id);
             builder.Entity<Schedule>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<Schedule>().Property(p => p.StarDate).IsRequired();
+            builder.Entity<Schedule>().Property(p => p.Reserved);
             builder.Entity<Schedule>().Property(p => p.EndDate).IsRequired();
+            builder.Entity<Schedule>()
+                .HasOne(t => t.Tutor)
+                .WithMany(c => c.Shedules)
+                .HasForeignKey(t => t.TutorId);
 
             // Tutor Entity
             builder.Entity<Tutor>().ToTable("Tutors");
             builder.Entity<Tutor>().HasKey(p => p.Id);
             builder.Entity<Tutor>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
-            builder.Entity<Tutor>().Property(p => p.Name).IsRequired().HasMaxLength(30);
-            builder.Entity<Tutor>().Property(p => p.LastName).IsRequired().HasMaxLength(30);
-            builder.Entity<Tutor>().Property(p => p.Email).IsRequired().HasMaxLength(30);
+            builder.Entity<Tutor>().Property(p => p.Name).IsRequired().HasMaxLength(40);
+            builder.Entity<Tutor>().Property(p => p.LastName).IsRequired().HasMaxLength(40);
+            builder.Entity<Tutor>().Property(p => p.Email).IsRequired().HasMaxLength(40);
+            builder.Entity<Tutor>().Property(p => p.Description);
+            builder.Entity<Tutor>().Property(p => p.Logo).IsRequired();
+            builder.Entity<Tutor>().Property(p => p.PricePerHour);
             builder.Entity<Tutor>().Property(p => p.Password).IsRequired();
             // Relationships
             builder.Entity<Tutor>()
-                .HasOne(t => t.Career)
+                .HasOne(t => t.Course)
                 .WithMany(c => c.Tutors)
-                .HasForeignKey(t => t.CareerId);
+                .HasForeignKey(t => t.CourseId);
             builder.Entity<Tutor>()
                 .HasMany(p => p.Shedules)
                 .WithOne(p => p.Tutor)

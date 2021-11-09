@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using StudyDesck.API.Domain.Models;
 using StudyDesck.API.Domain.Services;
@@ -11,9 +12,10 @@ using System.Threading.Tasks;
 
 namespace StudyDesck.API.Controllers
 {
-
+    [Authorize]
     [ApiController]
     [Route("api/schedules")]
+    [Produces("application/json")]
     public class SchedulesController : ControllerBase
     {
         private readonly IScheduleService _scheduleService;

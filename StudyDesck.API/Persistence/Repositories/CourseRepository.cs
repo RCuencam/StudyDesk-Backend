@@ -35,7 +35,7 @@ namespace StudyDesck.API.Persistence.Repositories
             return await _context.Courses
                 .Where(co => co.CareerId == careerId)
                 .Include(co => co.Career)
-                    .ThenInclude(ca => ca.Institute)
+                    .ThenInclude(ca => ca.university)
                 .ToListAsync();
         }
 

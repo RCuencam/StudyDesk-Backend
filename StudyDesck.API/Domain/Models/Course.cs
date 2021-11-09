@@ -12,7 +12,9 @@ namespace StudyDesck.API.Domain.Models
       
         public int CareerId { get; set; }
         public Career Career { get; set; }
-        
+
+        public IList<Tutor> Tutors { get; set; } = new List<Tutor>();
+
         public IList<Topic> Topics { get; set; } = new List<Topic>();
 
     }

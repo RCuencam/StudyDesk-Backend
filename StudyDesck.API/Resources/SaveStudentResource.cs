@@ -23,6 +23,9 @@ namespace StudyDesck.API.Resources
         [Required]
         public string Password { get; set; }
 
+        [Required]
+        public bool IsTutor { get; set; }
+
 
     }
 }
