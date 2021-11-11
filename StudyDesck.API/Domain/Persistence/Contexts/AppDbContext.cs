@@ -74,6 +74,7 @@ namespace StudyDesck.API.Domain.Persistence.Contexts
             builder.Entity<Student>().Property(p => p.Email).IsRequired().HasMaxLength(40);
             builder.Entity<Student>().Property(p => p.Password).IsRequired();
             builder.Entity<Student>().Property(p => p.isTutor).IsRequired();
+         
 
             //Category
             builder.Entity<Category>().ToTable("Categories");

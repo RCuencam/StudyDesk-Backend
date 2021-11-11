@@ -90,6 +90,8 @@ namespace StudyDesck.API.Services
                     {
                         Name = student.Name,
                         LastName = student.LastName,
+                        PricePerHour = 0.0,
+                        Description = "",
                         CourseId = course.Id,
                         Logo = student.Logo,
                         Email = student.Email,

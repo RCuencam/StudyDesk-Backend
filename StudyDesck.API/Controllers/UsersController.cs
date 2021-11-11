@@ -37,7 +37,7 @@ namespace StudyDesck.API.Controllers
             var response = _userService.Authenticate(request);
 
             if (response.Message != null)
-                return BadRequest(response.Message);
+                return BadRequest(new { message = response.Message });
 
             return Ok(response);
         }
@@ -51,7 +51,7 @@ namespace StudyDesck.API.Controllers
             var result = await _userService.ConvertStudentToTutor(studentId, courseId);
 
             if (result.Message != null)
-                return BadRequest(result.Message);
+                return BadRequest(new { message = result.Message });
 
             return Ok(new { message = "Successful conversion" });
         }

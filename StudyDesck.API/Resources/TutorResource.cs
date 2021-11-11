@@ -8,7 +8,7 @@ namespace StudyDesck.API.Resources
     public class TutorResource
     {
         public int Id { get; set; }
-        public int CareerId { get; set; }
+        public int CourseId { get; set; }
         public string Name { get; set; }
         public string LastName { get; set; }
         public string Description { get; set; }
